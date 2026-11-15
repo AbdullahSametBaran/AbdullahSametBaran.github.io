@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%23050b1d%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%275%27 fill=%27%234fe3ff%27/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teknoloji · Samet Baran</title>
+<meta name="description" content="İş analizi, süreç keşfi ve RPA: süreç keşfi ve iş analizi, RPA geliştirme ve test, RPA performans panosu. Daha iyi sorular, anlamlı çözümler.">
+<link rel="canonical" href="https://abdullahsametbaran.com/teknoloji/">
+<link rel="alternate" hreflang="tr" href="https://abdullahsametbaran.com/teknoloji/">
+<link rel="alternate" hreflang="en" href="https://abdullahsametbaran.com/en/teknoloji/">
+<link rel="alternate" hreflang="x-default" href="https://abdullahsametbaran.com/teknoloji/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Samet Baran">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://abdullahsametbaran.com/teknoloji/">
+<meta property="og:title" content="Teknoloji · Samet Baran">
+<meta property="og:description" content="İş analizi, süreç keşfi ve RPA: süreç keşfi ve iş analizi, RPA geliştirme ve test, RPA performans panosu. Daha iyi sorular, anlamlı çözümler.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Teknoloji · Samet Baran">
+<meta name="twitter:description" content="İş analizi, süreç keşfi ve RPA: süreç keşfi ve iş analizi, RPA geliştirme ve test, RPA performans panosu. Daha iyi sorular, anlamlı çözümler.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../lib/lenis.css">
+<style>
+/* abyss 60 · ice 30 · sonar cyan 10 (amber marks the game) */
+:root{--abyss:#050b1d;--ice:#dfe9ff;--mute:rgba(223,233,255,.58);--line:rgba(120,170,255,.14);--cy:#4fe3ff;--am:#ffc65c;--gut:clamp(18px,3vw,44px)}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--abyss);color:var(--ice);font-family:Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:96px 96px;background-attachment:fixed}
+a,button{color:inherit;font:inherit}
+em{font-style:normal}
+.mono{font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:.12em .02em .1em;margin:-.12em -.02em -.1em}.wi{display:inline-block}
+header{position:fixed;inset:0 0 auto;z-index:30;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px var(--gut) 16px calc(var(--gut) + 30px);background:linear-gradient(var(--abyss) 40%,transparent)}
+header a{text-decoration:none}header .r{justify-self:end}
+header .c{color:var(--cy)}
+.logo{justify-self:start;display:inline-flex;align-items:baseline;font-size:23px;font-weight:600;letter-spacing:-.055em;line-height:1}
+.logo b{font-weight:400;font-size:15px;letter-spacing:0;color:var(--mute);margin-right:10px;transition:transform .4s cubic-bezier(.2,.7,.2,1),color .3s}
+.logo:hover b{transform:translateX(-4px);color:var(--ice)}
+.logo i{font-style:normal;color:var(--cy)}
+header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lang:hover{color:var(--ice)}
+/* the side ruler reads how deep into the page you are */
+.ruler{position:fixed;left:0;top:0;bottom:0;width:30px;z-index:25;border-right:1px solid var(--line);background:rgba(5,11,29,.85);overflow:hidden}
+.ruler canvas{position:absolute;inset:0;width:100%;height:100%}
+.depth{position:fixed;left:34px;z-index:26;top:50%;font-family:"Geist Mono";font-size:10.5px;color:var(--cy);pointer-events:none}
+.depth::before{content:"";position:absolute;left:-34px;top:6px;width:30px;height:1px;background:var(--cy)}
+.cursor{position:fixed;right:var(--gut);bottom:18px;z-index:26;font-family:"Geist Mono";font-size:11px;color:var(--mute)}
+@media (hover:none){.cursor{display:none}}
+@media (max-width:600px){header .c{display:none}header .r{grid-column:3}}
+
+.hero{min-height:100svh;display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:90px var(--gut) 40px calc(var(--gut) + 30px)}
+.hero h1{margin:16px 0 0;font-weight:300;font-size:clamp(48px,5.6vw,98px);line-height:.95;letter-spacing:-.05em}
+.hero h1 em{color:var(--cy)}
+.hero p{max-width:440px;color:var(--mute);font-size:16.5px;line-height:1.6;margin:22px 0 0}
+.ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.b{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(223,233,255,.25);border-radius:4px;background:none;cursor:pointer;font-size:14px;text-decoration:none;transition:border-color .3s,background .3s}
+.b:hover{border-color:var(--cy);background:rgba(79,227,255,.06)}
+.b.px{font-family:"Pixelify Sans";font-size:16px;background:var(--am);color:#0b1430;border:3px solid #0b1430;border-radius:0;box-shadow:4px 4px 0 #000;transition:transform .08s,box-shadow .08s}
+.b.px:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 #000;background:var(--am)}
+.b.px:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #000}
+.radar{position:relative;justify-self:center;width:min(78vh,46vw);aspect-ratio:1}
+.radar canvas{position:absolute;inset:0;width:100%;height:100%}
+.blip{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:none;border:0;cursor:pointer;padding:0}
+.blip:focus-visible{outline:1px solid var(--cy)}
+.card{position:absolute;z-index:5;width:260px;padding:14px 16px;background:rgba(5,11,29,.92);border:1px solid var(--cy);font-size:14px;line-height:1.5;pointer-events:none;opacity:0;transition:opacity .2s}
+.card .mono{color:var(--cy);font-size:10px}.card b{display:block;font-weight:500;font-size:16px;margin:4px 0}.card span{color:var(--mute)}
+.legend{position:absolute;left:0;right:0;bottom:-34px;display:flex;justify-content:center;gap:20px;color:var(--mute)}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
+
+.route{padding:16vh var(--gut) 8vh calc(var(--gut) + 30px)}
+.route h2,.log h2{margin:0 0 10px;font-weight:300;font-size:clamp(38px,4.2vw,70px);letter-spacing:-.045em;line-height:1}
+.route .sub{color:var(--mute);margin:0 0 40px;max-width:520px;line-height:1.6}
+.plot{position:relative;height:min(70vh,640px);border-left:1px solid rgba(223,233,255,.3);border-bottom:1px solid rgba(223,233,255,.3)}
+.plot svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.plot .ln{fill:none;stroke:var(--cy);stroke-width:1.6}
+.plot .gh{fill:none;stroke:rgba(79,227,255,.2);stroke-width:1;stroke-dasharray:3 6}
+.wp{position:absolute;width:300px}
+.wp.fx .dot{margin-left:auto}.wp.fx .box{margin:12px 14px 0 0;border-left:0;border-right:1px solid var(--cy);text-align:right}
+.wp.fy{display:flex;flex-direction:column-reverse}.wp.fy .box{margin-top:0;margin-bottom:12px}
+@media (min-width:961px) and (max-width:1200px){.wp{width:clamp(240px,28vw,300px)}}
+.wp .dot{width:28px;height:28px;border-radius:50%;border:1px solid var(--cy);display:grid;place-items:center;background:var(--abyss)}
+.wp .dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--cy);box-shadow:0 0 12px var(--cy)}
+.wp .box{margin:12px 0 0 14px;padding:14px 16px;border-left:1px solid var(--cy);background:rgba(5,11,29,.75)}
+.wp .mono{color:var(--cy);font-size:10px}
+.wp h3{margin:6px 0 6px;font-weight:400;font-size:21px;letter-spacing:-.02em}
+.wp p{margin:0;color:var(--mute);font-size:14px;line-height:1.55}
+.axis{position:absolute;font-family:"Geist Mono";font-size:10px;color:var(--mute)}
+.log{padding:10vh var(--gut) 8vh calc(var(--gut) + 30px);display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+table{width:100%;border-collapse:collapse;font-size:15px;margin-top:24px}
+td,th{padding:14px 10px 14px 0;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-family:"Geist Mono";font-weight:400;font-size:10.5px;letter-spacing:.12em;color:var(--mute)}
+td.id{font-family:"Geist Mono";font-size:12px;color:var(--cy);white-space:nowrap}
+td small{display:block;color:var(--mute);font-size:13px;margin-top:3px}
+.arcade{position:relative;border:1px solid var(--line);background:#0b1430;padding:14px}
+.arcade .scr{position:relative;aspect-ratio:16/10;overflow:hidden;border:3px solid #000;cursor:pointer}
+.arcade img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block;image-rendering:pixelated;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.arcade .scr:hover img{transform:scale(1.04)}
+.arcade .scr::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 2px,rgba(0,0,0,.18) 2px 3px);pointer-events:none}
+.arcade .scr .b.px{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2}
+.arcade .scr:hover .b.px{transform:translate(-50%,-52%)}
+.arcade p{margin:12px 0 0;font-family:"Pixelify Sans";font-size:17px;color:var(--ice)}
+.arcade .mono{color:var(--am)}
+.end{padding:8vh var(--gut) 14vh calc(var(--gut) + 30px);display:flex;justify-content:space-between;align-items:end;gap:30px}
+.end h2{margin:0;font-weight:300;font-size:clamp(30px,3.4vw,56px);letter-spacing:-.045em;line-height:1.04;max-width:760px}
+@media (max-width:960px){.hero,.log{grid-template-columns:1fr}.radar{width:86vw}.wp{position:relative;left:auto!important;top:auto!important;transform:none;margin-bottom:20px}.plot{height:auto;border:0}.plot svg{display:none}.end{flex-direction:column;align-items:start}}
+</style>
+</head>
+<body>
+<div class="ruler" aria-hidden="true"><canvas id="ruler"></canvas></div>
+<div class="depth" id="depth" aria-hidden="true">y 0.000</div>
+<div class="cursor" id="cur" aria-hidden="true">x — · y —</div>
+<header><a class="logo" href="../index.html" data-leave="#07080b" aria-label="Samet Baran, ana sayfa"><b>←</b>samet<i>.</i></a><span class="mono c">Sektör 02 · Teknoloji</span><span class="r"><a href="../psikoloji/index.html" data-leave="#062a31">Psikoloji →</a><a class="lang" href="../en/teknoloji/index.html" hreflang="en" lang="en" data-leave="#050b1d">EN</a></span></header>
+<main>
+  <section class="hero">
+    <div>
+      <div class="mono" style="color:var(--mute)" data-in>İş analizi · süreç keşfi · RPA</div>
+      <h1 id="h1">Daha iyi sorular. <em>Anlamlı</em> çözümler.</h1>
+      <p data-in data-touch="Radar, çalıştığım her şeyi bir noktada gösteriyor: içte çalışmalar, ortada roller, dışta araçlar. Tarama geçtikçe parlıyorlar; bir noktaya dokun.">Radar, çalıştığım her şeyi bir noktada gösteriyor: içte çalışmalar, ortada roller, dışta araçlar. Tarama geçtikçe parlıyorlar; bir noktanın üstüne gel.</p>
+      <div class="ctas" data-in><a class="b" href="#rota">Rotayı gör ↓</a><button class="b px" data-arcade type="button">▶ Oyuna gir</button></div>
+    </div>
+    <div class="radar" id="radar" data-in><canvas id="rc"></canvas><div class="card" id="card"></div>
+      <div class="legend mono"><span><i style="background:#4fe3ff"></i>Çalışma</span><span><i style="background:#8fb4ff"></i>Rol</span><span><i style="background:#ffc65c"></i>Araç</span></div></div>
+  </section>
+
+  <section class="route" id="rota">
+    <h2>Rota: <em>üç</em> çalışma</h2>
+    <p class="sub">İhtiyaçtan görünür sonuca uzanan yol. Kaydırdıkça çizilir; her durak bir koordinatta.</p>
+    <div class="plot" id="plot">
+      <svg id="ps" preserveAspectRatio="none"><path class="gh" id="pg"/><path class="ln" id="pl"/></svg>
+      <span class="axis" style="left:-2px;bottom:-22px">0.00</span><span class="axis" style="right:0;bottom:-22px">1.00 · zaman</span><span class="axis" style="left:-40px;top:0">1.00</span>
+      <div class="wp" data-x=".08" data-y=".78"><div class="dot"></div><div class="box"><span class="mono">WP-01 · (0.08, 0.22)</span><h3>Süreç keşfi ve iş analizi</h3><p>Birimlerle tekrar eden, kurallı süreçleri bulup iş değerine göre önceliklendirdim; süreç tasarım dokümanları hazırladım.</p></div></div>
+      <div class="wp" data-x=".4" data-y=".42"><div class="dot"></div><div class="box"><span class="mono">WP-02 · (0.40, 0.58)</span><h3>RPA geliştirme ve test</h3><p>Geliştirme, test ve hata düzeltme; robotların müşteri ortamında belirlenen saatlerde çalışması.</p></div></div>
+      <div class="wp" data-x=".72" data-y=".08"><div class="dot"></div><div class="box"><span class="mono">WP-03 · (0.72, 0.92)</span><h3>RPA performans panosu</h3><p>İşlem sayısı, başarı oranı, robot ve manuel süre ile net zaman kazanımı; Figma’dan Supabase’e.</p></div></div>
+    </div>
+  </section>
+
+  <section class="log">
+    <div><h2>Seyir <em>defteri</em></h2>
+      <table><tr><th>KAYIT</th><th>KURUM</th><th>GÖREV</th></tr>
+        <tr><td class="id">LOG-03</td><td>Kronovita</td><td>RPA ve iş analizi<small>Müşteri görüşmeleri, süreç keşfi, PDD, geliştirme, raporlama</small></td></tr>
+        <tr><td class="id">LOG-02</td><td>Teleperformance</td><td>İş analisti<small>Kapsam değişiklikleri, test geri bildirimi, canlıya alma</small></td></tr>
+        <tr><td class="id">LOG-01</td><td>Proje bazlı</td><td>İş analizi<small>Gereksinim, kabul kriterleri, veri analizi, raporlama</small></td></tr></table></div>
+    <div class="arcade"><div class="mono">Gizli sektör bulundu</div><div class="scr" data-arcade role="button" tabindex="0" aria-label="Otomasyon adası oyununu aç"><img src="../img/oyun-onizleme.jpg" alt=""><span class="b px">▶ Oyuna gir</span></div><p>Otomasyon adası: çalışmalarımı yürüyerek keşfet.</p></div>
+  </section>
+  <section class="end"><h2>Bir sonraki tarama: insan odaklı teknoloji ve <em>insan-robot</em> etkileşimi.</h2><a class="b" href="../psikoloji/index.html" data-leave="#062a31">Psikoloji sektörüne geç →</a></section>
+</main>
+<script src="../lib/gsap.min.js"></script>
+<script src="../lib/ScrollTrigger.min.js"></script>
+<script src="../lib/lenis.min.js"></script>
+<script src="../lib/smooth.js"></script>
+<script src="../lib/sub.js"></script>
+<script src="../lib/arcade.js"></script>
+<script>
+const arrived = sub.arrive();
+/* radar: rings, bearings and a sweep with a fading wake; each blip flares when the sweep passes and fades after */
+const BL = [
+  { r: .26, a: 30, k: 'w', n: 'RPA performans panosu', d: 'KPI’lar, Figma taslakları, Supabase' },
+  { r: .3, a: 150, k: 'w', n: 'Süreç keşfi ve iş analizi', d: 'Kurallı süreçler, önceliklendirme, PDD' },
+  { r: .22, a: 255, k: 'w', n: 'RPA geliştirme ve test', d: 'Geliştirme, test, zamanlı çalışma' },
+  { r: .52, a: 75, k: 'r', n: 'Kronovita', d: 'RPA ve iş analizi' },
+  { r: .56, a: 205, k: 'r', n: 'Teleperformance', d: 'İş analisti' },
+  { r: .5, a: 320, k: 'r', n: 'Proje bazlı', d: 'Gereksinim, kabul kriterleri' },
+  ...[['Figma', 10], ['Jira', 50], ['Confluence', 100], ['Monday.com', 140], ['Python', 180], ['SQL', 225], ['Power BI', 265], ['Postman', 300], ['Supabase', 340]].map(([n, a], i) => ({ r: .78 + (i % 2) * .08, a, k: 't', n, d: 'Araç' }))
+];
+const COL = { w: [79, 227, 255], r: [143, 180, 255], t: [255, 198, 92] };
+const radar = document.getElementById('radar'), rc = document.getElementById('rc'), g = rc.getContext('2d'), card = document.getElementById('card');
+let R, D;
+function size() { D = Math.min(devicePixelRatio || 1, 2); R = radar.clientWidth; rc.width = R * D; rc.height = R * D; g.setTransform(D, 0, 0, D, 0, 0);
+  radar.querySelectorAll('.blip').forEach(b => b.remove());
+  BL.forEach((b, i) => { const x = R / 2 + Math.cos((b.a - 90) * Math.PI / 180) * b.r * R / 2, y = R / 2 + Math.sin((b.a - 90) * Math.PI / 180) * b.r * R / 2;
+    const el = document.createElement('button'); el.className = 'blip'; el.style.left = x + 'px'; el.style.top = y + 'px'; el.setAttribute('aria-label', b.n + ': ' + b.d);
+    el.addEventListener('pointerenter', () => show(b, x, y)); el.addEventListener('focus', () => show(b, x, y)); el.addEventListener('pointerleave', hide); el.addEventListener('blur', hide);
+    radar.appendChild(el); b.x = x; b.y = y; b.glow = b.glow || 0; }); }
+function show(b, x, y) { hov = b; kick(); card.innerHTML = `<span class="mono">${{ w: 'Çalışma', r: 'Rol', t: 'Araç' }[b.k]} · ${String(Math.round(b.a)).padStart(3, '0')}°</span><b>${b.n}</b><span>${b.d}</span>`;
+  card.style.left = Math.min(R - 250, Math.max(-20, x + 16)) + 'px'; card.style.top = (y + 16) + 'px'; card.style.opacity = 1; }
+function hide() { hov = null; card.style.opacity = 0; kick(); }
+const RM = window.reduceMotion;              // reduced motion: a still radar, every blip lit, drawn only when something changes
+let hov = null; size(); addEventListener('resize', () => { size(); kick(); });
+let sweep = 0, last = performance.now(), on = { k: RM ? 1 : 0 }, seen = true, raf = 0;
+function kick() { if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+// off screen the radar rests; back in view it carries on from the same bearing
+new IntersectionObserver(([e]) => { seen = e.isIntersecting; if (seen) kick(); }).observe(radar);
+function frame(now) {
+  const dt = Math.min(.1, (now - last) / 1000); last = now; const prev = sweep; if (!RM) sweep = (sweep + dt * 60) % 360;
+  const c = R / 2; g.clearRect(0, 0, R, R);
+  g.globalAlpha = on.k;
+  g.strokeStyle = 'rgba(120,170,255,.22)'; g.lineWidth = 1;
+  [.25, .5, .75, 1].forEach(k => { g.beginPath(); g.arc(c, c, k * c - 1, 0, 7); g.stroke(); });
+  g.beginPath(); g.moveTo(c, 0); g.lineTo(c, R); g.moveTo(0, c); g.lineTo(R, c); g.stroke();
+  g.fillStyle = 'rgba(223,233,255,.5)'; g.font = '10px "Geist Mono", monospace'; g.textAlign = 'center';
+  for (let a = 0; a < 360; a += 30) { const x = c + Math.cos((a - 90) * Math.PI / 180) * (c - 14), y = c + Math.sin((a - 90) * Math.PI / 180) * (c - 14) + 3; g.fillText(String(a).padStart(3, '0'), x, y); }
+  for (let a = 0; a < 360; a += 5) { const r1 = c - 2, r2 = c - (a % 30 ? 6 : 10), t = (a - 90) * Math.PI / 180; g.beginPath(); g.moveTo(c + Math.cos(t) * r1, c + Math.sin(t) * r1); g.lineTo(c + Math.cos(t) * r2, c + Math.sin(t) * r2); g.stroke(); }
+  // the wake: a fan of thin slices fading behind the sweep line
+  if (!RM) { for (let i = 0; i < 40; i++) { const a0 = (sweep - i * 1.5 - 90) * Math.PI / 180, a1 = (sweep - (i + 1) * 1.5 - 90) * Math.PI / 180;
+    g.fillStyle = `rgba(79,227,255,${.16 * (1 - i / 40)})`; g.beginPath(); g.moveTo(c, c); g.arc(c, c, c - 1, a1, a0); g.fill(); }
+  g.strokeStyle = 'rgba(79,227,255,.9)'; g.beginPath(); g.moveTo(c, c); const ts = (sweep - 90) * Math.PI / 180; g.lineTo(c + Math.cos(ts) * c, c + Math.sin(ts) * c); g.stroke(); }
+  BL.forEach(b => { const passed = !RM && (prev <= sweep ? (b.a > prev && b.a <= sweep) : (b.a > prev || b.a <= sweep)); if (passed) b.glow = 1; b.glow = RM ? .75 : Math.max(.32, b.glow - dt * .35);
+    const k = hov === b ? 1 : b.glow, [r, gg, bb] = COL[b.k], s = b.k === 't' ? 3 : 4.5;
+    g.fillStyle = `rgba(${r},${gg},${bb},${k})`; g.beginPath(); g.arc(b.x, b.y, s, 0, 7); g.fill();
+    g.strokeStyle = `rgba(${r},${gg},${bb},${k * .6})`; g.beginPath(); g.arc(b.x, b.y, s + 5 + (1 - k) * 8, 0, 7); g.stroke();
+    if (b.k !== 't' && k > .5) { g.fillStyle = `rgba(223,233,255,${(k - .5) * 1.6})`; g.textAlign = 'left'; g.fillText(b.n, b.x + 12, b.y + 4); } });
+  g.globalAlpha = 1;
+  raf = !RM && seen ? requestAnimationFrame(frame) : 0;
+}
+kick();
+
+// the ruler on the left and the depth reading
+const ru = document.getElementById('ruler'), rg = ru.getContext('2d'), depth = document.getElementById('depth');
+function ruler() { const d = Math.min(devicePixelRatio || 1, 2), h = innerHeight; ru.width = 30 * d; ru.height = h * d; rg.setTransform(d, 0, 0, d, 0, 0);
+  const y0 = scrollY, max = document.documentElement.scrollHeight - innerHeight; rg.clearRect(0, 0, 30, h); rg.strokeStyle = 'rgba(223,233,255,.35)'; rg.fillStyle = 'rgba(223,233,255,.5)'; rg.font = '9px "Geist Mono"';
+  for (let y = -(y0 % 24); y < h; y += 24) { const abs = Math.round((y + y0) / 24); rg.beginPath(); rg.moveTo(30, y + .5); rg.lineTo(abs % 4 ? 22 : 14, y + .5); rg.stroke();
+    if (abs % 8 === 0) { rg.save(); rg.translate(10, y + 2); rg.rotate(-Math.PI / 2); rg.fillText(String(abs * 24), 0, 0); rg.restore(); } }
+  depth.textContent = 'y ' + (max > 0 ? (y0 / max).toFixed(3) : '0.000'); }
+ruler(); addEventListener('scroll', ruler, { passive: true }); addEventListener('resize', ruler); if (window.lenis) lenis.on('scroll', ruler);
+const cur = document.getElementById('cur');
+addEventListener('pointermove', e => cur.textContent = `x ${(e.clientX / innerWidth).toFixed(3)} · y ${(1 - e.clientY / innerHeight).toFixed(3)}`);
+
+// the route: waypoints placed by their coordinates, the line drawn by the scroll
+const plot = document.getElementById('plot'), wps = [...plot.querySelectorAll('.wp')];
+function layout() { const w = plot.clientWidth, h = plot.clientHeight; const pts = wps.map(p => [+p.dataset.x * w, +p.dataset.y * h]);
+  // each card hangs right of and below its dot; where that would leave the plot, it opens to the left or above instead
+  wps.forEach((p, i) => { const [x, y] = pts[i]; p.classList.remove('fx', 'fy');
+    const wide = innerWidth > 960 && innerWidth <= 1200, fx = wide && x - 14 + p.offsetWidth > w, fy = wide && y - 14 + p.offsetHeight > h; p.classList.toggle('fx', fx); p.classList.toggle('fy', fy);
+    p.style.left = (fx ? x + 14 - p.offsetWidth : x - 14) + 'px'; p.style.top = (fy ? y + 14 - p.offsetHeight : y - 14) + 'px'; });
+  let d = `M0 ${h}`; let px = 0, py = h; pts.forEach(([x, y]) => { d += ` C${px + (x - px) * .5} ${py} ${px + (x - px) * .5} ${y} ${x + 14} ${y + 14}`; px = x + 14; py = y + 14; }); d += ` L${w} ${py - 40}`;
+  document.getElementById('ps').setAttribute('viewBox', `0 0 ${w} ${h}`); ['pl', 'pg'].forEach(id => document.getElementById(id).setAttribute('d', d)); }
+layout(); addEventListener('resize', layout);
+// with reduced motion everything is simply there: the route already drawn, the cards and rows in place
+if (!RM) {
+  const pl = document.getElementById('pl'), L = pl.getTotalLength(); pl.style.strokeDasharray = L; pl.style.strokeDashoffset = L;
+  gsap.to(pl, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: '#plot', start: 'top 75%', end: 'bottom 60%', scrub: true } });
+  wps.forEach((p, i) => gsap.from(p, { opacity: 0, y: 20, duration: .9, ease: 'expo.out', scrollTrigger: { trigger: '#plot', start: `top+=${i * 25}% 70%` } }));
+  gsap.from('tr', { opacity: 0, x: -12, duration: .7, stagger: .06, ease: 'expo.out', scrollTrigger: { trigger: '.log', start: 'top 80%' } });
+  gsap.timeline({ defaults: { ease: 'expo.out' }, delay: arrived ? .3 : 0 })
+    .to(on, { k: 1, duration: 1.6, ease: 'power2.out' }, 0)
+    .from(splitWords(document.getElementById('h1')), { yPercent: 115, duration: 1.3, stagger: .08 }, .2)
+    .from('[data-in], header', { opacity: 0, y: 12, duration: 1, stagger: .08 }, .5);
+}
+document.querySelectorAll('[data-arcade]').forEach(el => { el.addEventListener('click', () => arcade.open(el.closest('.arcade') ? el : el)); el.addEventListener('keydown', e => { if (e.key === 'Enter') arcade.open(el); }); });
+</script>
+</body>
+</html>

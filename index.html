@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27%23050b1d%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%275%27 fill=%27%234fe3ff%27/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samet Baran · Psikolog ve yazılım mühendisi</title>
+<meta name="description" content="Psikolog ve yazılım mühendisi Samet Baran. İnsanı anlamak, teknolojiyi anlamlı kılmak: psikoloji bana insanı, yazılım mühendisliği ise karmaşık problemleri sistemli biçimde ele almayı öğretti.">
+<link rel="canonical" href="https://abdullahsametbaran.com/">
+<link rel="alternate" hreflang="tr" href="https://abdullahsametbaran.com/">
+<link rel="alternate" hreflang="en" href="https://abdullahsametbaran.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://abdullahsametbaran.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Samet Baran">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://abdullahsametbaran.com/">
+<meta property="og:title" content="Samet Baran · Psikolog ve yazılım mühendisi">
+<meta property="og:description" content="Psikolog ve yazılım mühendisi Samet Baran. İnsanı anlamak, teknolojiyi anlamlı kılmak: psikoloji bana insanı, yazılım mühendisliği ise karmaşık problemleri sistemli biçimde ele almayı öğretti.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Samet Baran · Psikolog ve yazılım mühendisi">
+<meta name="twitter:description" content="Psikolog ve yazılım mühendisi Samet Baran. İnsanı anlamak, teknolojiyi anlamlı kılmak: psikoloji bana insanı, yazılım mühendisliği ise karmaşık problemleri sistemli biçimde ele almayı öğretti.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400&family=Fraunces:opsz,wght,SOFT@9..144,300..500,0..100&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lib/lenis.css">
+<style>
+:root{--bg:#07080b;--ink:#efece4;--mute:rgba(239,236,228,.55);--leaf:#a8dc6c;--blue:#6f9bff;--gut:clamp(18px,3vw,40px)}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+em{font-style:normal}
+/* the home display face: a soft serif, the warm side of the two worlds */
+.fr{font-family:Fraunces,Georgia,serif;font-weight:300;font-variation-settings:"SOFT" 100,"opsz" 144}
+.mono{font-family:"Geist Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+#gl{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0;touch-action:pan-y}
+.vig{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 35%,rgba(7,8,11,.75) 100%)}
+header{position:fixed;inset:0 0 auto;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px var(--gut)}
+/* the wordmark from the original site, in this site's type; the dot drifts between the two worlds */
+.logo{font-size:23px;font-weight:600;letter-spacing:-.055em;line-height:1}
+.logo i{font-style:normal;color:var(--leaf);animation:dot 7s ease-in-out infinite}
+@keyframes dot{0%,100%{color:var(--leaf)}50%{color:var(--blue)}}
+header nav{display:flex;gap:4px}
+header nav a{padding:9px 14px;border-radius:99px;font-size:14px;color:var(--mute);transition:color .3s,background .3s}
+header nav a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:.14em .02em .1em;margin:-.14em -.02em -.1em}.wi{display:inline-block}
+
+.scene{position:relative;z-index:2;pointer-events:none}
+.scene a,.scene button{pointer-events:auto}
+.s{height:100svh;position:relative}
+/* the words sit in a left column on the animation's centre line; the cloud keeps the right half */
+.hero .big{position:absolute;left:var(--gut);bottom:52vh;max-width:46vw;margin:0;font-size:clamp(40px,3.9vw,66px);line-height:1.02;letter-spacing:-.02em}
+.hero .side{position:absolute;left:var(--gut);top:55vh;max-width:380px}
+.hero .side p{margin:0 0 18px;font-size:16px;line-height:1.5;color:var(--mute)}
+.hero .side p b{color:var(--ink);font-weight:400}
+.cue{display:inline-flex;gap:14px;align-items:center;color:var(--mute)}
+.cue i{width:1px;height:42px;background:rgba(239,236,228,.2);position:relative;overflow:hidden}
+.cue i::after{content:"";position:absolute;inset:0;background:var(--ink);animation:drop 2.2s cubic-bezier(.7,0,.2,1) infinite}
+@media (prefers-reduced-motion:reduce){.logo i,.cue i::after{animation:none}}
+@keyframes drop{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
+
+.story{height:200svh}
+.story .pin{position:sticky;top:0;height:100svh;display:flex;align-items:center;padding:0 var(--gut)}
+.story p{margin:0;max-width:min(560px,40vw);font-family:Fraunces,Georgia,serif;font-weight:300;font-variation-settings:"SOFT" 100,"opsz" 72;font-size:clamp(24px,2.1vw,34px);line-height:1.22;letter-spacing:-.01em}
+.story p .wi{opacity:.14}
+.story p em{color:var(--blue)}.story p .g{color:var(--leaf)}
+
+.doors{height:220svh}
+.doors .pin{position:sticky;top:0;height:100svh}
+.door{display:block;position:absolute;bottom:clamp(40px,10vh,110px);width:min(36vw,440px);padding:0;background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.door.l{left:var(--gut)}.door.r{right:var(--gut);text-align:right}
+.door .mono{color:var(--mute)}
+.door h2{margin:10px 0 12px;font-size:clamp(44px,5.4vw,96px);letter-spacing:-.03em;line-height:.92}
+.door.l h2 em{color:var(--leaf)}.door.r h2 em{color:var(--blue)}
+.door p{margin:0;color:var(--mute);font-size:15px;line-height:1.55}
+.door .go{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-size:14px}
+.door .go b{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(239,236,228,.25);font-weight:400;transition:background .4s,border-color .4s,color .4s,transform .5s cubic-bezier(.2,.7,.2,1)}
+.door.l:hover .go b{background:var(--leaf);border-color:var(--leaf);color:#0d2016;transform:translateX(-4px)}
+.door.r:hover .go b{background:var(--blue);border-color:var(--blue);color:#06102a;transform:translateX(4px)}
+.doors .ttl{position:absolute;left:50%;top:clamp(90px,14vh,140px);transform:translateX(-50%);text-align:center;color:var(--mute)}
+.wipe{position:fixed;inset:0;z-index:50;pointer-events:none;opacity:0}
+/* phones: the cloud takes the upper half, the words sit underneath it, full width */
+@media (max-width:820px){header nav a:not(:last-child){display:none}
+  .hero .big{right:var(--gut);bottom:calc(8vh + 112px);max-width:none;font-size:clamp(34px,10vw,46px)}
+  .hero .side{right:var(--gut);top:auto;bottom:8vh;max-width:none}.hero .side p{font-size:15px;margin-bottom:14px}.cue i{height:28px}
+  .story .pin{align-items:flex-end;padding-bottom:9vh}.story p{max-width:none;font-size:clamp(22px,6.4vw,28px)}
+  .door{width:44vw}.door h2{font-size:34px}.door p{display:none}}
+</style>
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="vig"></div>
+<header><a class="logo" href="#" aria-label="Samet Baran">samet<i>.</i></a><nav><a href="psikoloji/index.html" data-go="mind">Psikoloji</a><a href="teknoloji/index.html" data-go="sys">Teknoloji</a><a href="en/index.html" hreflang="en" lang="en">EN</a></nav></header>
+
+<main class="scene">
+  <section class="s hero">
+    <h1 class="big fr" id="h1">Psikolog &amp;<br>Yazılım Mühendisi</h1>
+    <div class="side" data-in><p><b>İnsanı anlamak. Teknolojiyi anlamlı kılmak.</b> İki disiplin, tek merak.</p><span class="cue mono"><i></i>Kaydır · sürükle</span></div>
+  </section>
+  <section class="story" id="story"><div class="pin"><p id="st">Psikoloji bana <span class="g">insanı</span>, yazılım mühendisliği ise karmaşık problemleri <em>sistemli</em> biçimde ele almayı öğretti.</p></div></section>
+  <section class="doors" id="kapilar"><div class="pin">
+    <div class="ttl mono" id="dt">İki alan · birini seç</div>
+    <a class="door l" href="psikoloji/index.html" data-go="mind" aria-label="Psikoloji sayfasına gir"><span class="mono">01 · Zihin</span><h2 class="fr"><em>Psikoloji</em></h2><p>Davranış, deneyim ve bizi biz yapan ilişkiler.</p><span class="go"><b>←</b>Psikolojiye gir</span></a>
+    <a class="door r" href="teknoloji/index.html" data-go="sys" aria-label="Teknoloji sayfasına gir"><span class="mono">02 · Sistem</span><h2 class="fr"><em>Teknoloji</em></h2><p>İş analizi, süreç keşfi ve otomasyon.</p><span class="go">Teknolojiye gir<b>→</b></span></a>
+  </div></section>
+</main>
+<div class="wipe" id="wipe"></div>
+
+<script src="lib/gsap.min.js"></script>
+<script src="lib/ScrollTrigger.min.js"></script>
+<script src="lib/lenis.min.js"></script>
+<script src="lib/smooth.js"></script>
+<script type="module">
+/* The point cloud is drawn with plain WebGL: one program, five attributes, one draw call. */
+const RM = window.reduceMotion;          // reduced motion: no drift, no spin, no entrance; shapes change in one step
+const cv = document.getElementById('gl');
+const gl = cv.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'high-performance' });
+const PR = Math.min(devicePixelRatio || 1, 2);
+const cam = { fov: 32, near: .1, far: 100, z: 7.2, aspect: 1 };
+const PROJ = new Float32Array(16), VIEW = new Float32Array(16);
+function camera() {                      // a perspective camera on the z axis, looking at the origin
+  const t = cam.near * Math.tan(cam.fov * Math.PI / 360), h = 2 * t, w = cam.aspect * h;
+  PROJ.fill(0); PROJ[0] = 2 * cam.near / w; PROJ[5] = 2 * cam.near / h; PROJ[10] = -(cam.far + cam.near) / (cam.far - cam.near); PROJ[11] = -1; PROJ[14] = -2 * cam.far * cam.near / (cam.far - cam.near);
+  VIEW.fill(0); VIEW[0] = VIEW[5] = VIEW[10] = VIEW[15] = 1; VIEW[14] = -cam.z;
+}
+
+/* ---- three shapes for one cloud of points: a brain, a lattice globe, and the two worlds side by side ---- */
+const N = innerWidth < 760 ? 12000 : 22000;
+const A = new Float32Array(N * 3), B = new Float32Array(N * 3), C = new Float32Array(N * 3), SEED = new Float32Array(N), SIDE = new Float32Array(N);
+const R = Math.random;
+function brainPoint(o, k, sc, ox) {
+  let x, y, z; const part = R();
+  if (part < .93) {                                      // the two hemispheres, folded; points gather on the ridges
+    const h = R() < .5 ? -1 : 1; let u, th, s, dx, dy, dz, fold;
+    do { u = R() * 2 - 1; th = R() * Math.PI * 2; s = Math.sqrt(1 - u * u); dx = s * Math.cos(th); dy = u; dz = s * Math.sin(th);
+      fold = Math.sin(dy * 15 + Math.sin(dz * 9) * 2.2) * Math.sin(dz * 13 + Math.sin(dy * 7) * 2.4) + .5 * Math.sin(dx * 11 + dz * 6); } while (fold < -.25 && R() < .8);
+    const r = 1 + .07 * fold - R() * .03;
+    x = h * .34 + (dx * h < 0 ? dx * .1 : dx * .66) * r; y = .08 + dy * .74 * r; z = dz * 1.02 * r;
+  } else if (part < 1.01) {                                // the cerebellum, finely striped
+    const u = R() * 2 - 1, th = R() * Math.PI * 2, s = Math.sqrt(1 - u * u);
+    const dx = s * Math.cos(th), dy = u, dz = s * Math.sin(th), r = 1 + .04 * Math.sin(dy * 40);
+    x = dx * .52 * r; y = -.56 + dy * .27 * r; z = -.66 + dz * .34 * r;
+  } else {                                                // the stem
+    const a = R() * Math.PI * 2, t = R();
+    x = Math.cos(a) * .12; y = -.55 - t * .6; z = -.28 + Math.sin(a) * .12 + t * .05;
+  }
+  o[k] = x * sc + ox; o[k + 1] = y * sc; o[k + 2] = z * sc;
+}
+function globePoint(o, k) {
+  const r = 1.45, t = R();
+  if (t < .44) { const lo = Math.floor(R() * 26) / 26 * Math.PI * 2, la = (R() - .5) * Math.PI; o[k] = r * Math.cos(la) * Math.cos(lo); o[k + 1] = r * Math.sin(la); o[k + 2] = r * Math.cos(la) * Math.sin(lo); }
+  else if (t < .86) { const la = (Math.floor(R() * 15) / 14 - .5) * Math.PI * .94, lo = R() * Math.PI * 2; o[k] = r * Math.cos(la) * Math.cos(lo); o[k + 1] = r * Math.sin(la); o[k + 2] = r * Math.cos(la) * Math.sin(lo); }
+  else { const a = R() * Math.PI * 2, rr = 2.05 + (R() - .5) * .03; const x = Math.cos(a) * rr, z = Math.sin(a) * rr; o[k] = x; o[k + 1] = z * .32; o[k + 2] = z * .95; }
+}
+function cubePoint(o, k, sc, ox) {
+  // a lattice cube: its edges and a grid on its faces
+  const g = 6, f = Math.floor(R() * 6), a = R() * 2 - 1, b = R() * 2 - 1, line = R() < .5;
+  let u = line ? Math.round(a * g / 2) / (g / 2) : a, v = line ? b : Math.round(b * g / 2) / (g / 2);
+  const p = [[1, u, v], [-1, u, v], [u, 1, v], [u, -1, v], [u, v, 1], [u, v, -1]][f];
+  o[k] = p[0] * .62 * sc + ox; o[k + 1] = p[1] * .62 * sc; o[k + 2] = p[2] * .62 * sc;
+}
+for (let i = 0; i < N; i++) {
+  const k = i * 3; SEED[i] = R();
+  brainPoint(A, k, 1.32, 0); globePoint(B, k);
+  SIDE[i] = i % 2;
+  if (SIDE[i] === 0) eyePoint(C, k); else cubePoint(C, k, 1.15, 1.62);
+}
+// The eye at the psychology door is stored as parameters; the shader turns them into points, so the pupil can widen,
+// the lids blink and the gaze follow the pointer. x = fibre angle, y = position along the fibre (or along the lid),
+// z = kind + .5 + a small jitter (0 iris fibre, 1 lid, 2 iris edge, 3 collarette).
+function eyePoint(o, k) {
+  const r = R(), kind = r < .1 ? 1 : r < .17 ? 2 : r < .23 ? 3 : 0;
+  o[k] = Math.floor(R() * 170) / 170 * Math.PI * 2 + (R() - .5) * .012; o[k + 1] = kind === 1 ? R() * 2 - 1 : R(); o[k + 2] = kind + .5 + (R() - .5) * .2;
+}
+
+const U = {
+  uT: { value: 0 }, uM1: { value: 0 }, uM2: { value: 0 }, uIn: { value: 0 }, uPR: { value: PR },
+  uMouse: { value: new Float32Array([99, 99, 0]) }, uPush: { value: 0 }, uHL: { value: 0 }, uHR: { value: 0 },
+  uGo: { value: 0 }, uGoSide: { value: 0 }, uRot: { value: new Float32Array(16) }, uShift: { value: 0 },
+  uDil: { value: 0 }, uOpen: { value: 1 }, uGaze: { value: new Float32Array(2) },
+  // phone layout: lift and shrink the brain and globe; bring the eye and cube in from the edges
+  uLift: { value: 0 }, uMS: { value: 1 }, uDX: { value: 1.62 }, uDS: { value: 1 }, uDY: { value: 0 }
+};
+const VS = `
+    uniform float uT,uM1,uM2,uIn,uPR,uPush,uHL,uHR,uGo,uGoSide,uShift,uDil,uOpen,uLift,uMS,uDX,uDS,uDY; uniform vec3 uMouse; uniform mat4 uRot; uniform vec2 uGaze;
+    attribute vec3 pB,pC; attribute float seed,side;
+    varying float vC; varying float vG; varying float vA;
+    vec3 dir(float s){ return normalize(vec3(sin(s*91.7),cos(s*47.3),sin(s*13.1+1.))); }
+    // the eye: lids around an iris of radial fibres; the pupil widens with uDil, the lids close with uOpen
+    vec4 eye(vec3 e){
+      float kind = floor(e.z), jit = (fract(e.z)-.5)*.1, LW = .86, H = .4*uOpen, Rr = .38;
+      float pu = .14 + .15*uDil + .01*sin(uT*1.7);
+      vec3 q; float al = 1.;
+      if (kind > .5 && kind < 1.5) {
+        float x = e.y*LW, ly = H*(1.-(x/LW)*(x/LW))*(1.+jit*2.);
+        q = vec3(x, fract(seed*7.) > .5 ? ly : -ly*.92, 0.);
+      } else {
+        float r = kind > 2.5 ? pu + (Rr-pu)*(.3+jit*2.) : kind > 1.5 ? Rr*(1.+jit) : pu + (Rr-pu)*e.y;
+        q = vec3(r*cos(e.x) + uGaze.x, r*sin(e.x) + uGaze.y, .1*(1.-(r/Rr)*(r/Rr)));
+        float lim = H*(1.-(q.x/LW)*(q.x/LW))*(q.y > 0. ? 1. : .92);
+        al = (abs(q.y) > lim || abs(q.x) > LW) ? 0. : (kind < .5 ? .65 + .33*(1.-e.y) : 1.);
+      }
+      q.x -= 1.62; return vec4(q, al);
+    }
+    void main(){
+      vec4 E = eye(pC);
+      vec3 p = mix(position,pB,uM1)*uMS;
+      // the doors: each shape keeps its own centre, which sits at (±uDX, uDY) scaled by uDS (on desktop: ±1.62, 0, 1)
+      vec3 T = side < .5 ? E.xyz : pC; float sx = side < .5 ? -1. : 1.;
+      T.x -= sx*1.62; T *= uDS; T.x += sx*uDX; T.y += uDY;
+      p = mix(p,T,uM2);
+      float burst = sin(3.14159*uM1)*(1.-uM2) + sin(3.14159*uM2)*.8;
+      p += dir(seed)*burst*(.35+fract(seed*7.)*.9);
+      p *= mix(.0,1.,uIn) + (1.-uIn)*fract(seed*3.)*.0;
+      p += dir(seed+.5)*(1.-uIn)*(2.5+fract(seed*5.)*4.);
+      p += .012*vec3(sin(uT*1.1+seed*30.),cos(uT*1.3+seed*20.),sin(uT*.7+seed*10.));
+      // the shape under the pointer grows a little; the chosen one fills the screen when entered
+      float hov = side<.5 ? uHL : uHR;
+      float cx = (side<.5 ? -1. : 1.)*uDX;
+      float chosen = (uGoSide<.5 ? 1.-side : side);
+      p.x -= cx*uM2; p.y -= uDY*uM2; p *= 1. + hov*.12*uM2 + chosen*uGo*5.; p.x += cx*uM2*(1.-chosen*uGo); p.y += uDY*uM2*(1.-chosen*uGo);
+      p += dir(seed+.9)*(1.-chosen)*uGo*6.;
+      vec4 wp = uRot*vec4(p,1.); wp.x += uShift*(1.-uM2); wp.y += .18*(1.-uM2)*step(.5,uShift) + uLift*(1.-uM2);   // brain and globe both keep the right half
+      // the pointer scatters the points, except the eye's: it stays whole and its pupil answers instead
+      vec2 d = wp.xy-uMouse.xy; float f = exp(-dot(d,d)*3.2)*uPush*(1.-(1.-side)*uM2);
+      wp.xy += normalize(d+1e-4)*f*.42; wp.z += f*.35;
+      vec4 mv = viewMatrix*wp;
+      gl_Position = projectionMatrix*mv;
+      gl_PointSize = (1.7+fract(seed*13.)*2.5)*uPR*(7./-mv.z)*(1.+f*1.6);
+      vC = mix(uM1, side, uM2);
+      vG = f + hov*uM2*.5;
+      vA = (.35+.65*fract(seed*17.))*mix(1.,1.-uGo*.6,1.-chosen)*mix(1.,side < .5 ? E.w : 1.,uM2);
+    }`;
+const FS = `
+    varying float vC; varying float vG; varying float vA;
+    void main(){
+      vec2 c = gl_PointCoord-.5; float r = length(c); if(r>.5) discard;
+      float a = smoothstep(.5,.0,r);
+      vec3 mind = vec3(.80,.93,.64), sys = vec3(.52,.68,1.), cream = vec3(1.,.97,.9);
+      vec3 col = mix(mind, sys, vC);
+      col = mix(col, cream, clamp(vG,0.,1.)*.7);
+      gl_FragColor = vec4(col*a*vA*(.85+vG), 1.);
+    }`;
+let draw = () => {};
+if (gl) {
+  const sh = (t, src) => { const x = gl.createShader(t); gl.shaderSource(x, src); gl.compileShader(x); if (!gl.getShaderParameter(x, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(x)); return x; };
+  const pr = gl.createProgram();
+  gl.attachShader(pr, sh(gl.VERTEX_SHADER, 'precision highp float;\nuniform mat4 viewMatrix, projectionMatrix;\nattribute vec3 position;\n' + VS));
+  gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, 'precision highp float;\n' + FS));
+  gl.bindAttribLocation(pr, 0, 'position'); gl.linkProgram(pr); gl.useProgram(pr);
+  const attr = (name, data, n) => { const l = gl.getAttribLocation(pr, name); if (l < 0) return; gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW); gl.enableVertexAttribArray(l); gl.vertexAttribPointer(l, n, gl.FLOAT, false, 0, 0); };
+  attr('position', A, 3); attr('pB', B, 3); attr('pC', C, 3); attr('seed', SEED, 1); attr('side', SIDE, 1);
+  const F = ['uT', 'uM1', 'uM2', 'uIn', 'uPR', 'uPush', 'uHL', 'uHR', 'uGo', 'uGoSide', 'uShift', 'uDil', 'uOpen', 'uLift', 'uMS', 'uDX', 'uDS', 'uDY'], L = {};
+  [...F, 'uMouse', 'uGaze', 'uRot', 'viewMatrix', 'projectionMatrix'].forEach(n => L[n] = gl.getUniformLocation(pr, n));
+  gl.disable(gl.DEPTH_TEST); gl.enable(gl.BLEND); gl.blendEquation(gl.FUNC_ADD); gl.blendFunc(gl.SRC_ALPHA, gl.ONE);   // additive
+  gl.clearColor(7 / 255, 8 / 255, 11 / 255, 1);
+  draw = () => { gl.clear(gl.COLOR_BUFFER_BIT); F.forEach(n => gl.uniform1f(L[n], U[n].value)); gl.uniform3fv(L.uMouse, U.uMouse.value); gl.uniform2fv(L.uGaze, U.uGaze.value);
+    gl.uniformMatrix4fv(L.uRot, false, U.uRot.value); gl.uniformMatrix4fv(L.viewMatrix, false, VIEW); gl.uniformMatrix4fv(L.projectionMatrix, false, PROJ); gl.drawArrays(gl.POINTS, 0, N); };
+}
+
+function size() {
+  const w = innerWidth, h = innerHeight; cv.width = Math.floor(w * PR); cv.height = Math.floor(h * PR); if (gl) gl.viewport(0, 0, cv.width, cv.height);
+  cam.aspect = w / h; cam.z = w < 760 ? 10.5 : (w / h < 1.3 ? 8.6 : 7.2); camera(); U.uShift.value = w / h > 1.3 ? 1.25 : 0;
+  const phone = w < 820 && w / h < 1;
+  U.uLift.value = phone ? 1.05 : 0; U.uMS.value = phone ? .78 : 1; U.uDX.value = phone ? .74 : 1.62; U.uDS.value = phone ? .5 : 1; U.uDY.value = phone ? .55 : 0;
+}
+size(); addEventListener('resize', size);
+
+/* pointer: a light that pushes the points aside; dragging turns the cloud, and it keeps turning a little after */
+const eyeT = { dil: 0, gx: 0, gy: 0 };
+let push = 0, tpush = 0, drag = false, lx = 0, ly = 0, ry = .7, rx = .62, vy = RM ? 0 : .0015, vx = 0;
+addEventListener('pointermove', e => {
+  // where the pointer meets the plane z = 0 seen through the camera
+  const k = Math.tan(cam.fov * Math.PI / 360) * cam.z;
+  U.uMouse.value[0] = (e.clientX / innerWidth * 2 - 1) * k * cam.aspect; U.uMouse.value[1] = (1 - e.clientY / innerHeight * 2) * k;
+  if (!RM) tpush = 1;
+  // over the eye the pupil widens; the gaze leans a little toward the pointer
+  const ex = (U.uMouse.value[0] + U.uDX.value) / U.uDS.value, ey = (U.uMouse.value[1] - U.uDY.value) / U.uDS.value;   // in the eye's own units
+  eyeT.dil = Math.hypot(ex, ey) < .9 ? 1 : 0;
+  // the iris turns toward the pointer wherever it is on the screen: far away it rests near the corner of the eye,
+  // close by it follows almost one to one
+  if (!RM) { eyeT.gx = .3 * Math.tanh(ex / .8); eyeT.gy = .11 * Math.tanh(ey / .55); }
+  if (drag) { vy = (e.clientX - lx) * .0045; vx = (e.clientY - ly) * .0025; lx = e.clientX; ly = e.clientY; }
+  if (RM) return;
+  const half = e.clientX < innerWidth / 2;
+  gsap.to(U.uHL, { value: half ? 1 : 0, duration: .8, ease: 'expo.out', overwrite: true });
+  gsap.to(U.uHR, { value: half ? 0 : 1, duration: .8, ease: 'expo.out', overwrite: true });
+});
+document.addEventListener('pointerleave', () => { tpush = 0; eyeT.dil = 0; });
+cv.addEventListener('pointerdown', e => { drag = true; lx = e.clientX; ly = e.clientY; });
+addEventListener('pointerup', () => drag = false);
+
+function rotXY(x, y) {                    // rotation about x then y (Euler XYZ with z = 0), column-major
+  const a = Math.cos(x), b = Math.sin(x), c = Math.cos(y), d = Math.sin(y), m = U.uRot.value;
+  m[0] = c; m[4] = 0; m[8] = d; m[12] = 0;
+  m[1] = b * d; m[5] = a; m[9] = -b * c; m[13] = 0;
+  m[2] = -a * d; m[6] = b; m[10] = a * c; m[14] = 0;
+  m[3] = 0; m[7] = 0; m[11] = 0; m[15] = 1;
+}
+let t0 = performance.now();
+function loop(now) {
+  const t = RM ? 0 : (now - t0) / 1000; U.uT.value = t;
+  push += (tpush - push) * .08; U.uPush.value = push;
+  // the eye: pupil and gaze ease toward their targets; a blink every 5.5 s (none with reduced motion)
+  U.uDil.value += (eyeT.dil - U.uDil.value) * (RM ? 1 : .07);
+  U.uGaze.value[0] += (eyeT.gx - U.uGaze.value[0]) * .2; U.uGaze.value[1] += (eyeT.gy - U.uGaze.value[1]) * .2;
+  const blink = t % 5.5; U.uOpen.value = RM || blink >= .24 ? 1 : Math.abs(blink - .12) / .12;
+  if (!drag) { if (RM) { vx = vy = 0; } else { vy += (.0016 * (1 - U.uM2.value) - vy) * .02; vx *= .95; } }
+  ry += vy; rx = Math.max(-.2, Math.min(1.1, rx + vx));
+  const settle = U.uM2.value;                               // at the doors the two worlds face us
+  rotXY(rx * (1 - settle) + -.12 * settle, ry * (1 - settle) + Math.sin(t * .3) * .25 * settle);
+  draw();
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+if (!RM) {
+  /* entrance: the points gather out of the dark into the brain (lead), then the name rises word by word (support),
+     the side note and header fade in place (decoration) */
+  const words = splitWords(document.getElementById('h1'));
+  gsap.timeline({ defaults: { ease: 'expo.out' } })
+    .to(U.uIn, { value: 1, duration: 2.6, ease: 'expo.inOut' }, 0)
+    .from(words, { yPercent: 118, duration: 1.4, stagger: { each: .08, ease: 'power2.in' } }, 1.1)
+    .from('[data-in], header', { opacity: 0, duration: 1, ease: 'power1.out' }, 1.8);
+
+  /* the story: scrolling turns the brain into a lattice globe (the words light up as it happens), then splits it into
+     the two worlds at the doors */
+  gsap.to(U.uM1, { value: 1, ease: 'none', scrollTrigger: { trigger: '#story', start: 'top 70%', end: 'bottom bottom', scrub: 1.2 } });
+  gsap.to(splitWords(document.getElementById('st')), { opacity: 1, stagger: .05, ease: 'none', scrollTrigger: { trigger: '#story', start: 'top 40%', end: '75% bottom', scrub: true } });
+  gsap.to(U.uM2, { value: 1, ease: 'none', scrollTrigger: { trigger: '#kapilar', start: 'top 85%', end: '45% bottom', scrub: 1.2 } });
+  gsap.fromTo('.door, #dt', { opacity: 0, y: 30 }, { opacity: 1, y: 0, ease: 'none', scrollTrigger: { trigger: '#kapilar', start: '30% bottom', end: '55% bottom', scrub: true } });
+  gsap.to('.hero .big, .hero .side', { opacity: 0, y: -40, ease: 'none', scrollTrigger: { trigger: '#story', start: 'top 90%', end: 'top 40%', scrub: true } });
+
+  /* a brake at the story: scrolling stays free, but a wheel or trackpad gesture that started above the story (or below
+     it) cannot carry past it in one go. It stops where the globe is whole and the sentence fully lit, the rest of that
+     flick is dropped, and the next gesture scrolls on freely. Keyboard, scrollbar and touch are the browser's own. */
+  if (window.lenis) {
+    const story = document.getElementById('story');
+    const stop = () => story.offsetTop + innerHeight;
+    let from = 0, braked = false, quiet = true, idle = 0;
+    addEventListener('wheel', e => {
+      if (e.ctrlKey) return;                                  // pinch zoom
+      if (quiet) { from = lenis.targetScroll; braked = false; }          // a new gesture begins here
+      quiet = false; clearTimeout(idle); idle = setTimeout(() => quiet = true, 260);
+      const S = stop(), next = lenis.targetScroll + e.deltaY * (e.deltaMode === 1 ? 40 : 1);
+      if (!braked && ((from < S - 2 && next >= S) || (from > S + 2 && next <= S))) { braked = true; lenis.scrollTo(S); }
+      if (braked) { e.preventDefault(); e.stopImmediatePropagation(); }  // the rest of this flick does not reach Lenis
+    }, { passive: false, capture: true });
+  }
+} else {
+  // reduced motion: everything is in place from the start; the cloud takes each shape in one step as its section arrives
+  U.uIn.value = 1;
+  ScrollTrigger.create({ trigger: '#story', start: 'top 50%', onEnter: () => U.uM1.value = 1, onLeaveBack: () => U.uM1.value = 0 });
+  ScrollTrigger.create({ trigger: '#kapilar', start: 'top 50%', onEnter: () => U.uM2.value = 1, onLeaveBack: () => U.uM2.value = 0 });
+}
+
+/* entering: the chosen world's points rush forward and fill the screen, the other scatters, the screen takes the
+   next page's ground. From the doors this is the full move; from the menu (or with reduced motion) the screen
+   simply fades into the next page's ground. */
+const GROUND = { mind: '#062a31', sys: '#050b1d' };
+function enter(side, url) {
+  if (window.lenis) lenis.stop();
+  try { sessionStorage.setItem('arrive', GROUND[side]); } catch (e) {}
+  const w = document.getElementById('wipe'); w.style.background = GROUND[side];
+  const go = () => location.href = url;
+  if (RM || U.uM2.value < .5) { gsap.to(w, { opacity: 1, duration: RM ? .25 : .45, ease: 'power1.in', onComplete: go }); return; }
+  U.uGoSide.value = side === 'mind' ? 0 : 1;
+  gsap.timeline({ onComplete: go })
+    .to('.door, #dt, header', { opacity: 0, duration: .35, ease: 'power2.in' }, 0)
+    .to(U.uGo, { value: 1, duration: 1.3, ease: 'expo.in' }, 0)
+    .to(w, { opacity: 1, duration: .45, ease: 'power1.in' }, .95);
+}
+// the doors and the menu are real links: a plain click plays the move, Ctrl/Cmd/Shift/Alt or middle click is the browser's
+document.querySelectorAll('a[data-go]').forEach(a => a.addEventListener('click', ev => {
+  if (ev.defaultPrevented || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+  ev.preventDefault(); enter(a.dataset.go, a.getAttribute('href'));
+}));
+// coming back with the browser's Back button restores this page from memory: undo the exit so it is usable again
+addEventListener('pageshow', e => { if (!e.persisted) return;
+  gsap.set('#wipe', { opacity: 0 }); gsap.set('.door, #dt, header', { opacity: 1 }); U.uGo.value = 0; if (window.lenis) lenis.start(); });
+
+// review hook for still shots: ?m1=1 or ?m2=1 sets the scroll state; ?go=mind&p=.6 freezes the entry
+const q = new URLSearchParams(location.search);
+if (q.has('m1') || q.has('m2') || q.has('go')) {
+  gsap.globalTimeline.getChildren().forEach(c => c.progress(1));
+  ScrollTrigger.getAll().forEach(s => s.disable(false));
+  U.uIn.value = 1; U.uM1.value = +(q.get('m1') || (q.has('m2') || q.has('go') ? 1 : 0)); U.uM2.value = +(q.get('m2') || (q.has('go') ? 1 : 0));
+  document.querySelectorAll('.hero .big, .hero .side').forEach(el => el.style.opacity = U.uM1.value > .3 ? 0 : 1);
+  if (U.uM2.value > .5) { document.querySelectorAll('.door, #dt').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; }); document.getElementById('kapilar').scrollIntoView(); window.scrollBy(0, innerHeight * .9); }
+  else if (U.uM1.value > .5) { document.getElementById('story').scrollIntoView(); window.scrollBy(0, innerHeight * .9); gsap.set('#st .wi', { opacity: 1 }); }
+  if (q.has('go')) { U.uGoSide.value = q.get('go') === 'mind' ? 0 : 1; U.uGo.value = +q.get('p'); document.querySelectorAll('.door, #dt').forEach(el => el.style.opacity = 0); }
+}
+</script>
+</body>
+</html>
