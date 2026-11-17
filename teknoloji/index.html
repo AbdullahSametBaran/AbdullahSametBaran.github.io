@@ -128,6 +128,12 @@ td small{display:block;color:var(--mute);font-size:13px;margin-top:3px}
 .end{padding:8vh var(--gut) 14vh calc(var(--gut) + 30px);display:flex;justify-content:space-between;align-items:end;gap:30px}
 .end h2{margin:0;font-weight:300;font-size:clamp(30px,3.4vw,56px);letter-spacing:-.045em;line-height:1.04;max-width:760px}
 @media (max-width:960px){.hero,.log,.way{grid-template-columns:1fr}.radar{width:86vw}.wp{position:relative;left:auto!important;top:auto!important;transform:none;margin-bottom:20px}.plot{height:auto;border:0}.plot svg{display:none}.end{flex-direction:column;align-items:start}}
+/* only the switch itself shows: the toggle draws a scene around its pill, the crop keeps just the pill */
+.side-switch{display:grid;justify-items:center;gap:12px;flex:none}
+.sw-hint{color:var(--mute);font-size:11px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.tg-crop{position:relative;display:block;width:206px;height:100px;border-radius:999px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.35)}
+.tg-crop:focus-within{outline:2px solid currentColor;outline-offset:4px}
+.tg-crop > *{outline:none;cursor:pointer;position:absolute;left:-22px;top:-27px;width:250px;height:153px}
 </style>
 </head>
 <body>
@@ -179,7 +185,7 @@ td small{display:block;color:var(--mute);font-size:13px;margin-top:3px}
         <tr><td class="id">LOG-01</td><td>Teleperformance<small>Mar 2022 – Eyl 2023</small></td><td>İş analisti<small>Google’ın Strateji &amp; Operasyon ekibiyle SDD tabanlı süreç tasarımı; ABD, Hindistan ve Yunanistan’daki paydaşlarla.</small></td></tr></table></div>
     <div class="arcade"><div class="mono">Gizli ada bulundu</div><div class="scr" data-arcade role="button" tabindex="0" aria-label="Sistem adası oyununu aç"><img src="../img/oyun-onizleme.jpg" alt=""><iframe src="../oyun/index.html?preview=1" title="" aria-hidden="true" tabindex="-1" loading="lazy"></iframe><span class="b px">▶ Oyuna gir</span></div><p>Sistem adası: işlerimi oynayarak keşfet.</p></div>
   </section>
-  <section class="end"><h2>Bir sonraki tarama: insan ve yapay zekâ <em>birlikte</em> çalıştığında.</h2><a class="b" href="../psikoloji/index.html" data-leave="#062a31">Psikoloji tarafına geç →</a></section>
+  <section class="end"><h2>Bir sonraki tarama: insan ve yapay zekâ <em>birlikte</em> çalıştığında.</h2><div class="side-switch" data-switch data-href="../psikoloji/index.html" data-fade="#062a31"><span class="tg-crop"><tg-arcreactor role="switch" aria-label="Psikoloji tarafına geç" fill="0.9"></tg-arcreactor></span><span class="sw-hint mono" aria-hidden="true">↑ Psikoloji tarafına geç</span></div></section>
 </main>
 <script src="../lib/gsap.min.js"></script>
 <script src="../lib/ScrollTrigger.min.js"></script>
@@ -277,5 +283,7 @@ if (!RM) {
 }
 document.querySelectorAll('[data-arcade]').forEach(el => { el.addEventListener('click', () => arcade.open(el.closest('.arcade') ? el : el)); el.addEventListener('keydown', e => { if (e.key === 'Enter') arcade.open(el); }); });
 </script>
+<script type="module" src="../lib/toggles/arcreactor.js"></script>
+<script src="../lib/toggles/switch.js"></script>
 </body>
 </html>
