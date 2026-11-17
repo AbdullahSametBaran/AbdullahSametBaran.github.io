@@ -190,9 +190,16 @@ const U = {
 };
 const VS = `
     uniform float uT,uM1,uM2,uIn,uPR,uPush,uHL,uHR,uGo,uGoSide,uShift,uDil,uOpen,uLift,uMS,uDX,uDS,uDY; uniform vec3 uMouse; uniform mat4 uRot; uniform vec2 uGaze;
+    uniform vec4 uN[16];
     attribute vec3 pB,pC; attribute float seed,side;
     varying float vC; varying float vG; varying float vA;
     vec3 dir(float s){ return normalize(vec3(sin(s*91.7),cos(s*47.3),sin(s*13.1+1.))); }
+    // a firing: the nodes a discharge passes through (xyz, w = how bright) flare, with the points right around them
+    float nodes(vec3 q){
+      float s = 0.;
+      for (int i = 0; i < 16; i++) { vec3 g = q-uN[i].xyz; s += exp(-dot(g,g)*420.)*uN[i].w; }
+      return s;
+    }
     // the eye: lids around an iris of radial fibres; the pupil widens with uDil, the lids close with uOpen
     vec4 eye(vec3 e){
       float kind = floor(e.z), jit = (fract(e.z)-.5)*.1, LW = .86, H = .4*uOpen, Rr = .38;
@@ -233,9 +240,10 @@ const VS = `
       wp.xy += normalize(d+1e-4)*f*.42; wp.z += f*.35;
       vec4 mv = viewMatrix*wp;
       gl_Position = projectionMatrix*mv;
-      gl_PointSize = (1.7+fract(seed*13.)*2.5)*uPR*(7./-mv.z)*(1.+f*1.6);
+      float sp = min(nodes(position), 1.)*uIn*(1.-uM1)*(1.-uM2);   // only while it is a brain
+      gl_PointSize = (1.7+fract(seed*13.)*2.5)*uPR*(7./-mv.z)*(1.+f*1.6+sp*.7);
       vC = mix(uM1, side, uM2);
-      vG = f + hov*uM2*.5;
+      vG = f + hov*uM2*.5 + sp*1.6;
       vA = (.35+.65*fract(seed*17.))*mix(1.,1.-uGo*.6,1.-chosen)*mix(1.,side < .5 ? E.w : 1.,uM2);
     }`;
 const FS = `
@@ -248,21 +256,73 @@ const FS = `
       col = mix(col, cream, clamp(vG,0.,1.)*.7);
       gl_FragColor = vec4(col*a*vA*(.85+vG), 1.);
     }`;
+/* the firings' filaments: up to two discharges, each a jagged path of up to ZN nodes, drawn as ZS fine points per hop */
+const ZN = 8, ZS = 18, ZV = (ZN - 1) * ZS;
+const ZP = new Float32Array(2 * ZV * 3), ZM = new Float32Array(2 * ZV * 3).fill(9);
+const NODES = new Float32Array(64), ZH = new Float32Array(2), ZF = new Float32Array(2);
+let zapDirty = true;
+const ZVS = `
+    uniform mat4 uRot; uniform float uPR,uMS,uShift,uLift,uSize,uPush; uniform vec2 uHead,uFade; uniform vec3 uMouse;
+    attribute vec3 meta;          // x = how far along the whole path, y = how far along its hop, z = which firing
+    varying float vA;
+    void main(){
+      float head = meta.z < .5 ? uHead.x : uHead.y, fade = meta.z < .5 ? uFade.x : uFade.y;
+      vec4 wp = uRot*vec4(position*uMS,1.); wp.x += uShift; wp.y += .18*step(.5,uShift) + uLift;
+      // the pointer pushes the filament aside exactly as it pushes the points, so the arc stays on the surface it runs over
+      vec2 d = wp.xy-uMouse.xy; float f = exp(-dot(d,d)*3.2)*uPush;
+      wp.xy += normalize(d+1e-4)*f*.42; wp.z += f*.35;
+      vec4 mv = viewMatrix*wp;
+      gl_Position = projectionMatrix*mv;
+      gl_PointSize = uSize*uPR*(7./-mv.z);
+      vA = step(meta.x, head)*fade*(.45+.55*exp(-max(head-meta.x,0.)*6.));
+    }`;
+const ZFS = `
+    uniform vec3 uCol; uniform float uAlpha; varying float vA;
+    void main(){
+      vec2 c = gl_PointCoord-.5; float r = length(c); if(r>.5) discard;
+      gl_FragColor = vec4(uCol*smoothstep(.5,0.,r)*vA*uAlpha, 1.);
+    }`;
 let draw = () => {};
 if (gl) {
   const sh = (t, src) => { const x = gl.createShader(t); gl.shaderSource(x, src); gl.compileShader(x); if (!gl.getShaderParameter(x, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(x)); return x; };
-  const pr = gl.createProgram();
-  gl.attachShader(pr, sh(gl.VERTEX_SHADER, 'precision highp float;\nuniform mat4 viewMatrix, projectionMatrix;\nattribute vec3 position;\n' + VS));
-  gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, 'precision highp float;\n' + FS));
-  gl.bindAttribLocation(pr, 0, 'position'); gl.linkProgram(pr); gl.useProgram(pr);
-  const attr = (name, data, n) => { const l = gl.getAttribLocation(pr, name); if (l < 0) return; gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW); gl.enableVertexAttribArray(l); gl.vertexAttribPointer(l, n, gl.FLOAT, false, 0, 0); };
+  const prog = (vs, fs) => { const p = gl.createProgram();
+    gl.attachShader(p, sh(gl.VERTEX_SHADER, 'precision highp float;\nuniform mat4 viewMatrix, projectionMatrix;\nattribute vec3 position;\n' + vs));
+    gl.attachShader(p, sh(gl.FRAGMENT_SHADER, 'precision highp float;\n' + fs));
+    gl.bindAttribLocation(p, 0, 'position'); gl.linkProgram(p); return p; };
+  const pr = prog(VS, FS), pz = prog(ZVS, ZFS);
+  // the cloud's buffers are bound again every frame, since the filaments' program takes its turn in between
+  const MA = [];
+  const attr = (name, data, n) => { const l = gl.getAttribLocation(pr, name); if (l < 0) return; const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW); MA.push({ l, b, n }); };
   attr('position', A, 3); attr('pB', B, 3); attr('pC', C, 3); attr('seed', SEED, 1); attr('side', SIDE, 1);
   const F = ['uT', 'uM1', 'uM2', 'uIn', 'uPR', 'uPush', 'uHL', 'uHR', 'uGo', 'uGoSide', 'uShift', 'uDil', 'uOpen', 'uLift', 'uMS', 'uDX', 'uDS', 'uDY'], L = {};
-  [...F, 'uMouse', 'uGaze', 'uRot', 'viewMatrix', 'projectionMatrix'].forEach(n => L[n] = gl.getUniformLocation(pr, n));
+  [...F, 'uMouse', 'uGaze', 'uRot', 'viewMatrix', 'projectionMatrix', 'uN[0]'].forEach(n => L[n] = gl.getUniformLocation(pr, n));
+  const zb = gl.createBuffer(), zm = gl.createBuffer(), zMeta = gl.getAttribLocation(pz, 'meta'), ZL = {};
+  gl.bindBuffer(gl.ARRAY_BUFFER, zb); gl.bufferData(gl.ARRAY_BUFFER, ZP, gl.DYNAMIC_DRAW);
+  gl.bindBuffer(gl.ARRAY_BUFFER, zm); gl.bufferData(gl.ARRAY_BUFFER, ZM, gl.DYNAMIC_DRAW);
+  ['uRot', 'viewMatrix', 'projectionMatrix', 'uPR', 'uMS', 'uShift', 'uLift', 'uPush', 'uMouse', 'uSize', 'uHead', 'uFade', 'uCol', 'uAlpha'].forEach(n => ZL[n] = gl.getUniformLocation(pz, n));
   gl.disable(gl.DEPTH_TEST); gl.enable(gl.BLEND); gl.blendEquation(gl.FUNC_ADD); gl.blendFunc(gl.SRC_ALPHA, gl.ONE);   // additive
   gl.clearColor(7 / 255, 8 / 255, 11 / 255, 1);
-  draw = () => { gl.clear(gl.COLOR_BUFFER_BIT); F.forEach(n => gl.uniform1f(L[n], U[n].value)); gl.uniform3fv(L.uMouse, U.uMouse.value); gl.uniform2fv(L.uGaze, U.uGaze.value);
-    gl.uniformMatrix4fv(L.uRot, false, U.uRot.value); gl.uniformMatrix4fv(L.viewMatrix, false, VIEW); gl.uniformMatrix4fv(L.projectionMatrix, false, PROJ); gl.drawArrays(gl.POINTS, 0, N); };
+  draw = () => {
+    gl.clear(gl.COLOR_BUFFER_BIT); gl.useProgram(pr);
+    MA.forEach(a => { gl.bindBuffer(gl.ARRAY_BUFFER, a.b); gl.vertexAttribPointer(a.l, a.n, gl.FLOAT, false, 0, 0); gl.enableVertexAttribArray(a.l); });
+    F.forEach(n => gl.uniform1f(L[n], U[n].value)); gl.uniform3fv(L.uMouse, U.uMouse.value); gl.uniform2fv(L.uGaze, U.uGaze.value);
+    gl.uniformMatrix4fv(L.uRot, false, U.uRot.value); gl.uniformMatrix4fv(L.viewMatrix, false, VIEW); gl.uniformMatrix4fv(L.projectionMatrix, false, PROJ);
+    gl.uniform4fv(L['uN[0]'], NODES);
+    gl.drawArrays(gl.POINTS, 0, N);
+    if (!(ZF[0] > 0 || ZF[1] > 0)) return;
+    // the filaments: a soft wide glow, then a fine bright core
+    gl.useProgram(pz); MA.forEach(a => gl.disableVertexAttribArray(a.l));
+    gl.bindBuffer(gl.ARRAY_BUFFER, zb); if (zapDirty) gl.bufferSubData(gl.ARRAY_BUFFER, 0, ZP);
+    gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0); gl.enableVertexAttribArray(0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, zm); if (zapDirty) gl.bufferSubData(gl.ARRAY_BUFFER, 0, ZM);
+    gl.vertexAttribPointer(zMeta, 3, gl.FLOAT, false, 0, 0); gl.enableVertexAttribArray(zMeta); zapDirty = false;
+    gl.uniformMatrix4fv(ZL.uRot, false, U.uRot.value); gl.uniformMatrix4fv(ZL.viewMatrix, false, VIEW); gl.uniformMatrix4fv(ZL.projectionMatrix, false, PROJ);
+    ['uPR', 'uMS', 'uShift', 'uLift', 'uPush'].forEach(n => gl.uniform1f(ZL[n], U[n].value)); gl.uniform3fv(ZL.uMouse, U.uMouse.value);
+    gl.uniform2fv(ZL.uHead, ZH); gl.uniform2fv(ZL.uFade, ZF);
+    gl.uniform1f(ZL.uSize, 15); gl.uniform1f(ZL.uAlpha, .2); gl.uniform3f(ZL.uCol, .75, .95, .65); gl.drawArrays(gl.POINTS, 0, 2 * ZV);
+    gl.uniform1f(ZL.uSize, 3.4); gl.uniform1f(ZL.uAlpha, 1.3); gl.uniform3f(ZL.uCol, 1, .98, .92); gl.drawArrays(gl.POINTS, 0, 2 * ZV);
+    gl.disableVertexAttribArray(zMeta);
+  };
 }
 
 function size() {
@@ -315,9 +375,97 @@ function rotXY(x, y) {                    // rotation about x then y (Euler XYZ 
   m[2] = -a * d; m[6] = b; m[10] = a * c; m[14] = 0;
   m[3] = 0; m[7] = 0; m[11] = 0; m[15] = 1;
 }
+/* firings: now and then a discharge crackles across the brain's surface, point to point, like a signal passing between
+   neurons, and sometimes passes on from where it ended. Never more than two at once (one on phones), only while the
+   brain is whole, none with reduced motion. */
+const GS = .22, GRID = new Map(), cell = (x, y, z) => Math.floor(x / GS) + ',' + Math.floor(y / GS) + ',' + Math.floor(z / GS);
+for (let i = 0; i < N; i++) { const k = cell(A[i * 3], A[i * 3 + 1], A[i * 3 + 2]); let c = GRID.get(k); if (!c) GRID.set(k, c = []); c.push(i); }
+function hop(p, d) {                                   // a point nearby on the surface, going on roughly the same way
+  const fx = Math.floor(p[0] / GS), fy = Math.floor(p[1] / GS), fz = Math.floor(p[2] / GS), out = [];
+  for (let x = -1; x <= 1; x++) for (let y = -1; y <= 1; y++) for (let z = -1; z <= 1; z++) {
+    const c = GRID.get((fx + x) + ',' + (fy + y) + ',' + (fz + z)); if (!c) continue;
+    for (const i of c) {
+      const vx = A[i * 3] - p[0], vy = A[i * 3 + 1] - p[1], vz = A[i * 3 + 2] - p[2], l = Math.hypot(vx, vy, vz);
+      if (l < .1 || l > .21 || (d && (vx * d[0] + vy * d[1] + vz * d[2]) / l < .35)) continue;
+      out.push(i);
+    }
+  }
+  if (!out.length) return null;
+  const i = out[Math.floor(R() * out.length)]; return [A[i * 3], A[i * 3 + 1], A[i * 3 + 2]];
+}
+const SP = [0, 1].map(i => ({ t: -1, dur: 1, chain: 0, nodes: [], next: 1.4 + i * 2.2 + R() * 1.6 }));
+const SPN = innerWidth < 760 ? 1 : 2;
+function fire(k, t, from) {
+  const want = 4 + Math.floor(R() * (ZN - 3));        // 4 to 8 nodes
+  let p = from, d = null;
+  if (!p) { const i = Math.floor(R() * N) * 3; p = [A[i], A[i + 1], A[i + 2]]; }
+  const pts = [p];
+  while (pts.length < want) {
+    const q = hop(p, d); if (!q) break;
+    d = [q[0] - p[0], q[1] - p[1], q[2] - p[2]]; const l = Math.hypot(d[0], d[1], d[2]); d = d.map(v => v / l);
+    pts.push(q); p = q;
+  }
+  if (pts.length < 3) return false;
+  const s = SP[k]; s.nodes = pts; s.t = t; s.dur = .16 + (pts.length - 1) * .05;   // fast, like a discharge
+  shape(k);
+  return true;
+}
+// the filament's shape: each hop bends twice at random, like a small bolt of lightning; drawn again ~18 times a second,
+// so it crackles. ZS samples run along each bent hop; the samples of unused hops stay unlit (path position 9).
+function shape(k) {
+  const pts = SP[k].nodes, segs = pts.length - 1;
+  for (let g = 0; g < ZN - 1; g++) {
+    let poly = null;
+    if (g < segs) {
+      const a = pts[g], b = pts[g + 1], l = Math.hypot(b[0] - a[0], b[1] - a[1], b[2] - a[2]) * .32;
+      const kink = f => a.map((v, c) => v + (b[c] - v) * f + (R() - .5) * 2 * l);
+      poly = [a, kink(1 / 3), kink(2 / 3), b];
+    }
+    for (let j = 0; j < ZS; j++) {
+      const f = j / ZS, m = (k * ZV + g * ZS + j) * 3;
+      if (poly) {
+        const i = Math.floor(f * 3), lf = f * 3 - i;
+        for (let c = 0; c < 3; c++) ZP[m + c] = poly[i][c] + (poly[i + 1][c] - poly[i][c]) * lf;
+        ZM[m] = (g + f) / segs; ZM[m + 1] = f;
+      } else { ZM[m] = 9; ZM[m + 1] = 0; }
+      ZM[m + 2] = k;
+    }
+  }
+  zapDirty = true;
+}
+function sparks(t) {
+  const brain = !RM && U.uIn.value > .95 && U.uM1.value < .02 && U.uM2.value < .02;
+  const mask = (1 - U.uM1.value) * (1 - U.uM2.value);
+  NODES.fill(0);
+  SP.forEach((s, k) => {
+    ZH[k] = 0; ZF[k] = 0;
+    if (s.t >= 0) {
+      const e = t - s.t, hold = .14, out = .34, segs = s.nodes.length - 1;
+      if (e > s.dur + hold + out) {
+        s.t = -1;
+        if (brain && s.chain < 2 && R() < .3 && fire(k, t, s.nodes[segs])) s.chain++;   // it passes on
+        else { s.chain = 0; s.next = t + 2.2 + R() * 3.5; }
+        return;
+      }
+      const env = e < s.dur + hold ? 1 : 1 - (e - s.dur - hold) / out;
+      const crack = Math.floor(t * 18); if (crack !== s.crack) { s.crack = crack; shape(k); }
+      ZH[k] = e < s.dur ? e / s.dur : 1.01;
+      ZF[k] = env * (.55 + .45 * R()) * mask;          // it flickers
+      s.nodes.forEach((p, j) => {                      // each node flares as the discharge reaches it, then glows on
+        const tj = j / segs * s.dur, m = (k * ZN + j) * 4;
+        NODES[m] = p[0]; NODES[m + 1] = p[1]; NODES[m + 2] = p[2];
+        NODES[m + 3] = e < tj ? 0 : (.35 + .65 * Math.exp(-(e - tj) * 5)) * env * mask;
+      });
+    } else if (k < SPN && t > s.next) {
+      if (!brain || !fire(k, t)) s.next = t + (brain ? .2 : 1);
+    }
+  });
+}
+
 let t0 = performance.now();
 function loop(now) {
   const t = RM ? 0 : (now - t0) / 1000; U.uT.value = t;
+  sparks(t);
   push += (tpush - push) * .08; U.uPush.value = push;
   // the eye: pupil and gaze ease toward their targets; a blink every 5.5 s (none with reduced motion)
   U.uDil.value += (eyeT.dil - U.uDil.value) * (RM ? 1 : .07);
