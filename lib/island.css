@@ -35,8 +35,8 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--cyan);outline-offse
 .list button:hover{border-color:var(--ink);background:#fff}
 .list button i{font-style:normal;font-family:Silkscreen;font-size:10px;opacity:0}
 .list button.done i{opacity:1;color:var(--ok)}
-.keys{left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:16px;font-family:Silkscreen;font-size:11px;color:var(--cream);text-shadow:2px 2px 0 var(--ink)}
-.keys kbd{display:inline-block;padding:2px 6px;margin-right:4px;background:var(--cream);color:var(--ink);border:2px solid var(--ink);font-family:Silkscreen;font-size:10px}
+.keys{left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:18px;align-items:center;font-family:"Pixelify Sans";font-size:15px;color:var(--cream);text-shadow:2px 2px 0 var(--ink);white-space:nowrap}
+.keys kbd{display:inline-block;padding:1px 7px 2px;margin-right:6px;background:var(--cream);color:var(--ink);border:2px solid var(--ink);font-family:"Pixelify Sans";font-size:14px;line-height:1.2;text-shadow:none}
 .tag{position:absolute;z-index:4;transform:translate(-50%,-100%);padding:4px 8px;font-family:"Pixelify Sans";font-size:14px;background:var(--ink);color:var(--cream);border:2px solid var(--cream);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .15s}
 .tag.on{opacity:1}
 .tag b{color:var(--amber);font-family:Silkscreen;font-size:10px;margin-left:6px}
@@ -181,6 +181,9 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--cyan);outline-offse
 .next .sk{font-size:11px;opacity:.6}
 body.embed .read,body.embed .hud.tr .nav,body.embed .intro .skip{display:none}
 body.embed{overflow:hidden}
+/* in the window opened from the technology page, the exit button sits at the bottom centre: keep the hints and dialogs above it */
+body.embed .keys{bottom:74px}
+body.embed .dlg{bottom:78px;max-height:calc(100svh - 170px)}
 @media (max-width:900px){
   .list,.keys,.title{display:none}.tl{top:62px;left:12px}.hud.tr{right:12px;top:12px;gap:6px}
   .hud.tr .btn{padding:6px 9px;font-size:14px;box-shadow:3px 3px 0 var(--ink)}.quest{min-width:0;padding:8px 10px}
