@@ -88,9 +88,10 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
 /* only the switch itself shows: the toggle draws a scene around its pill, the crop keeps just the pill */
 .side-switch{display:grid;justify-items:center;gap:12px;flex:none}
 .sw-hint{color:var(--mute);font-size:11px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
-.tg-crop{position:relative;display:block;width:206px;height:100px;border-radius:999px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.35)}
+.tg-crop{--k:.8;position:relative;display:block;width:calc(206px*var(--k));height:calc(100px*var(--k));border-radius:999px;overflow:hidden;box-shadow:0 11px 28px rgba(0,0,0,.35)}
 .tg-crop:focus-within{outline:2px solid currentColor;outline-offset:4px}
-.tg-crop > *{outline:none;cursor:pointer;position:absolute;left:-22px;top:-27px;width:250px;height:153px}
+.tg-crop > *{outline:none;cursor:pointer;position:absolute;left:calc(-22px*var(--k));top:calc(-27px*var(--k));width:calc(250px*var(--k));height:calc(153px*var(--k))}
+@media (max-width:600px){.tg-crop{--k:.7}}
 </style>
 </head>
 <body>
@@ -104,7 +105,6 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
     <p class="hint mono" id="hint" data-touch="Suya dokun · dur ve bekle: göl durulsun">İmleçle suya dokun · dur ve bekle: göl durulsun</p>
   </section>
   <section class="below">
-    <div class="who-line"><span>Psikolog</span><span>Yetişkinlerle online terapi</span><span>Türkçe ve İngilizce</span></div>
     <div class="st"><span class="mono" style="color:var(--mute)">Neden psikoloji</span><p id="sp">Psikoloji benim için insanı tek bir davranışından ibaret görmeden; <em>geçmişi, deneyimleri ve koşullarıyla</em> birlikte anlamanın bir yolu.</p>
       <p class="more">Psikolojiye yönelmemin temelinde insanları anlama isteğim vardı. İnsanların neden belirli şekillerde düşündüğünü, hissettiğini ve davrandığını; aynı olayların farklı insanlarda neden bambaşka karşılıklar bulduğunu merak ediyordum. Zamanla bu merak, insan davranışını yalnızca gözlemlemekten öte, bilimsel bir çerçevede anlamaya dönüştü.</p></div>
   </section>
@@ -135,7 +135,7 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
   <section class="sec">
     <h2>Dipteki <em>taşlar</em></h2>
     <div class="stones">
-      <div class="stone"><small>2018 — 2024</small><h3>Psikoloji, çift anadal</h3><p>Yazılım mühendisliğinin yanında, Bahçeşehir Üniversitesi.</p></div>
+      <div class="stone"><small>2020 — 2024</small><h3>Psikoloji, çift anadal</h3><p>Bahçeşehir Üniversitesi’nde yazılım mühendisliğiyle birlikte okudum.</p></div>
       <div class="stone"><small>2021 — 2022</small><h3>Beyin ve Biliş Lab.</h3><p>Bellek, dikkat ve yürütücü işlevleri EEG ile inceleyen laboratuvarda lisans araştırma asistanı; bağımlılık ve davranış üzerine çalışmalar.</p></div>
       <div class="stone"><small>Üniversite</small><h3>Psikoloji Kulübü</h3><p>Akademik koordinatör: uzman psikologlarla etkinlikler, planlama ve üye iletişimi.</p></div>
       <div class="stone"><small>DATEM</small><h3>BDT eğitimi</h3><p>Bilişsel Davranışçı Terapi eğitimi.</p></div>

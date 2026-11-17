@@ -88,9 +88,10 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
 /* only the switch itself shows: the toggle draws a scene around its pill, the crop keeps just the pill */
 .side-switch{display:grid;justify-items:center;gap:12px;flex:none}
 .sw-hint{color:var(--mute);font-size:11px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
-.tg-crop{position:relative;display:block;width:206px;height:100px;border-radius:999px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.35)}
+.tg-crop{--k:.8;position:relative;display:block;width:calc(206px*var(--k));height:calc(100px*var(--k));border-radius:999px;overflow:hidden;box-shadow:0 11px 28px rgba(0,0,0,.35)}
 .tg-crop:focus-within{outline:2px solid currentColor;outline-offset:4px}
-.tg-crop > *{outline:none;cursor:pointer;position:absolute;left:-22px;top:-27px;width:250px;height:153px}
+.tg-crop > *{outline:none;cursor:pointer;position:absolute;left:calc(-22px*var(--k));top:calc(-27px*var(--k));width:calc(250px*var(--k));height:calc(153px*var(--k))}
+@media (max-width:600px){.tg-crop{--k:.7}}
 </style>
 </head>
 <body>
@@ -104,7 +105,6 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
     <p class="hint mono" id="hint" data-touch="Touch the water · then wait: let the lake settle">Touch the water with the cursor · then wait: let the lake settle</p>
   </section>
   <section class="below">
-    <div class="who-line"><span>Psychologist</span><span>Online therapy for adults</span><span>English and Turkish</span></div>
     <div class="st"><span class="mono" style="color:var(--mute)">Why psychology</span><p id="sp">For me, psychology is a way of understanding a person not as a single behaviour, but <em>with their past, experiences and circumstances.</em></p>
       <p class="more">What drew me to psychology was a wish to understand people. I wondered why people think, feel and act the way they do, and why the same events meet such different reactions in different people. Over time, that curiosity grew from simply observing behaviour into understanding it within a scientific framework.</p></div>
   </section>
@@ -135,7 +135,7 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
   <section class="sec">
     <h2>Stones on the <em>bottom</em></h2>
     <div class="stones">
-      <div class="stone"><small>2018 — 2024</small><h3>Psychology, double major</h3><p>Alongside software engineering, at Bahçeşehir University.</p></div>
+      <div class="stone"><small>2020 — 2024</small><h3>Psychology, double major</h3><p>Studied alongside software engineering at Bahçeşehir University.</p></div>
       <div class="stone"><small>2021 — 2022</small><h3>Brain and Cognition Lab</h3><p>Undergraduate research assistant at a lab studying memory, attention and executive functions with EEG; work on addiction and behaviour.</p></div>
       <div class="stone"><small>University</small><h3>Psychology Club</h3><p>Academic coordinator: events with expert psychologists, planning and member communication.</p></div>
       <div class="stone"><small>DATEM</small><h3>CBT training</h3><p>Cognitive Behavioural Therapy training.</p></div>

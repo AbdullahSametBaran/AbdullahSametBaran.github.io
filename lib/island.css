@@ -59,8 +59,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--cyan);outline-offse
 .opt:hover:not([disabled]){transform:translate(-1px,-1px);box-shadow:2px 2px 0 var(--ink)}
 .opt i{font-style:normal;font-family:Silkscreen;font-size:10px}
 .opt.ok{background:var(--cyan)}
-.opt.bad{background:#f4d6d3;text-decoration:line-through;cursor:default}
-.opt.dim{opacity:.38}
+.opt.bad{background:#f4d6d3}
 .opt.used{opacity:.5;cursor:default}
 .opt.shake{animation:shake .3s steps(4)}
 @keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}

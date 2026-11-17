@@ -1,7 +1,4 @@
 /* psychology page, the parts below the lake: therapy, the lens, a small experiment, the request form */
-.who-line{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 9vh}
-.who-line span{padding:7px 12px;border-radius:99px;border:1px solid rgba(230,241,239,.18);font-size:13.5px;color:var(--foam)}
-.who-line span:first-child{background:var(--dawn);border-color:var(--dawn);color:var(--deep)}
 .below .st p.more{grid-column:2;font-family:Geist,system-ui,sans-serif;letter-spacing:0;margin:22px 0 0;max-width:640px;color:var(--mute);font-size:17px;line-height:1.65}
 @media (max-width:960px){.below .st p.more{grid-column:1}}
 
