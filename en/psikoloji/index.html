@@ -81,7 +81,8 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
 .shore{display:flex;justify-content:space-between;align-items:end;gap:30px;padding:12vh var(--gut) 14vh;background:#05222a}
 .shore h2{margin:0;max-width:780px;font-weight:300;font-size:clamp(32px,3.4vw,56px);letter-spacing:-.045em;line-height:1.04}
 .shore a{white-space:nowrap;padding:14px 22px;border-radius:99px;background:var(--dawn);color:var(--deep);font-size:14px}
-@media (max-width:960px){.waves{display:none}.below .st{grid-template-columns:1fr}.stones{grid-template-columns:1fr 1fr}.shore{flex-direction:column;align-items:start}}
+/* smaller screens: the brainwave reading stays, compact, across the top of the lake */
+@media (max-width:960px){.waves{top:72px;right:var(--gut);width:min(280px,calc(100% - 2*var(--gut)));padding:12px 14px;border-radius:14px}.waves b{margin:6px 0 0;font-size:20px}.waves b #bn{font-size:20px}.waves small{font-size:12px}.waves svg{height:30px;margin-top:6px}.bands{margin-top:8px}.bands span{padding:4px 0;font-size:10px}.below .st{grid-template-columns:1fr}.stones{grid-template-columns:1fr 1fr}.shore{flex-direction:column;align-items:start}}
 @media (max-width:600px){header{background:linear-gradient(rgba(6,42,49,.96) 55%,rgba(6,42,49,0));padding:14px var(--gut) 24px}header .c{display:none}.stones{grid-template-columns:1fr}.stone{min-height:0;padding-top:40px}.hint{width:calc(100% - 2*var(--gut));bottom:16px;line-height:1.6}}
 </style>
 </head>
@@ -183,7 +184,17 @@ else (async function () {
   gl.uniform1i(U('H'), 0); gl.uniform1i(U('T'), 1);
   const drop = (x, y, r, a) => { const gx = Math.floor(x / W * GW), gy = Math.floor(y / H * GH); for (let j = -r; j <= r; j++) for (let i = -r; i <= r; i++) { const X = gx + i, Y = gy + j; if (X < 1 || Y < 1 || X >= GW - 1 || Y >= GH - 1) continue; const d = Math.hypot(i, j); if (d <= r) cur[Y * GW + X] += a * (1 - d / r); } };
   let lx = -1, ly = -1;
-  if (!RM) lake.addEventListener('pointermove', e => { const r = lake.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top; const v = lx < 0 ? 0 : Math.hypot(x - lx, y - ly); if (v > 1) { drop(x, y, 2, Math.min(1.4, v * .05)); ST.calm = 0; } lx = x; ly = y; });
+  if (!RM) lake.addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; const r = lake.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top; const v = lx < 0 ? 0 : Math.hypot(x - lx, y - ly); if (v > 1) { drop(x, y, 2, Math.min(1.4, v * .05)); ST.calm = 0; } lx = x; ly = y; });
+  // a finger stirs the water as it moves, even while it is scrolling the page (touch events keep coming then)
+  const fingers = new Map();
+  if (!RM) {
+    lake.addEventListener('touchstart', e => { for (const t of e.changedTouches) fingers.set(t.identifier, [t.clientX, t.clientY]); }, { passive: true });
+    lake.addEventListener('touchmove', e => { const r = lake.getBoundingClientRect();
+      for (const t of e.changedTouches) { const p = fingers.get(t.identifier) || [t.clientX, t.clientY], v = Math.hypot(t.clientX - p[0], t.clientY - p[1]);
+        if (v > 1) { drop(t.clientX - r.left, t.clientY - r.top, 3, Math.min(1.8, .5 + v * .06)); ST.calm = 0; } fingers.set(t.identifier, [t.clientX, t.clientY]); }
+      run(); }, { passive: true });
+    lake.addEventListener('touchend', e => { for (const t of e.changedTouches) fingers.delete(t.identifier); }, { passive: true });
+  }
   lake.addEventListener('pointerdown', e => { const r = lake.getBoundingClientRect(); drop(e.clientX - r.left, e.clientY - r.top, RM ? 3 : 4, RM ? 1.5 : 3); ST.calm = 0; run(); });
   window.__drop = drop;
   // the simulation runs only while the lake is on screen, and picks up where it stopped when it comes back

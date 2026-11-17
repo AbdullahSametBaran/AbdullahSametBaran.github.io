@@ -276,7 +276,7 @@ size(); addEventListener('resize', size);
 /* pointer: a light that pushes the points aside; dragging turns the cloud, and it keeps turning a little after */
 const eyeT = { dil: 0, gx: 0, gy: 0 };
 let push = 0, tpush = 0, drag = false, lx = 0, ly = 0, ry = .7, rx = .62, vy = RM ? 0 : .0015, vx = 0;
-addEventListener('pointermove', e => {
+function point(e) {
   // where the pointer meets the plane z = 0 seen through the camera
   const k = Math.tan(cam.fov * Math.PI / 360) * cam.z;
   U.uMouse.value[0] = (e.clientX / innerWidth * 2 - 1) * k * cam.aspect; U.uMouse.value[1] = (1 - e.clientY / innerHeight * 2) * k;
@@ -292,10 +292,21 @@ addEventListener('pointermove', e => {
   const half = e.clientX < innerWidth / 2;
   gsap.to(U.uHL, { value: half ? 1 : 0, duration: .8, ease: 'expo.out', overwrite: true });
   gsap.to(U.uHR, { value: half ? 0 : 1, duration: .8, ease: 'expo.out', overwrite: true });
-});
-document.addEventListener('pointerleave', () => { tpush = 0; eyeT.dil = 0; });
+}
+addEventListener('pointermove', point);
+addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') point(e); });   // a quick tap may bring no move at all
+// a mouse leaving the page lets everything settle; a finger has no "leave", so lifting it (or the page taking the
+// gesture over as a scroll) does the same: the points gather again, the shapes shrink back, the pupil narrows
+function release() {
+  tpush = 0; drag = false;
+  if (RM) { U.uHL.value = U.uHR.value = 0; eyeT.dil = 0; return; }
+  gsap.to([U.uHL, U.uHR], { value: 0, duration: .8, ease: 'expo.out', overwrite: true });
+  setTimeout(() => { if (!tpush) eyeT.dil = 0; }, 700);   // a tap on the eye still gets its short widening
+}
+document.addEventListener('pointerleave', release);
 cv.addEventListener('pointerdown', e => { drag = true; lx = e.clientX; ly = e.clientY; });
-addEventListener('pointerup', () => drag = false);
+addEventListener('pointerup', e => { drag = false; if (e.pointerType !== 'mouse') release(); });
+addEventListener('pointercancel', release);
 
 function rotXY(x, y) {                    // rotation about x then y (Euler XYZ with z = 0), column-major
   const a = Math.cos(x), b = Math.sin(x), c = Math.cos(y), d = Math.sin(y), m = U.uRot.value;
