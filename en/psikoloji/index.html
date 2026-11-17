@@ -105,8 +105,8 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
     <p class="hint mono" id="hint" data-touch="Touch the water · then wait: let the lake settle">Touch the water with the cursor · then wait: let the lake settle</p>
   </section>
   <section class="below">
-    <div class="st"><span class="mono" style="color:var(--mute)">Why psychology</span><p id="sp">For me, psychology is a way of understanding a person not as a single behaviour, but <em>with their past, experiences and circumstances.</em></p>
-      <p class="more">What drew me to psychology was a wish to understand people. I wondered why people think, feel and act the way they do, and why the same events meet such different reactions in different people. Over time, that curiosity grew from simply observing behaviour into understanding it within a scientific framework.</p></div>
+    <div class="st"><span class="mono" style="color:var(--mute)">Why psychology</span><p id="sp">For me, psychology is a way of understanding a person not through a single behaviour, but <em>together with their past, experiences and circumstances.</em></p>
+      <p class="more">What drew me to psychology was a wish to understand people. I wondered why people think, feel and act the way they do, and why the same events draw such different reactions from different people. Over time, that curiosity grew from simply observing behaviour into understanding it within a scientific framework.</p></div>
   </section>
 
   <section class="sec" id="terapi">
@@ -123,7 +123,7 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
     <div class="ways">
       <div class="way"><b>CBT</b><small>Cognitive Behavioural Therapy</small><p>Focuses on noticing the links between thoughts, feelings and behaviour, and changing the patterns that no longer help.</p></div>
       <div class="way"><b>Psychodynamic</b><small>Psychodynamic therapy</small><p>Looks at how today’s difficulties connect to past experiences and processes we are not aware of.</p></div>
-      <div class="way"><b>ACT</b><small>Acceptance and Commitment Therapy</small><p>Instead of fighting difficult thoughts and feelings, makes room for them and takes steps in line with your values.</p></div>
+      <div class="way"><b>ACT</b><small>Acceptance and Commitment Therapy</small><p>Instead of fighting difficult thoughts and feelings, it makes room for them and helps you take steps in line with your values.</p></div>
     </div>
   </section>
 
@@ -136,7 +136,7 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
     <h2>Stones on the <em>bottom</em></h2>
     <div class="stones">
       <div class="stone"><small>2020 — 2024</small><h3>Psychology, double major</h3><p>Studied alongside software engineering at Bahçeşehir University.</p></div>
-      <div class="stone"><small>2021 — 2022</small><h3>Brain and Cognition Lab</h3><p>Undergraduate research assistant at a lab studying memory, attention and executive functions with EEG; work on addiction and behaviour.</p></div>
+      <div class="stone"><small>2021 — 2022</small><h3>Brain and Cognition Lab</h3><p>Undergraduate research assistant at a lab studying memory, attention and executive functions with EEG, working on addiction and behaviour research.</p></div>
       <div class="stone"><small>University</small><h3>Psychology Club</h3><p>Academic coordinator: events with expert psychologists, planning and member communication.</p></div>
       <div class="stone"><small>DATEM</small><h3>CBT training</h3><p>Cognitive Behavioural Therapy training.</p></div>
     </div>
@@ -153,7 +153,7 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
         <label class="fld"><span>Email</span><input type="email" name="email" autocomplete="email" required></label></div>
       <div class="f2"><label class="fld"><span>Phone <i>(optional)</i></span><input type="tel" name="tel" autocomplete="tel"></label>
         <fieldset class="fld"><legend>Session language</legend><div class="chips"><label><input type="radio" name="dil" value="English" required checked><span>English</span></label><label><input type="radio" name="dil" value="Türkçe"><span>Türkçe</span></label></div></fieldset></div>
-      <fieldset class="fld"><legend>When suits you</legend><div class="chips"><label><input type="checkbox" name="zaman" value="Weekday evenings"><span>Weekday evenings</span></label><label><input type="checkbox" name="zaman" value="Weekends"><span>Weekends</span></label></div><small>Times are in Turkey time (GMT+3).</small></fieldset>
+      <fieldset class="fld"><legend>Preferred times</legend><div class="chips"><label><input type="checkbox" name="zaman" value="Weekday evenings"><span>Weekday evenings</span></label><label><input type="checkbox" name="zaman" value="Weekends"><span>Weekends</span></label></div><small>Times are in Turkey time (GMT+3).</small></fieldset>
       <label class="fld"><span>Short note <i>(optional)</i></span><textarea name="not" maxlength="800"></textarea><small>No need to share detailed health information; we can talk about it in the first session.</small></label>
       <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
       <label class="check"><input type="checkbox" name="yas" required><span>I am over 18.</span></label>
@@ -402,12 +402,12 @@ window.PT = {
   result: (a, b, e) => `Your round 1 average was <b>${a} ms</b>, round 2 <b>${b} ms</b>${e ? ` · ${e} wrong` : ''}.`,
   slower: d => `<div>When the word and the colour clashed, you were <b>${d} ms slower.</b></div>`,
   faster: '<div>You didn’t slow down in the clashing round this time; most people show the gap right away. Try again.</div>',
-  explain: 'Your brain reads so automatically that it has to hold the word back before it can name the colour. This is the Stroop effect, one of the most used experiments on attention and executive function.',
+  explain: 'Your brain reads so automatically that it has to hold the word back before it can name the colour. This is the Stroop effect, one of the most widely used experiments on attention and executive function.',
   subject: 'New session request · abdullahsametbaran.com',
   f: { name: 'Name', phone: 'Phone', lang: 'Language', times: 'Times', note: 'Note', page: 'Page' },
   consent: 'Over 18 and privacy notice accepted',
   send: 'Send request', sending: 'Sending…',
-  thanks: 'Thank you, your request reached me. I’ll get back to you by email as soon as I can.',
+  thanks: 'Thank you, I’ve received your request. I’ll get back to you by email as soon as I can.',
   failed: 'Something went wrong and the request wasn’t sent. Could you try again in a moment?',
   notReady: 'The form isn’t connected yet. It will open very soon.'
 };
