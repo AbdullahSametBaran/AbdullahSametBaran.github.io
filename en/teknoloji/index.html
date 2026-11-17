@@ -130,11 +130,11 @@ td small{display:block;color:var(--mute);font-size:13px;margin-top:3px}
 @media (max-width:960px){.hero,.log,.way{grid-template-columns:1fr}.radar{width:86vw}.wp{position:relative;left:auto!important;top:auto!important;transform:none;margin-bottom:20px}.plot{height:auto;border:0}.plot svg{display:none}.end{flex-direction:column;align-items:start}}
 /* only the switch itself shows: the toggle draws a scene around its pill, the crop keeps just the pill */
 .side-switch{display:grid;justify-items:center;gap:12px;flex:none}
-.sw-hint{color:var(--mute);font-size:11px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
-.tg-crop{--k:.8;position:relative;display:block;width:calc(206px*var(--k));height:calc(100px*var(--k));border-radius:999px;overflow:hidden;box-shadow:0 11px 28px rgba(0,0,0,.35)}
+.sw-hint{color:var(--mute);font-size:11px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.tg-crop{--k:.85;position:relative;display:block;width:calc(206px*var(--k));height:calc(100px*var(--k));border-radius:999px;overflow:hidden;box-shadow:0 11px 28px rgba(0,0,0,.35)}
 .tg-crop:focus-within{outline:2px solid currentColor;outline-offset:4px}
 .tg-crop > *{outline:none;cursor:pointer;position:absolute;left:calc(-22px*var(--k));top:calc(-27px*var(--k));width:calc(250px*var(--k));height:calc(153px*var(--k))}
-@media (max-width:600px){.tg-crop{--k:.7}}
+@media (max-width:600px){.tg-crop{--k:.75}.sw-hint{font-size:10px;letter-spacing:.03em}}
 </style>
 </head>
 <body>
