@@ -142,11 +142,11 @@ td small{display:block;color:var(--mute);font-size:13px;margin-top:3px}
       <div class="lede" data-in>Daha iyi sorular. Anlamlı çözümler.</div>
       <dl class="stats" data-in>
         <div><dt>20+</dt><dd>analiz edilen süreç</dd></div>
-        <div><dt>20+</dt><dd>canlıdaki robot</dd></div>
+        <div><dt>20+</dt><dd>canlıda çalışan robot</dd></div>
         <div><dt>~%70</dt><dd>zaman kazancı</dd></div>
         <div><dt>5+</dt><dd>portal ve web sitesi</dd></div>
       </dl>
-      <p data-in data-touch="Radar, kullandığım yetkinlikleri ve araçları gösteriyor: içte yetkinlikler, dışta araçlar. Bir noktaya dokun.">Radar, kullandığım yetkinlikleri ve araçları gösteriyor: içte yetkinlikler, dışta araçlar. Bir noktanın üstüne gel.</p>
+      <p data-in data-touch="Radar, yetkinliklerimi ve kullandığım araçları gösteriyor: içte yetkinlikler, dışta araçlar. Bir noktaya dokun.">Radar, yetkinliklerimi ve kullandığım araçları gösteriyor: içte yetkinlikler, dışta araçlar. Bir noktanın üstüne gel.</p>
       <div class="ctas" data-in><a class="b" href="#rota">Rotayı gör ↓</a><button class="b px" data-arcade type="button">▶ Oyuna gir</button></div>
     </div>
     <div class="radar" id="radar" data-in><canvas id="rc"></canvas><div class="card" id="card"></div>
@@ -159,9 +159,9 @@ td small{display:block;color:var(--mute);font-size:13px;margin-top:3px}
     <div class="plot" id="plot">
       <svg id="ps" preserveAspectRatio="none"><path class="gh" id="pg"/><path class="ln" id="pl"/></svg>
       <span class="axis" style="left:-2px;bottom:-22px">0.00</span><span class="axis" style="right:0;bottom:-22px">1.00 · zaman</span><span class="axis" style="left:-40px;top:0">1.00</span>
-      <div class="wp" data-x=".04" data-y=".54"><div class="dot"></div><div class="box"><span class="mono">WP-01 · Görünür kıl</span><h3>RPA performans panosu</h3><p>RPA hizmetinin değerini gösteren bir pano yoktu; robotlar çalışıyordu ama katkıları görünmüyordu.</p><p>İzlenecek KPI’ları önerip onaylattım: işlem sayısı, başarı oranı, robot ve manuel süreler, net zaman kazancı. Göstergeleri Figma’da tasarladım; robot verisinin Supabase’de depolanmasını kurdum.</p><p class="res">Sıfırdan kurulmuş, ~50 kişinin kullandığı bir pano.</p></div></div>
-      <div class="wp" data-x=".36" data-y=".34"><div class="dot"></div><div class="box"><span class="mono">WP-02 · Anla</span><h3>Süreç keşfi ve otomasyon</h3><p>Her müşteride hangi sürecin otomasyona değeceğini bulmak gerekiyordu.</p><p>Müşteri görüşmelerinde 20’den fazla süreci analiz edip uygun olanları belirledim, PDD’leri yazdım ve ekibin işlerini Jira’da düzene oturttum.</p><p class="res">20’den fazla robot canlıda; robot süreleri ile iş biriminin manuel süreleri karşılaştırıldığında ~%70 zaman kazancı.</p></div></div>
-      <div class="wp" data-x=".68" data-y=".04"><div class="dot"></div><div class="box"><span class="mono">WP-03 · Kur</span><h3>Portal ve web siteleri</h3><p>Robotun işleyeceği veri iş biriminin elindeydi.</p><p>İş biriminin veriyi girdiği, robotun bu girdiyle arkada çalıştığı ve sonucun geri döndüğü portallar kurguladım. 5–6 portal ve siteyi kurgudan canlıya sahiplendim: API entegrasyonları, sunucu ve domain dahil.</p><p class="res">İş birimi robotla tek ekrandan çalışıyor: veriyi veriyor, sonucu aynı yerde görüyor.</p></div></div>
+      <div class="wp" data-x=".04" data-y=".54"><div class="dot"></div><div class="box"><span class="mono">WP-01 · Görünür kıl</span><h3>RPA performans panosu</h3><p>RPA hizmetinin değerini gösteren bir pano yoktu; robotlar çalışıyordu ama katkıları görünmüyordu.</p><p>İzlenecek KPI’ları önerip onaylattım: işlem sayısı, başarı oranı, robot ve manuel süreler, net zaman kazancı. Göstergeleri Figma’da tasarladım; robotlardan gelen veriyi Supabase’de toplayan yapıyı kurdum.</p><p class="res">Sıfırdan kurulmuş, ~50 kişinin kullandığı bir pano.</p></div></div>
+      <div class="wp" data-x=".36" data-y=".34"><div class="dot"></div><div class="box"><span class="mono">WP-02 · Anla</span><h3>Süreç keşfi ve otomasyon</h3><p>Her müşteride hangi sürecin otomasyona değeceğini bulmak gerekiyordu.</p><p>Müşteri görüşmelerinde 20’den fazla süreci analiz edip uygun olanları belirledim, PDD’leri yazdım ve ekibin işlerini Jira’da düzene oturttum.</p><p class="res">20’den fazla robot canlıda; manuel sürelere göre ~%70 zaman kazancı.</p></div></div>
+      <div class="wp" data-x=".68" data-y=".04"><div class="dot"></div><div class="box"><span class="mono">WP-03 · Kur</span><h3>Portal ve web siteleri</h3><p>Robotun işleyeceği veri iş biriminin elindeydi.</p><p>İş biriminin veriyi girdiği, robotun bu girdiyle arkada çalıştığı ve sonucun geri döndüğü portallar tasarladım. 5–6 portal ve siteyi fikir aşamasından canlıya kadar uçtan uca yürüttüm: API entegrasyonları, sunucu ve domain dahil.</p><p class="res">İş birimi robotla tek ekrandan çalışıyor: veriyi giriyor, sonucu aynı yerde görüyor.</p></div></div>
     </div>
   </section>
 
@@ -173,9 +173,9 @@ td small{display:block;color:var(--mute);font-size:13px;margin-top:3px}
   <section class="log">
     <div><h2>Seyir <em>defteri</em></h2>
       <table><tr><th>KAYIT</th><th>KURUM</th><th>GÖREV</th></tr>
-        <tr><td class="id">LOG-03</td><td>Kronovita<small>Kas 2025 – Güncel</small></td><td>Pano → iş analizi → portal ve web çözümleri<small>RPA panosu, 20+ süreç, 5+ portal</small></td></tr>
-        <tr><td class="id">LOG-02</td><td>Freelance<small>Oca 2024 – Kas 2025</small></td><td>İş analisti<small>B2B iş akışlarında gereksinim ve iş kuralı standardizasyonu, manuel raporlamanın SQL ile otomasyonu; SQL + dbt veri hattı ve Power BI panelleri. Sağlık, e-ticaret ve çağrı merkezi projeleri.</small></td></tr>
-        <tr><td class="id">LOG-01</td><td>Teleperformance<small>Mar 2022 – Eyl 2023</small></td><td>İş analisti<small>Google Strateji ve Operasyon ekibi ve üç ülkeden paydaşla SDD tabanlı süreç tasarımı</small></td></tr></table></div>
+        <tr><td class="id">LOG-03</td><td>Kronovita<small>Kas 2025 – Güncel</small></td><td>İş analisti<small>RPA performans panosu, süreç analizi ve otomasyon, uçtan uca portal ve web çözümleri.</small></td></tr>
+        <tr><td class="id">LOG-02</td><td>Freelance<small>Oca 2024 – Kas 2025</small></td><td>İş analisti<small>Sağlık, e-ticaret ve çağrı merkezi projelerinde gereksinim analizi, raporlama otomasyonu ve Power BI panelleri.</small></td></tr>
+        <tr><td class="id">LOG-01</td><td>Teleperformance<small>Mar 2022 – Eyl 2023</small></td><td>İş analisti<small>Google’ın Strateji &amp; Operasyon ekibiyle SDD tabanlı süreç tasarımı; ABD, Hindistan ve Yunanistan’daki paydaşlarla.</small></td></tr></table></div>
     <div class="arcade"><div class="mono">Gizli sektör bulundu</div><div class="scr" data-arcade role="button" tabindex="0" aria-label="Otomasyon adası oyununu aç"><img src="../img/oyun-onizleme.jpg" alt=""><span class="b px">▶ Oyuna gir</span></div><p>Otomasyon adası: çalışmalarımı yürüyerek keşfet.</p></div>
   </section>
   <section class="end"><h2>Bir sonraki tarama: insan ve yapay zekâ <em>birlikte</em> çalıştığında.</h2><a class="b" href="../psikoloji/index.html" data-leave="#062a31">Psikoloji sektörüne geç →</a></section>
@@ -195,7 +195,7 @@ const BL = [
   { r: .32, a: 120, k: 's', n: 'Süreç dokümantasyonu', d: 'PDD ve SDD' },
   { r: .52, a: 170, k: 's', n: 'KPI tasarımı', d: 'Neyin ölçüleceğine karar vermek' },
   { r: .3, a: 220, k: 's', n: 'Veri görselleştirme', d: 'Panolar, göstergeler, kadranlar' },
-  { r: .5, a: 270, k: 's', n: 'API entegrasyonu', d: 'Portal, robot ve veri arasında bağ' },
+  { r: .5, a: 270, k: 's', n: 'API entegrasyonu', d: 'Portal, robot ve veriyi birbirine bağlamak' },
   { r: .32, a: 320, k: 's', n: 'Canlıya alma', d: 'Sunucu ve domain ile yayına almak' },
   ...[['Figma', 0], ['Jira', 36], ['Confluence', 72], ['Monday.com', 108], ['Python', 144], ['SQL', 180], ['dbt', 216], ['Power BI', 252], ['Postman', 288], ['Supabase', 324]].map(([n, a], i) => ({ r: .78 + (i % 2) * .08, a, k: 't', n, d: 'Araç' }))
 ];
