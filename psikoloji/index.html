@@ -198,21 +198,29 @@ else (async function () {
   // shaking the phone stirs the lake: the harder the shake, the more and bigger the drops. iOS asks for motion
   // access, which it only allows from a touch, so the question comes with the first touch of the water.
   if (!RM && 'DeviceMotionEvent' in window) {
-    let lastShake = 0, prevA = null;
+    let lastShake = 0, prevA = null, peak = 0, events = 0;
+    // diagnosis on a real phone: ?sensor shows what the motion sensor reports
+    const probe = new URLSearchParams(location.search).has('sensor') ? Object.assign(document.body.appendChild(document.createElement('div')),
+      { style: 'position:fixed;left:8px;bottom:8px;z-index:99;padding:6px 9px;border-radius:8px;background:#000c;color:#fff;font:12px monospace', textContent: 'sensor: no data (permission: ' + (typeof DeviceMotionEvent.requestPermission === 'function' ? 'tap the page' : 'not needed') + ')' }) : null;
     const onMotion = e => {
       let j = 0; const a = e.acceleration, g = e.accelerationIncludingGravity;
       if (a && a.x != null) j = Math.hypot(a.x, a.y, a.z);
       else if (g && g.x != null) { if (prevA) j = Math.hypot(g.x - prevA.x, g.y - prevA.y, g.z - prevA.z); prevA = { x: g.x, y: g.y, z: g.z }; }
-      const now = performance.now(); if (j < 6 || now - lastShake < 140 || !seen) return; lastShake = now;
-      const k = Math.min(1, (j - 6) / 14), n = 2 + Math.round(k * 5);
+      if (probe) probe.textContent = `sensor: ${j.toFixed(1)} · peak: ${(peak = Math.max(peak, j)).toFixed(1)} · events: ${++events}`;
+      const now = performance.now(); if (j < 4 || now - lastShake < 140 || !seen) return; lastShake = now;
+      const k = Math.min(1, (j - 4) / 14), n = 2 + Math.round(k * 5);
       for (let i = 0; i < n; i++) drop(W * (.1 + Math.random() * .8), H * (.15 + Math.random() * .7), 3 + Math.round(k * 2), 1.5 + k * 2.5);
       ST.calm = 0; run();
     };
     // listen right away (Android delivers motion without asking); where the browser has a permission step (iOS, and
     // newer Chrome, which grants it silently), ask once on the first touch as well
     addEventListener('devicemotion', onMotion);
-    if (typeof DeviceMotionEvent.requestPermission === 'function')
-      lake.addEventListener('pointerdown', () => { DeviceMotionEvent.requestPermission().catch(() => {}); }, { once: true });
+    // Safari only accepts the request from a completed tap (finger lifted) or a click, so it is asked then, anywhere
+    // on the page, until it is granted
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+      const ask = () => DeviceMotionEvent.requestPermission().then(r => { if (r === 'granted') { removeEventListener('touchend', ask); removeEventListener('click', ask); } }).catch(() => {});
+      addEventListener('touchend', ask); addEventListener('click', ask);
+    }
   }
   lake.addEventListener('pointerdown', e => { const r = lake.getBoundingClientRect(); drop(e.clientX - r.left, e.clientY - r.top, RM ? 3 : 4, RM ? 1.5 : 3); ST.calm = 0; run(); });
   window.__drop = drop;
