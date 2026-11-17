@@ -125,7 +125,7 @@ if (!gl) { document.getElementById('fb').style.display = 'block'; }
 else (async function () {
   let W, H, GW = 240, GH, cur, prev, buf, tH, tT, textCv;
   const vs = 'attribute vec2 p;varying vec2 uv;void main(){uv=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
-  const fs = `precision highp float; varying vec2 uv; uniform sampler2D H, T; uniform vec2 tx; uniform float turb, time, asp;
+  const fs = `precision highp float; varying vec2 uv; uniform sampler2D H, T, S, L; uniform vec2 tx; uniform float turb, time, asp, stones, light;
     float h(vec2 q){return texture2D(H,q).r-.5;}
     void main(){
       vec2 q=vec2(uv.x,1.-uv.y);
@@ -139,7 +139,20 @@ else (async function () {
       // the words on the floor, smeared while the water moves
       vec4 t0=texture2D(T,q+off), t1=texture2D(T,q+off*1.8+vec2(.003,0.)), t2=texture2D(T,q+off*2.6-vec2(0.,.003));
       float ink=mix(t0.a,(t0.a+t1.a+t2.a)/3.,clamp(turb*1.5,0.,1.))*(1.-clamp(turb*1.1-.15,0.,.85));
-      vec3 col=mix(floorC,mix(vec3(.9,.95,.93),vec3(.95,.76,.64),t0.r<.5?1.:0.),ink);
+      // the stones on the floor: they surface only in deep calm, bend with the water and vanish when it moves
+      // sunlight reaching the floor where the stones will lie: a warm, quiet pool; inside it the lake's own slow,
+      // broad caustics grow a little brighter. Nothing small and fast moves in it.
+      float lp=texture2D(L,q+off*1.1).a*light;
+      vec3 sun=vec3(.98,.86,.66);
+      vec3 lit=floorC*(1.+lp*.28)+sun*lp*(.075+ca*.32);
+      // the stones are opaque; the water tints them toward the floor colour and the light warms them
+      vec2 sq=q+off*1.3; vec4 s0=texture2D(S,sq);
+      float sa=(s0.a*2.+texture2D(S,sq+vec2(tx.x*.7,0.)).a+texture2D(S,sq-vec2(tx.x*.7,0.)).a+texture2D(S,sq+vec2(0.,tx.y*.7)).a+texture2D(S,sq-vec2(0.,tx.y*.7)).a)/6.;
+      float sv=sa*stones*(1.-clamp(turb*1.8,0.,1.));
+      // seen through water: reds absorbed, contrast lowered toward the floor colour, the surface light playing over them
+      vec3 stoneC=mix(s0.rgb*vec3(.72,.9,.93),floorC*1.45,.4)*(1.+lp*.22)+vec3(.35,.55,.5)*ca*.16+sun*lp*ca*.2;
+      vec3 floor2=mix(lit,stoneC,sv);
+      vec3 col=mix(floor2,mix(vec3(.9,.95,.93),vec3(.95,.76,.64),t0.r<.5?1.:0.),ink);
       // the surface: dawn sky reflected at grazing angles, a sun glint on the crests
       float fr=pow(1.-n.z,1.4)*1.5;
       vec3 sky=mix(vec3(.95,.76,.64),vec3(.6,.79,.79),q.y);
@@ -155,7 +168,7 @@ else (async function () {
   gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0); gl.enableVertexAttribArray(0);
   const U = n => gl.getUniformLocation(pr, n);
   const mkTex = () => { const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE); return t; };
-  tH = mkTex(); tT = mkTex();
+  tH = mkTex(); tT = mkTex(); const tS = mkTex(), tL = mkTex();
   await document.fonts.load('300 80px Geist'); await document.fonts.load('11px "Geist Mono"');
   function drawText() { // the floor writing: white type, and the second line in dawn (red channel low marks it)
     textCv = document.createElement('canvas'); textCv.width = W; textCv.height = H; const t = textCv.getContext('2d');
@@ -176,12 +189,73 @@ else (async function () {
       const px = Math.max(W * .52, gut + t.measureText(l2).width + 48);   // the note sits right of the second line, never under it
       t.fillStyle = 'rgba(255,255,255,.7)'; t.font = '16px Geist'; lines.forEach((l, i) => t.fillText(l, px > W - 320 ? gut : px, H - 120 + i * 26));
     }
-    gl.bindTexture(gl.TEXTURE_2D, tT); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, textCv); }
+    gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, tT); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, textCv); }
+  /* a few smooth river stones, laid out afresh each time they surface, in the open water away from the words */
+  const TONES = [[118, 116, 110], [146, 130, 108], [72, 74, 76], [98, 106, 94], [128, 118, 104]];
+  // one river stone: worn uneven outline, contact shadow, mineral grain, maybe a vein, darker toward the rim,
+  // and a soft wet sheen where the light comes from
+  function drawStone(c, p) {
+    const [r, g, b] = p.tone, R = p.rx, rnd = Math.random, path = new Path2D();
+    for (let i = 0; i <= 48; i++) { const t = i / 48 * Math.PI * 2, rr = R * (1 + .07 * Math.sin(2 * t + p.ph[0]) + .04 * Math.sin(3 * t + p.ph[1]) + .025 * Math.sin(5 * t + p.ph[2]));
+      i ? path.lineTo(Math.cos(t) * rr, Math.sin(t) * rr) : path.moveTo(rr, 0); }
+    path.closePath();
+    c.save(); c.translate(p.x, p.y); c.rotate(p.a); c.scale(1, p.ry / p.rx);
+    c.save(); c.shadowColor = 'rgba(0,10,12,.5)'; c.shadowBlur = R * .8; c.shadowOffsetY = R * .16; c.fillStyle = 'rgb(20,30,32)'; c.fill(path); c.restore();
+    c.clip(path);
+    const body = c.createRadialGradient(-R * .3, -R * .4, R * .05, 0, 0, R * 1.1);
+    body.addColorStop(0, `rgb(${r + 30},${g + 30},${b + 28})`); body.addColorStop(.6, `rgb(${r},${g},${b})`); body.addColorStop(1, `rgb(${r - 30},${g - 30},${b - 28})`);
+    c.fillStyle = body; c.fillRect(-R * 1.2, -R * 1.2, R * 2.4, R * 2.4);
+    // grain: many tiny light and dark mineral flecks, a few bigger ones
+    const flecks = Math.round(R * R * 1.1);
+    for (let i = 0; i < flecks; i++) { const x = (rnd() * 2 - 1) * R, y = (rnd() * 2 - 1) * R, sz = rnd() < .92 ? .4 + rnd() * .9 : 1.4 + rnd() * 1.6, light = rnd() < .45;
+      c.fillStyle = light ? `rgba(255,250,240,${.05 + rnd() * .12})` : `rgba(10,10,8,${.06 + rnd() * .16})`; c.beginPath(); c.arc(x, y, sz / 2, 0, 7); c.fill(); }
+    // a soft mottling so the colour is never flat
+    for (let i = 0; i < 6; i++) { const mx = (rnd() * 2 - 1) * R * .7, my = (rnd() * 2 - 1) * R * .7, mr = R * (.3 + rnd() * .4), m = c.createRadialGradient(mx, my, 0, mx, my, mr);
+      m.addColorStop(0, rnd() < .5 ? 'rgba(255,255,255,.07)' : 'rgba(0,0,0,.08)'); m.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = m; c.fillRect(-R * 1.2, -R * 1.2, R * 2.4, R * 2.4); }
+    // sometimes a pale quartz vein across the stone
+    if (rnd() < .55) { c.strokeStyle = `rgba(235,232,220,${.22 + rnd() * .18})`; c.lineWidth = R * (.025 + rnd() * .03); c.lineCap = 'round';
+      const y0 = (rnd() - .5) * R; c.beginPath(); c.moveTo(-R * 1.1, y0); c.bezierCurveTo(-R * .3, y0 + (rnd() - .5) * R * .8, R * .3, y0 + (rnd() - .5) * R * .8, R * 1.1, y0 + (rnd() - .5) * R * .6); c.stroke(); }
+    // hairline cracks: a dark line with a faint light lip beside it, wandering in from the rim, sometimes forking
+    if (rnd() < .65) for (let k = 0, cracks = 1 + (rnd() < .4 ? 1 : 0); k < cracks; k++) {
+      const t0 = rnd() * Math.PI * 2, pts = [[Math.cos(t0) * R * 1.05, Math.sin(t0) * R * 1.05]], steps = 4 + Math.floor(rnd() * 4), len = R * (.5 + rnd() * .9);
+      let ang = t0 + Math.PI + (rnd() - .5) * .9;
+      for (let i = 0; i < steps; i++) { ang += (rnd() - .5) * .9; const [x, y] = pts[pts.length - 1]; pts.push([x + Math.cos(ang) * len / steps, y + Math.sin(ang) * len / steps]); }
+      const line = (dx, dy, col, w) => { c.strokeStyle = col; c.lineWidth = w; c.lineJoin = 'round'; c.beginPath(); pts.forEach(([x, y], i) => i ? c.lineTo(x + dx, y + dy) : c.moveTo(x + dx, y + dy)); c.stroke(); };
+      line(0, R * .03, 'rgba(255,248,236,.2)', R * .026);
+      line(0, 0, 'rgba(10,8,6,.8)', R * .026);
+      if (rnd() < .5) { const [bx, by] = pts[Math.floor(steps / 2)], ba = ang + (rnd() < .5 ? 1 : -1) * (.6 + rnd() * .5), bl = len * .35;
+        c.strokeStyle = 'rgba(10,8,6,.7)'; c.lineWidth = R * .018; c.beginPath(); c.moveTo(bx, by); c.lineTo(bx + Math.cos(ba) * bl * .5, by + Math.sin(ba) * bl * .5); c.lineTo(bx + Math.cos(ba + .3) * bl, by + Math.sin(ba + .3) * bl); c.stroke(); }
+    }
+    // darker toward the rim, more on the shadow side
+    const rim = c.createRadialGradient(-R * .12, -R * .2, R * .5, 0, 0, R * 1.08);
+    rim.addColorStop(0, 'rgba(0,0,0,0)'); rim.addColorStop(1, 'rgba(0,8,10,.5)'); c.fillStyle = rim; c.fillRect(-R * 1.2, -R * 1.2, R * 2.4, R * 2.4);
+    // a soft wet sheen
+    const hl = c.createRadialGradient(-R * .38, -R * .45, 0, -R * .38, -R * .45, R * .6);
+    hl.addColorStop(0, 'rgba(255,252,240,.07)'); hl.addColorStop(1, 'rgba(255,252,240,0)'); c.fillStyle = hl; c.fillRect(-R * 1.2, -R * 1.2, R * 2.4, R * 2.4);
+    c.restore();
+  }
+  function layStones() {
+    const k = Math.min(2, devicePixelRatio || 1), sc = document.createElement('canvas'); sc.width = W * k; sc.height = H * k; const c = sc.getContext('2d'), phone = W < 600; c.scale(k, k);
+    const n = 2 + Math.floor(Math.random() * 2), placed = [], box = phone ? [.14, .86, .3, .55] : [.1, .9, .2, .6];
+    for (let tries = 0; placed.length < n && tries < 200; tries++) {
+      const rx = (phone ? 20 : 30) + Math.random() * (phone ? 16 : 30), x = W * (box[0] + Math.random() * (box[1] - box[0])), y = H * (box[2] + Math.random() * (box[3] - box[2]));
+      if (!phone && x > W - 360 && y < 330) continue;                                  // keep clear of the brainwave card
+      if (placed.some(p => Math.hypot(p.x - x, p.y - y) < (p.rx + rx) * 1.6)) continue;
+      placed.push({ x, y, rx, ry: rx * (.45 + Math.random() * .2), a: Math.random() * Math.PI, tone: TONES[Math.floor(Math.random() * TONES.length)], ph: [0, 1, 2].map(() => Math.random() * Math.PI * 2) }); }
+    // the light pools first: soft patches centred on where each stone will lie
+    const lc = document.createElement('canvas'); lc.width = W; lc.height = H; const l = lc.getContext('2d');
+    for (const p of placed) { const R = p.rx * 3, gr = l.createRadialGradient(p.x, p.y, 0, p.x, p.y, R);
+      gr.addColorStop(0, 'rgba(255,255,255,.95)'); gr.addColorStop(.35, 'rgba(255,255,255,.6)'); gr.addColorStop(.7, 'rgba(255,255,255,.18)'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+      l.fillStyle = gr; l.fillRect(p.x - R * 1.2, p.y - R * 1.2, R * 2.4, R * 2.4); }
+    gl.activeTexture(gl.TEXTURE3); gl.bindTexture(gl.TEXTURE_2D, tL); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, lc);
+    for (const p of placed) drawStone(c, p);
+    gl.activeTexture(gl.TEXTURE2); gl.bindTexture(gl.TEXTURE_2D, tS); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, sc); gl.activeTexture(gl.TEXTURE1);
+  }
   function size() { const d = Math.min(devicePixelRatio || 1, 1.5); W = lake.clientWidth; H = lake.clientHeight; cv.width = W * d; cv.height = H * d; gl.viewport(0, 0, cv.width, cv.height);
     GH = Math.round(GW * H / W); cur = new Float32Array(GW * GH); prev = new Float32Array(GW * GH); buf = new Uint8Array(GW * GH * 4);
     gl.uniform2f(U('tx'), 1 / GW, 1 / GH); gl.uniform1f(U('asp'), W / H); drawText(); }
   size(); addEventListener('resize', size);
-  gl.uniform1i(U('H'), 0); gl.uniform1i(U('T'), 1);
+  gl.uniform1i(U('H'), 0); gl.uniform1i(U('T'), 1); gl.uniform1i(U('S'), 2); gl.uniform1i(U('L'), 3); layStones();
   const drop = (x, y, r, a) => { const gx = Math.floor(x / W * GW), gy = Math.floor(y / H * GH); for (let j = -r; j <= r; j++) for (let i = -r; i <= r; i++) { const X = gx + i, Y = gy + j; if (X < 1 || Y < 1 || X >= GW - 1 || Y >= GH - 1) continue; const d = Math.hypot(i, j); if (d <= r) cur[Y * GW + X] += a * (1 - d / r); } };
   let lx = -1, ly = -1;
   if (!RM) lake.addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; const r = lake.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top; const v = lx < 0 ? 0 : Math.hypot(x - lx, y - ly); if (v > 1) { drop(x, y, 2, Math.min(1.4, v * .05)); ST.calm = 0; } lx = x; ly = y; });
@@ -201,6 +275,23 @@ else (async function () {
   let last = performance.now(), raf = 0, seen = true;
   function run() { if (!raf && seen) { last = performance.now(); raf = requestAnimationFrame(frame); } }
   new IntersectionObserver(([e]) => { seen = e.isIntersecting; if (seen) run(); }).observe(lake);
+  // in theta the sun reaches the floor first, then the stones surface in its light and stay while theta lasts.
+  // When the reading changes, the stones go first and the light follows; a stir of the water speeds both up.
+  const sun = { light: 0, stone: 0, laid: false };
+  function stones(dt) {
+    const th = band === 'teta', ease = v => v * v * (3 - 2 * v), step = (v, to, rate) => v + Math.sign(to - v) * Math.min(Math.abs(to - v), rate * dt);
+    if (th) {
+      if (!sun.laid && sun.light < .01 && sun.stone < .01) { layStones(); sun.laid = true; }
+      sun.light = step(sun.light, 1, .45);                                       // about two seconds of light
+      if (sun.light > .7) sun.stone = step(sun.stone, 1, .35);                   // then the stones, slowly
+    } else {
+      const fast = band === 'beta' ? 2.2 : 1;
+      sun.stone = step(sun.stone, 0, .8 * fast);                                 // the stones fade first
+      if (sun.stone < .05) sun.light = step(sun.light, 0, .6 * fast);            // then the light goes
+      if (sun.light < .01 && sun.stone < .01) sun.laid = false;                  // next time, somewhere else
+    }
+    return [ease(sun.stone), ease(sun.light)];
+  }
   function frame(now) {
     raf = 0; const dt = Math.min(.1, (now - last) / 1000); last = now; ST.calm += dt;
     for (let s = 0; s < 2; s++) { for (let y = 1; y < GH - 1; y++) for (let x = 1; x < GW - 1; x++) { const i = y * GW + x; prev[i] = ((cur[i - 1] + cur[i + 1] + cur[i - GW] + cur[i + GW]) * .5 - prev[i]) * .985; } [cur, prev] = [prev, cur]; }
@@ -209,7 +300,7 @@ else (async function () {
     for (let i = 0; i < cur.length; i++) { const v = Math.max(0, Math.min(255, 128 + cur[i] * 70)); buf[i * 4] = v; buf[i * 4 + 3] = 255; }
     gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, tH); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, GW, GH, 0, gl.RGBA, gl.UNSIGNED_BYTE, buf);
     gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, tT);
-    gl.uniform1f(U('turb'), ST.turb); gl.uniform1f(U('time'), RM ? 0 : now / 1000); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    gl.uniform1f(U('turb'), ST.turb); { const [sv, lv] = stones(dt); gl.uniform1f(U('stones'), sv); gl.uniform1f(U('light'), lv); } gl.uniform1f(U('time'), RM ? 0 : now / 1000); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     waves(RM ? 0 : now / 1000);
     if (seen && (!RM || E > 2e-4 || ST.turb > .002)) raf = requestAnimationFrame(frame);   // reduced motion: stop once the water is flat
   }
