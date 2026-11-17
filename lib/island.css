@@ -112,6 +112,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--cyan);outline-offse
 .char em{font-style:normal;font-family:Silkscreen;font-size:10px;opacity:.7}
 .char small{font-size:13px;line-height:1.4}
 .char[disabled]{cursor:default;background:#e7e2d4}
+.char .vk{margin-top:4px;padding:2px 6px;background:var(--ink);color:var(--cream);font-family:Silkscreen;font-size:9px;letter-spacing:.04em}
 .char[disabled] canvas{filter:brightness(0) opacity(.5)}
 .pick .row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;margin-top:16px}
 .pick label{font-family:Silkscreen;font-size:11px;display:flex;gap:6px;align-items:center;cursor:pointer}

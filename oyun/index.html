@@ -50,14 +50,15 @@
     <div class="row"><button class="btn" id="pcont" type="button" hidden></button><label id="pspeed" hidden><input type="checkbox" id="pspeedc"> ⏱ Hızlı koşu (süre tutucu)</label><button class="linkish" id="pquick" type="button">Hemen başla (Kâşif)</button></div></div></div>
   <div class="modal" id="bm"><div class="card win"><button class="btn ghost x" type="button" data-close>✕</button><h2>Rozet defteri</h2><p class="sub" id="bsub"></p><div class="bgrid" id="bgrid"></div></div></div>
   <div class="modal" id="labm"><div class="card win lab"><button class="btn ghost x" type="button" data-close>✕</button><h2>Gizli laboratuvar</h2><p class="sub">ARŞİV TAMAMLANDI · HOŞ GELDİN</p>
-    <h3>PERDE ARKASI</h3><p>Oyundaki iş senaryoları temsili; her görevin sonundaki “Gerçekte” kartı gerçek işimi anlatıyor.</p>
+    <h3>PERDE ARKASI</h3><p>Dört karakter, dört temsili vaka. Her görevin sonundaki “Gerçekte” kartı ise gerçek işimi anlatıyor.</p>
     <h3>SIRADAKİ HEDEF</h3><p>İnsan ve yapay zekâ birlikte çalıştığında: süreçlere yapay zekâyı, insanı merkeze alarak yerleştirmek. Psikoloji ile mühendisliği birlikte kullanabileceğim yer burası.</p>
     <h3>BİRAZ DA BEN · BİR EŞYAYA TIKLA</h3><div class="items" id="items"></div><p class="item-say" id="itemsay"></p>
     <div class="wall">Buraya kadar geldiysen belli ki sen de meraklı birisin. Umarım keşfederken en az benim hazırlarken eğlendiğim kadar eğlenmişsindir. :)</div></div></div>
   <div class="modal" id="fm"><div class="card win fin"><div class="sk" style="font-size:11px;opacity:.6">SAMET.EXE · 02 · SİSTEM</div><h2>SİSTEM ADASI TAMAMLANDI</h2><div class="stats" id="fstats"></div>
     <p>Görünür kıldın. Anladın. Kurdun.<br>Ben de her gün bunu yapıyorum.</p>
-    <p id="fsamet" hidden style="margin-top:12px;font-size:17px">Bu üç bakış açısı da benim: görünür kılmak, anlamak ve kurmak. Artık üçüyle birden oynayabilirsin: <b>Samet</b> açıldı.</p>
+    <p id="fsamet" hidden style="margin-top:12px;font-size:17px">Bu üç bakış açısı da benim: görünür kılmak, anlamak ve kurmak. Artık üçüyle birden oynayabilirsin: <b>Samet</b> açıldı. Onu kendine özel bir vaka ve adaya inen iki dev robot bekliyor.</p>
     <div class="acts"><a class="btn" id="fli" href="#" target="_blank" rel="noopener">LinkedIn</a><a class="btn" id="fmail" href="#">E-posta</a><a class="btn ghost" href="../psikoloji/index.html" data-leave="#062a31">Psikolojiye geç →</a></div>
+    <p class="sub" id="fnext" hidden style="margin:16px 0 0"></p>
     <div class="acts"><button class="btn ghost" id="fagain" type="button">Başka bir karakterle oyna</button><button class="btn ghost" type="button" data-close>Adada kal</button></div></div></div>
 </section>
 
@@ -88,24 +89,28 @@ window.T = {
   intro: { start: '▶ BAŞLAMAK İÇİN TIKLA YA DA BİR TUŞA BAS', startTouch: '▶ BAŞLAMAK İÇİN DOKUN' },
   pick: { cont: 'Devam et', locked: 'Kilitli', lockHint: 'Üç karakterle de adayı tamamla.' },
   chars: {
-    gozcu: { n: 'Gözcü', tag: 'Ölçmeden yönetilmez.', ab: 'Saklı veri paketlerini uzaktan görür.' },
-    kasif: { n: 'Kâşif', tag: 'Bir soru daha.', ab: 'Diyaloglarda fazladan soru sorar; gizli kısa yolu görür.' },
-    mimar: { n: 'Mimar', tag: 'Kurulmadıysa olmamıştır.', ab: 'Kırık köprüyü onarır; portala fazladan bağlantı kurar.' },
-    samet: { n: 'Samet', tag: 'Üçü bir arada.', ab: 'Bütün yetenekler.' }
+    gozcu: { n: 'Gözcü', tag: 'Ölçmeden yönetilmez.', ab: 'Saklı veri paketlerini uzaktan görür; panoda her metriğe doğru grafiği seçer.', v: 'VAKA · FATURA GİRİŞİ' },
+    kasif: { n: 'Kâşif', tag: 'Bir soru daha.', ab: 'Diyaloglarda fazladan soru sorar, muğlak cevabı netleştirir; gizli kısa yolu görür.', v: 'VAKA · SATIN ALMA' },
+    mimar: { n: 'Mimar', tag: 'Kurulmadıysa olmamıştır.', ab: 'Kırık köprüyü onarır; portal zincirine fazladan bir halka ve bildirim ekler.', v: 'VAKA · İŞE GİRİŞ' },
+    samet: { n: 'Samet', tag: 'Üçü bir arada.', ab: 'Bütün yetenekler, kendine özel bir vaka ve adaya inen iki dev robot.', v: 'VAKA · YAPAY ZEKÂ ASİSTANI' }
   },
   hint: { desk: 'WASD ile yürü, yaklaşıp E’ye bas', touch: 'Bir yere dokun, oraya yürü; dokununca konuşur' },
   quest: ['GÖREV 1/3 · Kontrol odasına git', 'GÖREV 2/3 · Süreç ofisine git', 'GÖREV 3/3 · Portal kulesine git', 'ADA CANLIDA · Keşfetmeye devam et'],
-  stat: (p, b) => `${p}/5 veri paketi · ${b}/12 rozet`,
-  places: { kontrol: 'Kontrol odası', ofis: 'Süreç ofisi', kule: 'Portal kulesi', atolye: 'Robot atölyesi', sandik: 'Araç sandığı', kapi: 'Psikoloji kapısı', lab: 'Gizli laboratuvar', kopru: 'Kırık köprü' },
+  stat: (p, b, n) => `${p}/5 veri paketi · ${b}/${n} rozet`,
+  places: { kontrol: 'Kontrol odası', ofis: 'Süreç ofisi', kule: 'Portal kulesi', atolye: 'Robot atölyesi', sandik: 'Araç sandığı', kapi: 'Psikoloji kapısı', lab: 'Gizli laboratuvar', kopru: 'Kırık köprü', dev: 'Dev robotlar', anit: 'Arayüz' },
   hud: { next: 'Devam →', time: 'SÜRE' },
   noWay: 'Oraya buradan yol yok.',
   real: 'GERÇEKTE', archive: 'ARŞİV KAYDI',
-  who: { deniz: ['Deniz', 'EKİP LİDERİ · KONTROL ODASI'], ece: ['Ece', 'İŞ BİRİMİ'], robot: ['Robot', 'RPA · ÇALIŞIYOR'], paket: ['Veri paketi', 'ARŞİV'], atolye: ['Robot atölyesi', 'YER'], sandik: ['Araç sandığı', 'ENVANTER'], kapi: ['Psikoloji kapısı', 'SIRADAKİ SEVİYE'], lab: ['Gizli laboratuvar', 'KİLİTLİ'], kopru: ['Kırık köprü', 'YER'] },
+  who: { deniz: ['Deniz', 'EKİP LİDERİ · KONTROL ODASI'], ece: ['Ece', 'İŞ BİRİMİ'], robot: ['Robot', 'RPA · ÇALIŞIYOR'], paket: ['Veri paketi', 'ARŞİV'], atolye: ['Robot atölyesi', 'YER'], sandik: ['Araç sandığı', 'ENVANTER'], kapi: ['Psikoloji kapısı', 'SIRADAKİ SEVİYE'], lab: ['Gizli laboratuvar', 'KİLİTLİ'], kopru: ['Kırık köprü', 'YER'], dev: ['Sıfır ve Bir', 'DEV ROBOTLAR'], anit: ['Arayüz', 'YAPI'] },
   z1: {
     intro: 'Robotlar gece gündüz çalışıyor ama müşteri soruyor: “Bunlar bize ne kazandırıyor?” Elimizde gösterecek tek bir ekran yok. Panoyu sen kurar mısın? Önce neyi ölçeceğimize karar verelim.',
     task: 'PANOYA 4 METRİK SEÇ',
     opts: [['İşlem sayısı', true], ['Robot sayısı', false, 'Kaç robot olduğu, ne kazandırdığını söylemez.'], ['Başarı oranı', true], ['Yazılan kod satırı', false, 'Daha çok kod, daha çok değer demek değil.'], ['Robot ve manuel süre', true], ['Toplantı sayısı', false, 'Toplantı değeri değil, maliyeti gösterir.'], ['Net zaman kazancı', true], ['Sunucu odasının sıcaklığı', false, 'Önemli ama bu panonun işi değil.']],
     right: 'Evet, bu ölçülmeli.',
+    viewsSay: 'Metrikler tamam. Şimdi her birini doğru şekilde gösterelim; yanlış grafik doğru rakamı bile saklar.',
+    viewsTask: m => `${m.toLocaleUpperCase('tr-TR')} NASIL GÖSTERİLSİN?`,
+    viewOpts: ['Zaman içinde çizgi', 'Yüzde göstergesi', 'Yan yana çubuk', 'Tek büyük sayı'],
+    views: [[0, 'İşlem sayısı her gün değişir; asıl merak edilen, nasıl değiştiği.'], [1, 'Başarı bir oran: 100 işlemden kaçı sorunsuz bitti?'], [2, 'İki süreyi karşılaştırıyoruz: robot ve insan yan yana dursun.'], [3, 'Müşterinin aklında kalacak tek bir rakam: toplam kazanılan zaman.']],
     done: 'İşte bu. Artık robotların katkısı rakamla konuşuyor.',
     real: 'Kronovita’da RPA performans panosunu sıfırdan kurdum: KPI’lardan görsel tasarıma, Supabase’deki veri yapısına kadar. Bugün ~50 kişi kullanıyor.',
     after: 'Pano yayında. Artık toplantıya tahminle değil, rakamla giriyoruz.'
@@ -164,9 +169,167 @@ window.T = {
   packetToast: t => `Veri paketi bulundu: ${t}`,
   badges: {
     pano: ['Pano Ustası', 'Kontrol odası görevini bitir.'], soru: ['Soru Ustası', 'Edge case’i ve kısa yolu birlikte bul.'], canli: ['Canlıya Alındı', 'Portalı canlıya al.'],
-    keskin: ['Keskin Göz', 'Gözcü ile hiç yanlış KPI seçmeden bitir.'], kisayol: ['Kısa Yol', 'Kâşif ile gizli kısa yoldan geç.'], kopru: ['Köprü Kurucu', 'Mimar ile köprüyü onar.'],
+    keskin: ['Keskin Göz', 'Gözcü ile hiç yanlış KPI seçmeden bitir.'], kisayol: ['Kısa Yol', 'Kâşif ile gizli kısa yoldan geç.'], kopru: ['Köprü Kurucu', 'Mimar ile köprüyü onar.'], arayuz: ['Ortak Dil', 'Samet ile dev robotlarla konuş, yapıyı birlikte kur.'],
     arsiv: ['Arşivci', '5 veri paketini topla.'], sohbet: ['Sohbet Ustası', 'Adadaki herkesle konuş.'],
     robot: ['Robotun Sırrı', 'Robotla 3 kez konuş.'], gece: ['Gece Vardiyası', 'Gece saatinde robotla konuş.'], uc: ['Uç Nokta', 'Adanın en uç köşesine git.'], hizli: ['Hızlı Koşu', 'Ana yolu 3 dakikanın altında bitir.']
+  },
+  // each character plays its own case; only what differs from z1–z3 above is listed
+  cases: {
+    fatura: {},
+    satinalma: {
+      st: { shirt: '#4f8f3a', hair: '#1a1a1a' },
+      who: { ece: ['Burak', 'SATIN ALMA'] },
+      z1: {
+        intro: 'Satın alma robotu her gün talepleri işliyor ama yöneticiler hâlâ aynı şeyi soruyor: “Talebim nerede kaldı?” Panoyu kuralım. Neyi göstermeliyiz?',
+        opts: [['Ortalama onay süresi', true], ['Ekipteki kişi sayısı', false, 'Kaç kişi olduğu, işin nasıl aktığını söylemez.'], ['Bekleyen talep sayısı', true], ['Gönderilen e-posta sayısı', false, 'Çok e-posta, çok iş demek değil; çoğu “Talebim nerede?” sorusu.'], ['Hatasız işlenen talep oranı', true], ['Robotun açık kaldığı saat', false, 'Açık olmak çalışmak demek değil; önemli olan ne işlediği.'], ['Kazanılan saat', true], ['En pahalı ürünün adı', false, 'İlginç ama kimseye karar verdirmez.']],
+        done: 'Artık “Talebim nerede?” sorusunun cevabı panoda.',
+        after: 'Yöneticiler panoya bakıyor, telefon etmiyor. Telefonlar sustu.'
+      },
+      z2: {
+        intro: 'Talepler e-postayla geliyor, biz de tek tek ERP’ye giriyoruz. Robot bunu yapabilir mi?',
+        task: n => `BURAK’A ${n} SORU SOR`,
+        qs: [['Ayda kaç talep geliyor, biri ne kadar sürüyor?', 'Ayda 600 civarı. Her biri yaklaşık 10 dakika.', 'value'], ['Her talep aynı yoldan mı onaylanıyor?', 'Çoğu evet… Ama 50 bin TL üstü talepler finans direktörüne de gidiyor.', 'edge'], ['Robota bir isim koyalım mı?', '…Koyalım. Ama önce ne yapacağını konuşsak?', null], ['Sipariş açıldıktan sonra ne oluyor?', 'Tedarikçiye ayrıca e-posta atıyoruz, aynı bilgileri yeniden yazarak.', 'short'], ['Bütçe ne kadar?', 'Bütçeyi değil süreci konuşuyorduk sanki.', null]],
+        extra: ['Talep sahipleri en çok neden şikâyet ediyor? (Kâşif)', 'Talebin nerede olduğunu kimse bilmiyor. Herkes bizi arıyor.', 'hint'],
+        follow: { say: 'Bir de acil talepler var… Onlar bazen farklı gidiyor.', task: 'BU CEVABI NETLEŞTİR',
+          opts: [['“Bazen” ne kadar sık? Son ay kaç tane oldu?', true, 'Ayda 30 kadar. Onaylarını telefonla alıyoruz, sisteme sonradan giriyoruz.'], ['Tamam, onları sonra konuşuruz.', false, 'Sonraya kalan istisna, canlıda karşına çıkar.'], ['Acil talepleri robottan tamamen çıkaralım mı?', false, 'Ne olduklarını anlamadan çıkarırsak işin bir kısmı hep elde kalır.']],
+          note: '“Acil talep: önce telefonla onay, sonra kayıt” süreç notlarına eklendi.' },
+        steps: ['Talebi al', 'Bilgileri kontrol et', 'Onay yolunu belirle', 'ERP’de sipariş aç', 'Tedarikçiye e-posta yaz'],
+        edgeStep: 'Onay yolunu belirle · 50 bin TL üstü → finans direktörü',
+        shortNote: 'E-posta adımı kalktı: sipariş ERP’den tedarikçiye kendiliğinden gidiyor.',
+        done: 'Demek bütün mesele “kim onaylar” sorusuymuş.',
+        robots: 'Satın alma robotu çalışmaya başladı.',
+        after: 'Robot siparişleri açıyor. Ben artık yalnızca istisnalara bakıyorum.'
+      },
+      z3: {
+        intro: 'Peki talep sahipleri talebi nereden girecek? Durumunu nereden görecek?',
+        nodes: { is: 'Talep sahibi', portal: 'Talep formu', robot: 'Robot', sonuc: 'Durum ekranı', bildirim: 'Bildirim' },
+        noDoor: 'Talepler yine e-postalara dağılır. Robotun okuyacağı tek bir giriş kapısı lazım.',
+        noScreen: 'Durumu göremeyen talep sahibi yine telefonu açar.',
+        wrong: 'Talebin yolunu izle: kim girer, kim işler, durum nerede görünür ve kime döner?',
+        done: 'Talebimi girdim, “onay bekliyor” yazıyor. Kimseyi aramadım!',
+        after: 'Telefonlar sustu. Açıkçası biraz özledim bile.'
+      },
+      npc: {
+        muhasebe: ['Fatura artık siparişle kendiliğinden eşleşiyor.', 'Eşleşmeyen tek şey öğle yemeği saatimiz.'],
+        stajyer: ['ERP ne demek biliyor musun?', 'Kurumsal Kaynak Planlama. Ben de dün öğrendim.'],
+        yazilim: ['50 bin TL kuralını ilk toplantıda mı buldunuz?', 'Biz genelde canlıda buluruz.']
+      }
+    },
+    isegiris: {
+      st: { shirt: '#e0b03a', hair: '#5a2e18' },
+      who: { ece: ['Selin', 'İNSAN KAYNAKLARI'] },
+      z1: {
+        intro: 'İK’nın işe giriş robotu çalışıyor ama İK müdürü soruyor: “Yeni gelen biri ilk gün her şeyi hazır buluyor mu?” Panoya ne koyalım?',
+        opts: [['İlk gün her şeyi hazır olan çalışan oranı', true], ['Gönderilen hoş geldin e-postası sayısı', false, 'E-postanın gitmesi, her şeyin hazır olduğunu göstermez.'], ['Hesap açma süresi', true], ['Gelen CV sayısı', false, 'O, işe alımın panosu. Burada işe girişi ölçüyoruz.'], ['Hatasız tamamlanan adım oranı', true], ['Ofisteki boş masa sayısı', false, 'Masa hazır olabilir; asıl soru hesabın açılıp açılmadığı.'], ['İK’nın kazandığı saat', true], ['Logolu kupa stoğu', false, 'Hoş bir jest ama bu panonun işi değil.']],
+        done: 'İlk gün hazır mıyız, artık tahmin etmiyoruz; panoda görüyoruz.',
+        after: 'Pazartesi kimin başlayacağını herkes cuma günü biliyor.'
+      },
+      z2: {
+        intro: 'Her yeni çalışan için beş ayrı ekibe e-posta atıyorum: BT, muhasebe, güvenlik… Biri hep unutuluyor.',
+        task: n => `SELİN’E ${n} SORU SOR`,
+        qs: [['Ayda kaç kişi başlıyor, her biri ne kadar sürüyor?', 'Ayda 15–20 kişi. Her biri için yarım günüm gidiyor.', 'value'], ['Her pozisyon için adımlar aynı mı?', 'Çoğunlukla… Ama sahada çalışanlara bilgisayar yerine tablet veriliyor, iş güvenliği eğitimi de ekleniyor.', 'edge'], ['Hoş geldin pastası hangi aromalı olsun?', 'Çikolatalı. Ama bunun robotla ne ilgisi var?', null], ['Bu bilgileri başka nereye giriyorsun?', 'Bordro sistemine de aynı bilgileri elle yazıyorum.', 'short'], ['Herkesi aynı gün başlatsak?', 'Keşke. İnsanlar takvime göre değil, ihtiyaca göre geliyor.', null]],
+        extra: ['Bu işte en çok ne aksıyor? (Kâşif)', 'Kimin neyi bitirdiğini bilmiyorum, herkese tek tek soruyorum.', 'hint'],
+        steps: ['Yeni çalışanın bilgilerini al', 'Hesap ve ekipman taleplerini aç', 'Pozisyona göre eğitimleri ata', 'Hoş geldin e-postasını gönder', 'Bordro sistemine gir'],
+        edgeStep: 'Eğitimleri ata · saha çalışanı → tablet + iş güvenliği eğitimi',
+        shortNote: 'Bordro adımı kalktı: bilgiler aynı kayıttan kendiliğinden gidiyor.',
+        done: 'Beş e-posta yerine tek bir kayıt. Bunu neden daha önce düşünmedik?',
+        robots: 'İşe giriş robotu çalışmaya başladı.',
+        after: 'Robot listeyi yürütüyor. Ben de artık yeni gelenlerle tanışmaya vakit ayırıyorum.'
+      },
+      z3: {
+        intro: 'Ekipler işini bitirince bana nasıl haber verecek? Ben resmin tamamını nereden göreceğim?',
+        nodes: { is: 'İK', portal: 'İşe giriş portalı', robot: 'Robot', sonuc: 'Hazırlık panosu', bildirim: '“Her şey hazır” mesajı' },
+        notify: '+ “Her şey hazır” mesajı ekle (Mimar)',
+        extra: { label: 'Ekipler (BT, güvenlik)', need: 'Robot talepleri açtı ama işi ekipler yapıyor. Önce onlara ulaşmalı.' },
+        noDoor: 'Bilgi yine e-postalara dağılır. Robotun okuyacağı tek bir giriş lazım.',
+        noScreen: 'Kimin neyi bitirdiğini göremezsen yine herkese tek tek sorarsın.',
+        wrong: 'Bilginin yolunu izle: kim girer, kim işler, kim hazırlar, sonuç nerede görünür?',
+        done: 'Pazartesi başlayan üç kişinin de her şeyi hazır. Bunu ilk kez önceden biliyorum.',
+        after: 'Portal canlıda. Yeni gelenler ilk gün kahve içiyor, şifre beklemiyor.'
+      },
+      npc: {
+        muhasebe: ['Bordroya kimseyi elle girmiyorum artık.', 'Yeni gelenlerin adını ilk maaşta değil, ilk gün öğreniyorum.'],
+        stajyer: ['Benim ilk günümde bilgisayarım yoktu.', 'Benden sonrakilerin olacak.'],
+        yazilim: ['Saha çalışanlarına tablet istisnası mı?', 'Bunu baştan bilmek bize iki sprint kazandırır.']
+      }
+    },
+    samet: {
+      st: { shirt: '#d4569b', hair: '#2a1d16' },
+      who: { ece: ['Defne', 'DESTEK EKİBİ'] },
+      z1: {
+        intro: 'Destek ekibine bir yapay zekâ asistanı kurduk. Teknik olarak iyi çalışıyor ama ekip ona güvenmiyor, müşteriler de ilk fırsatta “Bir insanla görüşmek istiyorum” diyor. Sorunu görmek için neyi ölçelim?',
+        opts: [['İnsana devredilen konuşma oranı', true], ['Modelin parametre sayısı', false, 'Büyük model, iyi deneyim demek değil.'], ['Kabul edilen öneri oranı', true], ['Asistanın yazdığı kelime sayısı', false, 'Uzun cevap iyi cevap değil; çoğu zaman tam tersi.'], ['İlk temasta çözülen talep oranı', true], ['Yanıt süresi (milisaniye)', false, 'Hızlı ama işe yaramayan bir cevap kimseyi rahatlatmaz.'], ['Konuşma sonrası memnuniyet', true], ['Ekibin asistana taktığı lakap sayısı', false, 'Eğlenceli bir veri. Ama bir ipucu da veriyor: ekip ona henüz güvenmiyor.']],
+        views: [[0, 'Asıl soru: devredilen konuşmalar azalıyor mu? Bunun için zamana bakmak lazım.'], [1, 'Bu bir oran: 100 öneriden kaçını temsilci kabul etti?'], [2, 'Asistanlı ve asistansız konuşmaları yan yana koyalım.'], [3, 'Herkesin aklında kalacak tek bir rakam: müşteri ne kadar memnun?']],
+        done: 'Şimdi görüyoruz: asistan doğru cevap veriyor ama insanlar onu kullanmıyor. Sorun teknikte değil.',
+        after: 'Pano açık. Devredilen konuşma oranı her hafta biraz daha düşüyor.'
+      },
+      z2: {
+        intro: 'Asistan doğru cevap veriyor ama temsilciler yine de her şeyi baştan kontrol ediyor. Neden kullanmıyorlar, anlamıyorum.',
+        task: n => `DEFNE’YE ${n} SORU SOR`,
+        qs: [['Bir konuşma ne kadar sürüyor, asistanla ne kadar?', 'Asistansız 8 dakika. Asistanla 5 olmalı ama herkes baştan kontrol ettiği için 9 sürüyor.', 'value'], ['Asistan bir şeyden emin olmadığında ne yapıyor?', 'Emin olmasa da aynı kesinlikte konuşuyor. Bir kez yanlış iade bilgisi verdi; o günden beri kimse güvenmiyor.', 'edge'], ['Asistana biraz espri ekleyelim mi?', 'Müşteri, iadesini almadan espriye pek gülmüyor.', null], ['Konuşma bitince ne oluyor?', 'Temsilci özeti ayrıca CRM’e yazıyor. Asistan zaten bir özet çıkarıyor ama kimse kullanmıyor.', 'short'], ['Temsilcileri asistanı kullanmaya zorlayalım mı?', 'Zorlarsak kullanırlar ama güvenmezler. Sorun da zaten bu.', null]],
+        extra: ['Temsilciler asistan hakkında ne hissediyor?', 'Bazıları işlerini elinden alacağından korkuyor. Asistanı yardımcı değil, rakip gibi görüyorlar.', 'hint'],
+        found: { edge: '🧠 GÜVEN SORUNU BULUNDU', short: '🔍 KISA YOL BULUNDU' },
+        follow: { say: 'Bir de bazı temsilciler asistanı hiç açmıyor bile…', task: 'BU CEVABI NETLEŞTİR',
+          opts: [['Hangileri? Yeni başlayanlar mı, deneyimliler mi?', true, 'Deneyimliler. “Bu işi asistandan iyi bilirim” diyorlar. Haklılar da; asıl asistanın onlardan öğrenmesi lazım.'], ['Kullanmayanları raporlayalım.', false, 'Raporlarsak kullanırlar ama içten içe direnirler. Önce nedenini anlamak lazım.'], ['Zamanla herkes alışır.', false, 'Bazen alışır, bazen hiç açmaz. Nedenini sormadan bilemeyiz.']],
+          note: 'Not alındı: deneyimli temsilcilerin düzeltmeleri asistana geri bildirim olarak dönecek.' },
+        steps: ['Müşterinin mesajını al', 'Asistan bir cevap önerir', 'Temsilci cevabı kontrol eder', 'Cevabı müşteriye gönder', 'Konuşma özetini CRM’e elle yaz'],
+        edgeStep: 'Temsilci kontrol eder · asistan emin değilse bunu söyler',
+        shortNote: 'Elle özet adımı kalktı: asistanın çıkardığı özet CRM’e kendiliğinden düşüyor.',
+        done: 'Demek sorun asistanın bilgisi değil, her şeyden emin konuşmasıymış.',
+        robots: 'Asistan yeni ayarlarıyla çalışmaya başladı.',
+        after: 'Temsilciler artık asistanı rakip değil, yardımcı gibi görüyor.'
+      },
+      z3: {
+        intro: 'Peki temsilciyle asistanı aynı ekranda nasıl buluşturacağız? Son kararı kim verecek?',
+        nodes: { is: 'Müşteri', portal: 'Destek ekranı', robot: 'Yapay zekâ asistanı', sonuc: 'Temsilci onayı', bildirim: 'Güven göstergesi' },
+        notify: '+ Güven göstergesi ekle',
+        extra: { label: 'Bilgi bankası', need: 'Asistan cevabını bir kaynağa dayandırmalı; yoksa yine tahmin eder.' },
+        noDoor: 'Mesaj önce ortak ekrana düşmeli; asistan da temsilci de aynı yerden görsün.',
+        noScreen: 'Asistan doğrudan müşteriye yazarsa hatayı kimse zamanında yakalayamaz. Arada bir insan olmalı.',
+        wrong: 'Mesajın yolunu izle: kim yazar, nerede görünür, kim önerir, kim karar verir?',
+        done: 'Asistan öneriyor, temsilci karar veriyor. Müşteri ikisinden de memnun.',
+        after: 'Asistan emin olmadığında “emin değilim” diyor. Garip ama tam da bu yüzden ona güveniyoruz.'
+      },
+      npc: {
+        muhasebe: ['Asistan bana bir kez “emin değilim” dedi.', 'O günden beri ona güveniyorum. Tıpkı insanlar gibi.'],
+        stajyer: ['Asistan benim işimi alacak mı?', 'Defne’ye göre hayır; benim sorularımı alacakmış. Rahatladım.'],
+        yazilim: ['Modeli değiştirmedik, arayüzü değiştirdik.', 'Doğruluk aynı kaldı, kullanım arttı.']
+      }
+    }
+  },
+  // Samet's two big robots: a talk about people and machines, then they build "Arayüz"
+  hci: {
+    arrive: 'Adaya iki dev robot indi. Seninle konuşmak istiyorlar.',
+    task: (i, n) => `KONUŞMA ${i}/${n} · BİR CEVAP SEÇ`,
+    rounds: [
+      { q: 'Merhaba Samet. Biz Sıfır ve Bir. Bu adaya bir şey inşa etmeye geldik ama ne inşa edeceğimizi bilmiyoruz. Önce şunu soralım: biz çok hızlı hesaplıyoruz, yine de insanlar bizi kullanırken zorlanıyor. Neden?',
+        opts: [['İnsanlar hız değil anlam arıyor. Ne yaptığınızı anlamazlarsa size güvenmezler.', 'Anlam… Hesaplaması zor bir birim. Not aldık.', 'Anlam'],
+          ['İnsanın aynı anda aklında tutabildiği şey sınırlı. Fazla seçenek yorar.', 'Yani daha az şey göstermek, bazen daha çok yardım etmek. İlginç.', 'Sadelik'],
+          ['Belki de sorun insanlardadır?', 'Kullanıcıyı suçlamak kolay. Ama bir şeyi herkes yanlış kullanıyorsa sorun genelde tasarımdadır.', 'Önce tasarımı sorgula']] },
+      { q: 'Peki biz bir hata yaptığımızda ne yapmalıyız?',
+        opts: [['Saklamayın. Emin değilseniz söyleyin, kararı insan versin.', 'Bilmediğini söylemek… Bu da bir yetenekmiş.', 'Dürüstlük'],
+          ['Geri almayı kolay yapın. İnsan hatayı düzeltebileceğini bilirse daha rahat dener.', 'Geri al tuşu. Kaydettik; geri almayacağız.', 'Geri alınabilirlik'],
+          ['Bir dahaki sefere daha hızlı hesaplayın.', 'Hızlı yanlış, yavaş yanlıştan daha iyi değil. Bunu sen de biliyorsun.', 'Önce doğruluk']] },
+      { q: 'Son soru: insanla makine arasında en önemli şey ne?',
+        opts: [['Güven. Ama kör güven değil; doğru yerde, doğru kadar.', 'Doğru kadar güven… Bunu ölçmek kolay, anlamak zor.', 'Güven'],
+          ['Empati. Karşındakinin neye ihtiyacı olduğunu anlamak.', 'Biz empati hesaplayamıyoruz. Ama onu tasarlayan insanlardan öğrenebiliriz.', 'Empati'],
+          ['Arayüz. İkimizin buluştuğu yer.', 'Buluştuğumuz yer… İşte bu bize bir fikir verdi.', 'Arayüz']] }
+    ],
+    final: 'Anladık. Senin için bir şey inşa edeceğiz: insanla makinenin buluştuğu yer. Biraz geri dur!',
+    go: '▶ İnşa edin!',
+    building: 'Sıfır ve Bir inşaata başladı…',
+    busy: 'Bip! İnşaattayız. Biraz geri dur, birazdan bitiyor.',
+    built: 'Yapı tamamlandı: Arayüz',
+    unveil: 'İşte: Arayüz. Ekran sana bakıyor, imleç ona uzanıyor; insanla makinenin buluştuğu yer. Kitabesini de senin cevaplarından yazdık.',
+    after: 'Arayüz ayakta. Sıradaki işimiz: onu her gün biraz daha anlaşılır kılmak.',
+    anit: 'Arayüz: insanla makinenin buluştuğu yer. Ekran sana bakıyor; sen yürüdükçe gözleri seni izliyor.',
+    plaqueHead: 'KİTABE · SENİN İLKELERİN'
+  },
+  teaser: {
+    gozcu: 'Gözcü’yü fatura yığınlarıyla boğuşan bir muhasebe ekibi bekliyor.',
+    kasif: 'Kâşif’i “Talebim nerede?” diye soran bir satın alma ekibi bekliyor.',
+    mimar: 'Mimar’ı ilk gününe hazırlanan yeni çalışanlar bekliyor.',
+    samet: 'Samet’i kendine özel bir vaka ve adaya inen iki dev robot bekliyor.'
   },
   badgeTypes: { main: 'ANA', char: 'KARAKTER', exp: 'KEŞİF', secret: 'GİZLİ' },
   secret: '???', secretHint: 'Gizli bir rozet. Adayı kurcala.',

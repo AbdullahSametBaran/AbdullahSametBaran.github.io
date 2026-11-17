@@ -50,14 +50,15 @@
     <div class="row"><button class="btn" id="pcont" type="button" hidden></button><label id="pspeed" hidden><input type="checkbox" id="pspeedc"> ⏱ Speedrun (timer)</label><button class="linkish" id="pquick" type="button">Just start (Explorer)</button></div></div></div>
   <div class="modal" id="bm"><div class="card win"><button class="btn ghost x" type="button" data-close>✕</button><h2>Badge book</h2><p class="sub" id="bsub"></p><div class="bgrid" id="bgrid"></div></div></div>
   <div class="modal" id="labm"><div class="card win lab"><button class="btn ghost x" type="button" data-close>✕</button><h2>Secret lab</h2><p class="sub">ARCHIVE COMPLETE · WELCOME</p>
-    <h3>BEHIND THE SCENES</h3><p>The work scenarios in the game are illustrative; the “For real” card at the end of every job tells my actual work.</p>
+    <h3>BEHIND THE SCENES</h3><p>Four characters, four illustrative cases. The “For real” card at the end of every job tells my actual work.</p>
     <h3>WHAT’S NEXT</h3><p>When people and AI work together: bringing AI into processes with people at the centre. This is where I can use psychology and engineering together.</p>
     <h3>A BIT ABOUT ME · CLICK AN ITEM</h3><div class="items" id="items"></div><p class="item-say" id="itemsay"></p>
     <div class="wall">If you made it this far, you’re clearly a curious person too. I hope you had at least as much fun exploring as I had building it. :)</div></div></div>
   <div class="modal" id="fm"><div class="card win fin"><div class="sk" style="font-size:11px;opacity:.6">SAMET.EXE · 02 · SYSTEM</div><h2>SYSTEM ISLAND COMPLETE</h2><div class="stats" id="fstats"></div>
     <p>You made it visible. You understood it. You built it.<br>That’s what I do every day.</p>
-    <p id="fsamet" hidden style="margin-top:12px;font-size:17px">All three perspectives are mine: making things visible, understanding and building. Now you can play with all three at once: <b>Samet</b> is unlocked.</p>
+    <p id="fsamet" hidden style="margin-top:12px;font-size:17px">All three perspectives are mine: making things visible, understanding and building. Now you can play with all three at once: <b>Samet</b> is unlocked. A case of his own and two giant robots are waiting for him.</p>
     <div class="acts"><a class="btn" id="fli" href="#" target="_blank" rel="noopener">LinkedIn</a><a class="btn" id="fmail" href="#">Email</a><a class="btn ghost" href="../psikoloji/index.html" data-leave="#062a31">Go to psychology →</a></div>
+    <p class="sub" id="fnext" hidden style="margin:16px 0 0"></p>
     <div class="acts"><button class="btn ghost" id="fagain" type="button">Play with another character</button><button class="btn ghost" type="button" data-close>Stay on the island</button></div></div></div>
 </section>
 
@@ -88,24 +89,28 @@ window.T = {
   intro: { start: '▶ CLICK OR PRESS ANY KEY TO START', startTouch: '▶ TAP TO START' },
   pick: { cont: 'Continue', locked: 'Locked', lockHint: 'Finish the island with all three characters.' },
   chars: {
-    gozcu: { n: 'Scout', tag: 'What gets measured gets managed.', ab: 'Spots hidden data packets from afar.' },
-    kasif: { n: 'Explorer', tag: 'One more question.', ab: 'Asks an extra question in conversations; sees the secret shortcut.' },
-    mimar: { n: 'Architect', tag: 'If it isn’t built, it didn’t happen.', ab: 'Repairs the broken bridge; adds an extra link to the portal.' },
-    samet: { n: 'Samet', tag: 'All three in one.', ab: 'Every ability.' }
+    gozcu: { n: 'Scout', tag: 'What gets measured gets managed.', ab: 'Spots hidden data packets from afar; picks the right chart for every metric.', v: 'CASE · INVOICE ENTRY' },
+    kasif: { n: 'Explorer', tag: 'One more question.', ab: 'Asks an extra question and pins down vague answers; sees the secret shortcut.', v: 'CASE · PURCHASING' },
+    mimar: { n: 'Architect', tag: 'If it isn’t built, it didn’t happen.', ab: 'Repairs the broken bridge; adds an extra link and a notification to the portal chain.', v: 'CASE · ONBOARDING' },
+    samet: { n: 'Samet', tag: 'All three in one.', ab: 'Every ability, a case of his own and two giant robots landing on the island.', v: 'CASE · AI ASSISTANT' }
   },
   hint: { desk: 'Walk with WASD, get close and press E', touch: 'Tap somewhere to walk there; tap someone to talk' },
   quest: ['JOB 1/3 · Go to the control room', 'JOB 2/3 · Go to the process office', 'JOB 3/3 · Go to the portal tower', 'THE ISLAND IS LIVE · Keep exploring'],
-  stat: (p, b) => `${p}/5 data packets · ${b}/12 badges`,
-  places: { kontrol: 'Control room', ofis: 'Process office', kule: 'Portal tower', atolye: 'Robot workshop', sandik: 'Tool chest', kapi: 'Psychology gate', lab: 'Secret lab', kopru: 'Broken bridge' },
+  stat: (p, b, n) => `${p}/5 data packets · ${b}/${n} badges`,
+  places: { kontrol: 'Control room', ofis: 'Process office', kule: 'Portal tower', atolye: 'Robot workshop', sandik: 'Tool chest', kapi: 'Psychology gate', lab: 'Secret lab', kopru: 'Broken bridge', dev: 'Giant robots', anit: 'Interface' },
   hud: { next: 'Continue →', time: 'TIME' },
   noWay: 'There’s no way there from here.',
   real: 'FOR REAL', archive: 'ARCHIVE ENTRY',
-  who: { deniz: ['Deniz', 'TEAM LEAD · CONTROL ROOM'], ece: ['Ece', 'BUSINESS UNIT'], robot: ['Robot', 'RPA · RUNNING'], paket: ['Data packet', 'ARCHIVE'], atolye: ['Robot workshop', 'PLACE'], sandik: ['Tool chest', 'INVENTORY'], kapi: ['Psychology gate', 'NEXT LEVEL'], lab: ['Secret lab', 'LOCKED'], kopru: ['Broken bridge', 'PLACE'] },
+  who: { deniz: ['Deniz', 'TEAM LEAD · CONTROL ROOM'], ece: ['Ece', 'BUSINESS UNIT'], robot: ['Robot', 'RPA · RUNNING'], paket: ['Data packet', 'ARCHIVE'], atolye: ['Robot workshop', 'PLACE'], sandik: ['Tool chest', 'INVENTORY'], kapi: ['Psychology gate', 'NEXT LEVEL'], lab: ['Secret lab', 'LOCKED'], kopru: ['Broken bridge', 'PLACE'], dev: ['Zero and One', 'GIANT ROBOTS'], anit: ['Interface', 'MONUMENT'] },
   z1: {
     intro: 'The robots run day and night, but the client keeps asking: “What do they actually give us?” We have no single screen to show them. Will you build the dashboard? First, let’s decide what to measure.',
     task: 'PICK 4 METRICS FOR THE DASHBOARD',
     opts: [['Transaction count', true], ['Number of robots', false, 'How many robots there are says nothing about what they bring.'], ['Success rate', true], ['Lines of code written', false, 'More code doesn’t mean more value.'], ['Robot vs. manual time', true], ['Number of meetings', false, 'Meetings show the cost, not the value.'], ['Net time saved', true], ['Server room temperature', false, 'Important, but not this dashboard’s job.']],
     right: 'Yes, that should be measured.',
+    viewsSay: 'Metrics done. Now let’s show each one the right way; the wrong chart can hide even the right number.',
+    viewsTask: m => `HOW SHOULD “${m.toUpperCase()}” BE SHOWN?`,
+    viewOpts: ['Line over time', 'Percentage gauge', 'Side-by-side bars', 'One big number'],
+    views: [[0, 'Transactions change every day; what people want to know is how they change.'], [1, 'Success is a rate: out of 100 transactions, how many finished cleanly?'], [2, 'We are comparing two times: put the robot and the human side by side.'], [3, 'The one number the client will remember: total time saved.']],
     done: 'That’s it. Now the robots’ impact speaks in numbers.',
     real: 'At Kronovita I built the RPA performance dashboard from scratch: from the KPIs and the visual design to the data structure in Supabase. ~50 people use it today.',
     after: 'The dashboard is live. We walk into meetings with numbers now, not guesses.'
@@ -164,9 +169,167 @@ window.T = {
   packetToast: t => `Data packet found: ${t}`,
   badges: {
     pano: ['Dashboard Master', 'Finish the control room job.'], soru: ['Question Master', 'Find both the edge case and the shortcut.'], canli: ['Gone Live', 'Take the portal live.'],
-    keskin: ['Sharp Eye', 'As the Scout, finish without a single wrong KPI.'], kisayol: ['Shortcut', 'As the Explorer, take the secret shortcut.'], kopru: ['Bridge Builder', 'As the Architect, repair the bridge.'],
+    keskin: ['Sharp Eye', 'As the Scout, finish without a single wrong KPI.'], kisayol: ['Shortcut', 'As the Explorer, take the secret shortcut.'], kopru: ['Bridge Builder', 'As the Architect, repair the bridge.'], arayuz: ['Common Language', 'As Samet, talk to the giant robots and build the monument together.'],
     arsiv: ['Archivist', 'Collect all 5 data packets.'], sohbet: ['Chatterbox', 'Talk to everyone on the island.'],
     robot: ['Robot’s Secret', 'Talk to the robot 3 times.'], gece: ['Night Shift', 'Talk to the robot at night.'], uc: ['Far Corner', 'Reach the island’s far corner.'], hizli: ['Speedrun', 'Finish the main path in under 3 minutes.']
+  },
+  // each character plays its own case; only what differs from z1–z3 above is listed
+  cases: {
+    fatura: {},
+    satinalma: {
+      st: { shirt: '#4f8f3a', hair: '#1a1a1a' },
+      who: { ece: ['Burak', 'PURCHASING'] },
+      z1: {
+        intro: 'The purchasing robot handles requests every day, yet managers keep asking the same thing: “Where is my request?” Let’s build the dashboard. What should it show?',
+        opts: [['Average approval time', true], ['Team headcount', false, 'How many people there are says nothing about how the work flows.'], ['Open requests', true], ['Emails sent', false, 'More email isn’t more work done; most of it is “Where is my request?”'], ['Requests processed without errors', true], ['Robot uptime hours', false, 'Being on isn’t working; what matters is what it processed.'], ['Hours saved', true], ['Name of the priciest item', false, 'Interesting, but it helps nobody decide anything.']],
+        done: 'Now the answer to “Where is my request?” is on the dashboard.',
+        after: 'Managers check the dashboard instead of calling. The phones went quiet.'
+      },
+      z2: {
+        intro: 'Requests arrive by email and we type each one into the ERP by hand. Could a robot do that?',
+        task: n => `ASK BURAK ${n} QUESTIONS`,
+        qs: [['How many requests a month, and how long does one take?', 'About 600 a month. Roughly 10 minutes each.', 'value'], ['Does every request follow the same approval path?', 'Most do… but anything over 50,000 lira also goes to the finance director.', 'edge'], ['Shall we give the robot a name?', '…Sure. But maybe first we talk about what it will do?', null], ['What happens after the order is opened?', 'We email the supplier separately, typing the same details again.', 'short'], ['What’s the budget?', 'I thought we were talking about the process, not the budget.', null]],
+        extra: ['What do requesters complain about most? (Explorer)', 'Nobody knows where their request is. Everyone calls us.', 'hint'],
+        follow: { say: 'And then there are urgent requests… those sometimes go differently.', task: 'PIN DOWN THIS ANSWER',
+          opts: [['How often is “sometimes”? How many last month?', true, 'About 30 a month. We get approval by phone and enter them in the system afterwards.'], ['Fine, let’s talk about those later.', false, 'An exception left for later shows up in production.'], ['Shall we take urgent requests out of the robot’s scope?', false, 'If we drop them without understanding them, part of the work stays manual forever.']],
+          note: '“Urgent request: phone approval first, then the record” added to the process notes.' },
+        steps: ['Receive the request', 'Check the details', 'Pick the approval path', 'Open the order in the ERP', 'Email the supplier'],
+        edgeStep: 'Pick the approval path · over 50,000 lira → finance director',
+        shortNote: 'The email step is gone: the order goes from the ERP to the supplier on its own.',
+        done: 'So the whole thing came down to “who approves?”',
+        robots: 'The purchasing robot started working.',
+        after: 'The robot opens the orders. I only look at the exceptions now.'
+      },
+      z3: {
+        intro: 'So where will requesters enter a request? And where will they see its status?',
+        nodes: { is: 'Requester', portal: 'Request form', robot: 'Robot', sonuc: 'Status screen', bildirim: 'Notification' },
+        noDoor: 'Requests would scatter across inboxes again. The robot needs one way in.',
+        noScreen: 'A requester who can’t see the status picks up the phone again.',
+        wrong: 'Follow the request: who enters it, who processes it, where does the status show and who gets it back?',
+        done: 'I entered my request and it says “awaiting approval”. I didn’t call anyone!',
+        after: 'The phones went quiet. Honestly, I almost miss them.'
+      },
+      npc: {
+        muhasebe: ['Invoices now match their orders on their own.', 'The only thing that doesn’t match is our lunch breaks.'],
+        stajyer: ['Do you know what ERP stands for?', 'Enterprise Resource Planning. I learned it yesterday.'],
+        yazilim: ['You found the 50,000 lira rule in the first meeting?', 'We usually find those in production.']
+      }
+    },
+    isegiris: {
+      st: { shirt: '#e0b03a', hair: '#5a2e18' },
+      who: { ece: ['Selin', 'HUMAN RESOURCES'] },
+      z1: {
+        intro: 'HR’s onboarding robot is running, but the HR manager asks: “Does a new hire find everything ready on day one?” What goes on the dashboard?',
+        opts: [['New hires fully ready on day one', true], ['Welcome emails sent', false, 'An email going out doesn’t mean everything is ready.'], ['Time to set up accounts', true], ['CVs received', false, 'That belongs on the hiring dashboard. Here we measure onboarding.'], ['Steps completed without errors', true], ['Empty desks in the office', false, 'The desk may be ready; the real question is whether the account is.'], ['Hours HR saved', true], ['Branded mugs in stock', false, 'A nice touch, but not this dashboard’s job.']],
+        done: 'We no longer guess whether we are ready for day one; we see it.',
+        after: 'Everyone knows on Friday who starts on Monday.'
+      },
+      z2: {
+        intro: 'For every new hire I email five different teams: IT, payroll, security… Someone always gets forgotten.',
+        task: n => `ASK SELIN ${n} QUESTIONS`,
+        qs: [['How many people start each month, and how long does each take?', '15 to 20 a month. Each one takes me half a day.', 'value'], ['Are the steps the same for every role?', 'Mostly… but field staff get a tablet instead of a laptop, plus safety training.', 'edge'], ['What flavour should the welcome cake be?', 'Chocolate. But what does that have to do with the robot?', null], ['Where else do you enter this information?', 'I type the same details into the payroll system by hand.', 'short'], ['What if everyone started on the same day?', 'I wish. People join when they are needed, not when the calendar says.', null]],
+        extra: ['What breaks down most in this work? (Explorer)', 'I never know who has finished what, so I ask everyone one by one.', 'hint'],
+        steps: ['Get the new hire’s details', 'Open account and equipment requests', 'Assign training by role', 'Send the welcome email', 'Enter them in payroll'],
+        edgeStep: 'Assign training · field staff → tablet + safety training',
+        shortNote: 'The payroll step is gone: the details flow from the same record on their own.',
+        done: 'One record instead of five emails. Why didn’t we think of this before?',
+        robots: 'The onboarding robot started working.',
+        after: 'The robot runs the checklist. I finally have time to meet the new people.'
+      },
+      z3: {
+        intro: 'How will the teams tell me they are done? And where do I see the whole picture?',
+        nodes: { is: 'HR', portal: 'Onboarding portal', robot: 'Robot', sonuc: 'Readiness board', bildirim: '“All set” message' },
+        notify: '+ Add an “All set” message (Architect)',
+        extra: { label: 'Teams (IT, security)', need: 'The robot opened the requests, but the teams do the work. It has to reach them first.' },
+        noDoor: 'The details would scatter across inboxes again. The robot needs one way in.',
+        noScreen: 'If you can’t see who finished what, you will ask everyone one by one again.',
+        wrong: 'Follow the information: who enters it, who processes it, who prepares, where does the result show?',
+        done: 'All three people starting on Monday have everything ready. For the first time I know it in advance.',
+        after: 'The portal is live. New hires drink coffee on day one instead of waiting for passwords.'
+      },
+      npc: {
+        muhasebe: ['I don’t enter anyone into payroll by hand any more.', 'I learn new people’s names on day one, not on their first payday.'],
+        stajyer: ['I didn’t have a laptop on my first day.', 'The people after me will.'],
+        yazilim: ['A tablet exception for field staff?', 'Knowing that up front saves us two sprints.']
+      }
+    },
+    samet: {
+      st: { shirt: '#d4569b', hair: '#2a1d16' },
+      who: { ece: ['Defne', 'SUPPORT TEAM'] },
+      z1: {
+        intro: 'We set up an AI assistant for the support team. Technically it works well, but the team doesn’t trust it and customers say “I want to talk to a human” at the first chance. What should we measure to see the problem?',
+        opts: [['Conversations handed to a human', true], ['Model parameter count', false, 'A bigger model doesn’t mean a better experience.'], ['Suggestions accepted', true], ['Words the assistant writes', false, 'A longer answer isn’t a better answer; often the opposite.'], ['Resolved on first contact', true], ['Response time (ms)', false, 'A fast answer that doesn’t help reassures nobody.'], ['Satisfaction after the chat', true], ['Nicknames the team gave it', false, 'A fun number. It is also a hint: the team doesn’t trust it yet.']],
+        views: [[0, 'The real question: are hand-offs going down? For that you need to look over time.'], [1, 'This is a rate: out of 100 suggestions, how many did agents accept?'], [2, 'Put chats with and without the assistant side by side.'], [3, 'The one number everyone will remember: how happy is the customer?']],
+        done: 'Now we can see it: the assistant gives the right answers, but people don’t use it. The problem isn’t technical.',
+        after: 'The dashboard is up. The hand-off rate drops a little every week.'
+      },
+      z2: {
+        intro: 'The assistant gives correct answers, yet agents still check everything from scratch. I don’t understand why they don’t use it.',
+        task: n => `ASK DEFNE ${n} QUESTIONS`,
+        qs: [['How long does a chat take, with and without the assistant?', 'Eight minutes without it. It should be five with it, but everyone double-checks, so it takes nine.', 'value'], ['What does the assistant do when it isn’t sure?', 'It sounds just as certain when it isn’t sure. Once it gave the wrong refund information; nobody has trusted it since.', 'edge'], ['Shall we make the assistant a bit funnier?', 'Customers don’t laugh much before they get their refund.', null], ['What happens when a chat ends?', 'The agent types a summary into the CRM. The assistant already writes one, but nobody uses it.', 'short'], ['Shall we make agents use the assistant?', 'If we force them, they’ll use it but won’t trust it. That is exactly the problem.', null]],
+        extra: ['How do agents feel about the assistant?', 'Some are afraid it will take their jobs. They see it as a rival, not a helper.', 'hint'],
+        found: { edge: '🧠 TRUST ISSUE FOUND', short: '🔍 SHORTCUT FOUND' },
+        follow: { say: 'And some agents never even open the assistant…', task: 'PIN DOWN THIS ANSWER',
+          opts: [['Which ones? New starters or experienced agents?', true, 'The experienced ones. They say “I know this job better than the assistant.” They’re right, too; the assistant should learn from them.'], ['Let’s report the ones who don’t use it.', false, 'Report them and they’ll use it, but resist it quietly. First we need to understand why.'], ['Everyone gets used to it in time.', false, 'Sometimes they do, sometimes they never open it. We can’t know without asking why.']],
+          note: 'Noted: experienced agents’ corrections will feed back into the assistant.' },
+        steps: ['Receive the customer’s message', 'The assistant suggests a reply', 'The agent checks the reply', 'Send the reply to the customer', 'Type the chat summary into the CRM'],
+        edgeStep: 'The agent checks · the assistant says when it isn’t sure',
+        shortNote: 'The manual summary step is gone: the assistant’s summary lands in the CRM on its own.',
+        done: 'So the problem wasn’t what the assistant knew, but how sure it always sounded.',
+        robots: 'The assistant started working with its new settings.',
+        after: 'Agents now see the assistant as a helper, not a rival.'
+      },
+      z3: {
+        intro: 'So how do we bring the agent and the assistant onto one screen? And who has the final say?',
+        nodes: { is: 'Customer', portal: 'Support screen', robot: 'AI assistant', sonuc: 'Agent approval', bildirim: 'Confidence indicator' },
+        notify: '+ Add a confidence indicator',
+        extra: { label: 'Knowledge base', need: 'The assistant must ground its answer in a source; otherwise it is guessing again.' },
+        noDoor: 'The message should land on a shared screen first, so the assistant and the agent see the same thing.',
+        noScreen: 'If the assistant writes straight to the customer, nobody catches a mistake in time. A human belongs in between.',
+        wrong: 'Follow the message: who writes it, where does it show, who suggests, who decides?',
+        done: 'The assistant suggests, the agent decides. The customer is happy with both.',
+        after: 'When the assistant isn’t sure, it says “I’m not sure”. Strange, but that is exactly why we trust it.'
+      },
+      npc: {
+        muhasebe: ['The assistant once told me “I’m not sure”.', 'I’ve trusted it ever since. Just like people.'],
+        stajyer: ['Will the assistant take my job?', 'Defne says no; it will take my questions. What a relief.'],
+        yazilim: ['We didn’t change the model, we changed the interface.', 'Accuracy stayed the same, usage went up.']
+      }
+    }
+  },
+  // Samet's two giant robots: a talk about people and machines, then they build "Interface"
+  hci: {
+    arrive: 'Two giant robots just landed on the island. They want to talk to you.',
+    task: (i, n) => `TALK ${i}/${n} · PICK AN ANSWER`,
+    rounds: [
+      { q: 'Hello Samet. We are Zero and One. We came to build something on this island, but we don’t know what. So let us ask first: we compute very fast, yet people struggle to use us. Why?',
+        opts: [['People look for meaning, not speed. If they don’t understand what you do, they won’t trust you.', 'Meaning… a unit that is hard to compute. Noted.', 'Meaning'],
+          ['People can only hold a few things in mind at once. Too many options wear them out.', 'So showing less can sometimes help more. Interesting.', 'Simplicity'],
+          ['Maybe the problem is people?', 'Blaming the user is easy. But if everyone uses something wrong, the problem is usually the design.', 'Question the design first']] },
+      { q: 'And what should we do when we make a mistake?',
+        opts: [['Don’t hide it. If you’re not sure, say so and let the human decide.', 'Saying what you don’t know… that is a skill too.', 'Honesty'],
+          ['Make undo easy. People try things more freely when they know they can fix mistakes.', 'The undo button. Saved; we won’t undo that.', 'Undo'],
+          ['Next time, just compute faster.', 'Fast and wrong is no better than slow and wrong. You know that too.', 'Accuracy first']] },
+      { q: 'Last question: what matters most between a human and a machine?',
+        opts: [['Trust. Not blind trust; the right amount, in the right place.', 'The right amount of trust… easy to measure, hard to understand.', 'Trust'],
+          ['Empathy. Understanding what the other side needs.', 'We can’t compute empathy. But we can learn it from the people who design us.', 'Empathy'],
+          ['The interface. The place where we meet.', 'The place where we meet… that gives us an idea.', 'Interface']] }
+    ],
+    final: 'Got it. We will build something for you: the place where people and machines meet. Stand back a little!',
+    go: '▶ Build it!',
+    building: 'Zero and One started building…',
+    busy: 'Beep! We’re building. Stand back a little, almost done.',
+    built: 'Monument finished: Interface',
+    unveil: 'Here it is: Interface. The screen looks at you, the pointer reaches for it: the place where people and machines meet. We wrote its inscription from your answers.',
+    after: 'Interface stands. Our next job: making it a little easier to understand every day.',
+    anit: 'Interface: the place where people and machines meet. The screen looks at you; as you walk, its eyes follow you.',
+    plaqueHead: 'INSCRIPTION · YOUR PRINCIPLES'
+  },
+  teaser: {
+    gozcu: 'A finance team buried in invoices is waiting for the Scout.',
+    kasif: 'A purchasing team asking “Where is my request?” is waiting for the Explorer.',
+    mimar: 'New hires getting ready for day one are waiting for the Architect.',
+    samet: 'A case of his own and two giant robots are waiting for Samet.'
   },
   badgeTypes: { main: 'MAIN', char: 'CHARACTER', exp: 'EXPLORE', secret: 'SECRET' },
   secret: '???', secretHint: 'A secret badge. Poke around the island.',
