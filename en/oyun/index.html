@@ -6,8 +6,8 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Automation island · Samet Baran</title>
-<meta name="description" content="Automation island: explore business analysis, process discovery and RPA on foot. Every station on the island stands for real work.">
+<title>System Island · Samet Baran</title>
+<meta name="description" content="System Island: find the need, make it visible, build the solution. Three jobs, three characters, badges and a secret lab; every job ends with my real work.">
 <link rel="canonical" href="https://abdullahsametbaran.com/en/oyun/">
 <link rel="alternate" hreflang="tr" href="https://abdullahsametbaran.com/oyun/">
 <link rel="alternate" hreflang="en" href="https://abdullahsametbaran.com/en/oyun/">
@@ -17,389 +17,174 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="tr_TR">
 <meta property="og:url" content="https://abdullahsametbaran.com/en/oyun/">
-<meta property="og:title" content="Automation island · Samet Baran">
-<meta property="og:description" content="Automation island: explore business analysis, process discovery and RPA on foot. Every station on the island stands for real work.">
+<meta property="og:title" content="System Island · Samet Baran">
+<meta property="og:description" content="System Island: find the need, make it visible, build the solution. Three jobs, three characters, badges and a secret lab; every job ends with my real work.">
 <meta property="og:image" content="https://abdullahsametbaran.com/img/og-en.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Samet Baran · Psychologist and Software Engineer">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://abdullahsametbaran.com/img/og-en.jpg">
-<meta name="twitter:title" content="Automation island · Samet Baran">
-<meta name="twitter:description" content="Automation island: explore business analysis, process discovery and RPA on foot. Every station on the island stands for real work.">
+<meta name="twitter:title" content="System Island · Samet Baran">
+<meta name="twitter:description" content="System Island: find the need, make it visible, build the solution. Three jobs, three characters, badges and a secret lab; every job ends with my real work.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Silkscreen&family=Geist:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* night 60 · cream 30 · cyan + amber 10 (the pixel world carries its own colours) */
-:root{--night:#0b1430;--deep:#142454;--cream:#f1ead8;--ink:#0b1430;--cyan:#5eead4;--amber:#ffc65c;--leaf:#a8dc6c;--mute:rgba(241,234,216,.62)}
-*{box-sizing:border-box}html,body{margin:0}
-body{background:var(--night);color:var(--cream);font-family:Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-a,button{color:inherit;font:inherit}
-.px{font-family:"Pixelify Sans",monospace}
-.sk{font-family:Silkscreen,monospace;letter-spacing:.04em}
-/* the pixel frame: a stepped border like an old game window */
-.win{background:var(--cream);color:var(--ink);border:3px solid var(--ink);box-shadow:0 0 0 3px var(--cream),0 0 0 6px var(--ink),8px 8px 0 6px rgba(0,0,0,.35)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;background:var(--amber);color:var(--ink);border:3px solid var(--ink);font-family:"Pixelify Sans";font-size:16px;cursor:pointer;box-shadow:4px 4px 0 var(--ink);text-decoration:none;transition:transform .08s,box-shadow .08s}
-.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
-.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
-.btn.ghost{background:var(--cream)}
-
-.game{position:relative;height:100svh;min-height:560px;overflow:hidden;user-select:none}
-#world{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges;display:block;cursor:pointer;touch-action:none}
-.hud{position:absolute;z-index:5;pointer-events:none}
-.hud > *{pointer-events:auto}
-.tl{left:18px;top:16px;display:grid;gap:10px}
-.title{padding:10px 14px}
-.title b{display:block;font-family:"Pixelify Sans";font-size:22px;line-height:1}
-.title span{font-family:Silkscreen;font-size:11px}
-.quest{padding:10px 14px;font-family:Silkscreen;font-size:11px;line-height:1.9;min-width:230px}
-.quest .bar{height:10px;border:2px solid var(--ink);margin-top:4px;background:#fff}
-.quest .bar i{display:block;height:100%;background:var(--cyan);width:0;transition:width .4s steps(6)}
-.tr{right:18px;top:16px;display:flex;gap:10px}
-.list{right:18px;top:76px;width:230px;padding:10px;display:grid;gap:4px}
-.list .h{font-family:Silkscreen;font-size:11px;margin-bottom:4px}
-.list button{display:flex;justify-content:space-between;align-items:center;width:100%;padding:6px 8px;border:2px solid transparent;background:none;cursor:pointer;font-family:"Pixelify Sans";font-size:15px;text-align:left;color:var(--ink)}
-.list button:hover{border-color:var(--ink);background:#fff}
-.list button i{font-style:normal;font-family:Silkscreen;font-size:10px;opacity:0}
-.list button.done i{opacity:1;color:#1f8a5b}
-.keys{left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:16px;font-family:Silkscreen;font-size:11px;color:var(--cream);text-shadow:2px 2px 0 var(--ink)}
-.keys kbd{display:inline-block;padding:2px 6px;margin-right:4px;background:var(--cream);color:var(--ink);border:2px solid var(--ink);font-family:Silkscreen;font-size:10px}
-.tag{position:absolute;z-index:4;transform:translate(-50%,-100%);padding:4px 8px;font-family:"Pixelify Sans";font-size:14px;background:var(--ink);color:var(--cream);border:2px solid var(--cream);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .15s}
-.tag.on{opacity:1}
-.tag b{color:var(--amber);font-family:Silkscreen;font-size:10px;margin-left:6px}
-.dlg{position:absolute;z-index:8;left:50%;bottom:28px;transform:translateX(-50%);width:min(680px,calc(100% - 36px));padding:16px 18px 14px;display:none}
-.dlg.on{display:block}
-.dlg .who{display:flex;gap:12px;align-items:center;margin-bottom:8px}
-.dlg .who canvas{width:48px;height:48px;image-rendering:pixelated;border:2px solid var(--ink);background:#dfe6f5}
-.dlg .who b{font-family:"Pixelify Sans";font-size:22px}
-.dlg .who small{display:block;font-family:Silkscreen;font-size:10px;opacity:.6}
-.dlg p{margin:0;font-family:"Pixelify Sans";font-size:18px;line-height:1.45;min-height:52px}
-.dlg .extra{margin-top:10px}
-.dlg .row{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-family:Silkscreen;font-size:10px}
-.kpi{display:grid;gap:6px}
-.kpi div{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;font-family:Silkscreen;font-size:10px}
-.kpi i{display:block;height:12px;border:2px solid var(--ink);background:#fff}
-.kpi i b{display:block;height:100%;background:var(--cyan);width:0;transition:width .8s steps(8)}
-.inv{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.inv span{aspect-ratio:1;border:2px solid var(--ink);background:#fff;display:grid;place-items:center;position:relative}
-.inv img{width:60%;height:60%}
-.inv small{position:absolute;bottom:-2px;left:0;right:0;font-family:Silkscreen;font-size:8px;text-align:center}
-.intro{position:absolute;inset:0;z-index:10;display:grid;place-items:center;background:rgba(11,20,48,.55);cursor:pointer}
-.intro .card{text-align:center;padding:26px 30px 22px}
-.intro h1{margin:0;font-family:"Pixelify Sans";font-weight:700;font-size:clamp(40px,6vw,76px);line-height:.95;letter-spacing:.01em}
-.intro p{margin:12px 0 18px;font-family:"Pixelify Sans";font-size:19px}
-.intro .blink{font-family:Silkscreen;font-size:12px;animation:blink 1s steps(2) infinite}
-@keyframes blink{50%{opacity:0}}
-@media (prefers-reduced-motion:reduce){.intro .blink{animation:none}}
-.intro .skip{display:block;margin-top:14px;font-family:Silkscreen;font-size:11px;opacity:.7;text-decoration:underline}
-.toast{position:absolute;z-index:9;left:50%;top:18px;transform:translate(-50%,-260%);padding:10px 14px;font-family:"Pixelify Sans";font-size:17px;transition:transform .35s steps(5)}
-.toast.on{transform:translate(-50%,0)}
-
-/* reading part, with isometric stills */
-.read{padding:110px clamp(18px,4vw,60px) 80px;max-width:1240px;margin:0 auto}
-.read h2{margin:0 0 8px;font-family:"Pixelify Sans";font-weight:700;font-size:clamp(34px,4.4vw,60px);line-height:1}
-.read .lead{color:var(--mute);font-size:17px;line-height:1.6;max-width:640px;margin:0 0 46px}
-.lvl{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(20px,4vw,56px);align-items:center;margin:0 0 70px}
-.lvl:nth-child(even) .still{order:2}
-.still{position:relative;border:3px solid var(--cream);box-shadow:8px 8px 0 #050a1c;background:var(--deep)}
-.still canvas{display:block;width:100%;height:auto;image-rendering:pixelated}
-.still .sk{position:absolute;left:10px;top:8px;font-size:11px;color:var(--cream);text-shadow:2px 2px 0 var(--ink)}
-.lvl h3{margin:6px 0 10px;font-family:"Pixelify Sans";font-size:clamp(26px,2.6vw,38px);font-weight:500}
-.lvl p{margin:0;color:var(--mute);font-size:16.5px;line-height:1.65}
-.lvl .sk{color:var(--amber);font-size:11px}
-.xp{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:30px 0 80px}
-.xp .win{padding:18px}
-.xp b{font-family:"Pixelify Sans";font-size:24px;display:block}
-.xp .sk{font-size:10px;opacity:.6}
-.xp p{margin:8px 0 0;font-size:15px;line-height:1.55}
-.xp .lv{display:inline-block;margin-top:12px;padding:3px 8px;background:var(--ink);color:var(--cream);font-family:Silkscreen;font-size:10px}
-.slots{display:grid;grid-template-columns:repeat(9,1fr);gap:10px;margin:26px 0 80px}
-.slots span{aspect-ratio:1;background:var(--cream);border:3px solid var(--ink);box-shadow:0 0 0 3px var(--cream);display:grid;place-items:center;position:relative;transition:transform .1s steps(2)}
-.slots span:hover{transform:translateY(-4px)}
-.slots img{width:52%;height:52%}
-.slots small{position:absolute;bottom:-26px;left:-10px;right:-10px;text-align:center;font-family:Silkscreen;font-size:10px;color:var(--cream)}
-.next{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px}
-.next h3{margin:0;font-family:"Pixelify Sans";font-size:clamp(24px,2.6vw,34px)}
-.next .sk{font-size:11px;opacity:.6}
-body.embed .read,body.embed .hud.tr,body.embed .intro .skip{display:none}
-body.embed{overflow:hidden}
-@media (max-width:900px){.list,.keys,.title{display:none}.tl{top:62px;left:12px}.hud.tr{right:12px;top:12px;gap:6px}.hud.tr .btn{padding:6px 9px;font-size:14px;box-shadow:3px 3px 0 var(--ink)}.quest{min-width:0;padding:8px 10px}.toast{top:auto;bottom:18px;width:max-content;max-width:calc(100% - 36px);transform:translate(-50%,260%)}.toast.on{transform:translate(-50%,0)}.lvl{grid-template-columns:1fr}.lvl:nth-child(even) .still{order:0}.xp{grid-template-columns:1fr}.slots{grid-template-columns:repeat(5,1fr);row-gap:36px}.next{flex-direction:column;align-items:start}}
-</style>
+<link rel="stylesheet" href="../../lib/island.css">
 </head>
 <body>
 <section class="game" id="game">
-  <canvas id="world" aria-label="Isometric pixel island: stations that tell Samet’s technology work" role="img"></canvas>
+  <canvas id="world" aria-label="Isometric pixel island: System Island" role="img"></canvas>
   <div class="tag" id="tag"></div>
   <div class="hud tl">
-    <div class="title win"><b>AUTOMATION ISLAND</b><span>Technology · Samet Baran</span></div>
-    <div class="quest win" id="quest"><div>QUEST: VISIT THE STATIONS</div><div id="qv">0 / 7 stations · 0 / 3 disks</div><div class="bar"><i id="qb"></i></div></div>
+    <div class="title win"><b>SYSTEM ISLAND</b><span>Technology · Samet Baran · <span id="who"></span></span></div>
+    <div class="quest win"><div id="qh"></div><div id="qv"></div><div class="bar"><i id="qb"></i></div></div>
+    <div class="timer win" id="timer"></div>
   </div>
-  <div class="hud tr"><a class="btn ghost" href="../index.html" data-leave="#07080b">← Home</a><a class="btn" href="../psikoloji/index.html" data-leave="#062a31">Psychology →</a><a class="btn ghost" href="../../oyun/index.html" hreflang="tr" lang="tr" data-leave="#0b1430">TR</a></div>
-  <div class="hud list win" id="list"><div class="h">STATIONS · CLICK TO GO</div></div>
+  <div class="hud tr"><button class="btn ghost" id="bbtn" type="button">🏅 <span id="bcount">0/12</span></button><a class="btn ghost nav" href="../index.html" data-leave="#07080b">← Home</a><a class="btn nav psy" href="../psikoloji/index.html" data-leave="#062a31">Psychology →</a><a class="btn ghost nav" href="../../oyun/index.html" hreflang="tr" lang="tr" data-leave="#0b1430">TR</a></div>
+  <div class="hud list win" id="list"><div class="h">PLACES · CLICK TO GO</div></div>
   <div class="hud keys"><span><kbd>WASD</kbd>walk</span><span><kbd>E</kbd>talk</span><span><kbd>CLICK</kbd>go there</span><span><kbd>ESC</kbd>close</span></div>
-  <div class="dlg win" id="dlg" role="dialog" aria-live="polite"><div class="who"><canvas id="face" width="16" height="16"></canvas><div><b id="dn"></b><small id="dk"></small></div></div><p id="dt"></p><div class="extra" id="dx"></div><div class="row"><span>E / ESC · CLOSE</span><span id="dpage"></span></div></div>
-  <div class="toast win" id="toast"></div>
-  <div class="intro" id="intro"><div class="card win"><div class="sk" style="font-size:11px;opacity:.6">SAMET.EXE · 02 · TECHNOLOGY</div><h1>AUTOMATION<br>ISLAND</h1><p>Explore business analysis, process discovery and RPA on foot.</p><span class="blink" data-touch="▶ TAP TO START">▶ CLICK OR PRESS ANY KEY TO START</span><a class="skip" href="#oku" id="skipgame">Read without playing ↓</a></div></div>
+  <div class="dlg win" id="dlg" role="dialog" aria-live="polite"><div class="who"><canvas id="face" width="16" height="16"></canvas><div><b id="dn"></b><small id="dk"></small></div></div><p class="say" id="dt"></p><div class="extra" id="dx"></div><div class="row"><span>E / ESC · CLOSE</span><span id="dpage"></span></div></div>
+  <div class="toast win" id="toast" role="status"></div>
+  <div class="intro" id="intro"><div class="card win"><div class="sk" style="font-size:11px;opacity:.6">SAMET.EXE · 02 · SYSTEM</div><h1>SYSTEM<br>ISLAND</h1><p>Find the need, make it visible, build the solution.</p><span class="blink">▶ CLICK OR PRESS ANY KEY TO START</span><a class="skip" href="#oku" id="skipgame">Read without playing ↓</a></div></div>
+  <div class="pick" id="pick"><div class="card win"><h2>Who are you landing with?</h2><div class="chars" id="chars"></div>
+    <div class="row"><button class="btn" id="pcont" type="button" hidden></button><label id="pspeed" hidden><input type="checkbox" id="pspeedc"> ⏱ Speedrun (timer)</label><button class="linkish" id="pquick" type="button">Just start (Explorer)</button></div></div></div>
+  <div class="modal" id="bm"><div class="card win"><button class="btn ghost x" type="button" data-close>✕</button><h2>Badge book</h2><p class="sub" id="bsub"></p><div class="bgrid" id="bgrid"></div></div></div>
+  <div class="modal" id="labm"><div class="card win lab"><button class="btn ghost x" type="button" data-close>✕</button><h2>Secret lab</h2><p class="sub">ARCHIVE COMPLETE · WELCOME</p>
+    <h3>BEHIND THE SCENES</h3><p>The work scenarios in the game are illustrative; the “For real” card at the end of every job tells my actual work.</p>
+    <h3>WHAT’S NEXT</h3><p>When people and AI work together: bringing AI into processes with people at the centre. This is where I can use psychology and engineering together.</p>
+    <h3>A BIT ABOUT ME · CLICK AN ITEM</h3><div class="items" id="items"></div><p class="item-say" id="itemsay"></p>
+    <div class="wall">If you made it this far, you’re clearly a curious person too. I hope you had at least as much fun exploring as I had building it. :)</div></div></div>
+  <div class="modal" id="fm"><div class="card win fin"><div class="sk" style="font-size:11px;opacity:.6">SAMET.EXE · 02 · SYSTEM</div><h2>SYSTEM ISLAND COMPLETE</h2><div class="stats" id="fstats"></div>
+    <p>You made it visible. You understood it. You built it.<br>That’s what I do every day.</p>
+    <p id="fsamet" hidden style="margin-top:12px;font-size:17px">All three perspectives are mine: making things visible, understanding and building. Now you can play with all three at once: <b>Samet</b> is unlocked.</p>
+    <div class="acts"><a class="btn" id="fli" href="#" target="_blank" rel="noopener">LinkedIn</a><a class="btn" id="fmail" href="#">Email</a><a class="btn ghost" href="../psikoloji/index.html" data-leave="#062a31">Go to psychology →</a></div>
+    <div class="acts"><button class="btn ghost" id="fagain" type="button">Play with another character</button><button class="btn ghost" type="button" data-close>Stay on the island</button></div></div></div>
 </section>
 
 <section class="read" id="oku">
   <h2>Better questions.<br>Meaningful solutions.</h2>
-  <p class="lead">If you’d rather read than play: every station on the island stands for real work. Between business analysis, automation and software engineering, a view that puts people, needs and processes at the centre.</p>
+  <p class="lead">If you’d rather read than play: the three jobs on the island stand for my real work. Make it visible, understand, build.</p>
   <div class="lvls">
-    <div class="lvl"><div class="still"><canvas data-still="kontrol" width="320" height="180"></canvas><span class="sk">LEVEL 1</span></div><div><span class="sk">CONTROL ROOM · KRONOVITA</span><h3>RPA performance dashboard</h3><p>To make the value of the RPA service visible, I proposed KPIs covering transaction count, success rate, robot and manual times, and net time saved. Once the team and the client approved, I designed the dashboard: the first drafts in Figma, with Supabase as the database.</p></div></div>
-    <div class="lvl"><div class="still"><canvas data-still="pano" width="320" height="180"></canvas><span class="sk">LEVEL 2</span></div><div><span class="sk">PROCESS BOARD · PDD ARCHIVE</span><h3>Process discovery and business analysis</h3><p>I met with different business units to examine repetitive, rule-based processes. I weighed expected business value alongside automation potential to help set priorities, and analysed systems, data flows and decision points to write process design documents.</p></div></div>
-    <div class="lvl"><div class="still"><canvas data-still="atolye" width="320" height="180"></canvas><span class="sk">LEVEL 3</span></div><div><span class="sk">ROBOT WORKSHOP</span><h3>RPA development and testing</h3><p>After the process analysis, I worked on developing, testing and fixing the automations. I also worked on running the processes at scheduled times in the client environment.</p></div></div>
+    <div class="lvl"><div class="still"><canvas data-still="kontrol" width="320" height="180"></canvas><span class="sk">JOB 1</span></div><div><span class="sk">CONTROL ROOM · MAKE IT VISIBLE</span><h3>RPA performance dashboard</h3><p>There was no dashboard showing the value of the RPA service; the robots were running, but their impact was invisible.</p><p>I proposed the KPIs to track and got them approved: transaction count, success rate, robot vs. manual time, net time saved. I designed the visuals in Figma and built the Supabase store for the robot data.</p><p class="res">→ A dashboard built from scratch, used by ~50 people.</p></div></div>
+    <div class="lvl"><div class="still"><canvas data-still="ofis" width="320" height="180"></canvas><span class="sk">JOB 2</span></div><div><span class="sk">PROCESS OFFICE · UNDERSTAND</span><h3>Process discovery and automation</h3><p>For every client, we had to find which processes were worth automating.</p><p>In client sessions I analysed 20+ processes, identified the ones fit for automation, wrote the PDDs and organised the team’s work in Jira.</p><p class="res">→ 20+ robots in production; ~70% time saved against manual times.</p></div></div>
+    <div class="lvl"><div class="still"><canvas data-still="kule" width="320" height="180"></canvas><span class="sk">JOB 3</span></div><div><span class="sk">PORTAL TOWER · BUILD</span><h3>Portals and websites</h3><p>The data the robots needed was in the hands of the business unit.</p><p>I designed portals where the business unit enters the data, the robot runs on it in the background, and the results come back. I took 5–6 portals and sites from idea to production, including API integrations, servers and domains.</p><p class="res">→ The business unit works with the robot from a single screen: they enter the data and see the result in the same place.</p></div></div>
   </div>
   <h2>Character history</h2>
   <div class="xp">
-    <div class="win"><span class="sk">KRONOVITA</span><b>RPA and business analysis</b><p>Client meetings, process discovery, writing PDDs, automation development and reporting.</p><span class="lv">ROBOT WORKSHOP · CONTROL ROOM</span></div>
-    <div class="win"><span class="sk">TELEPERFORMANCE</span><b>Business analyst</b><p>Needs and solutions with operations; tracking scope changes, test feedback and go-live.</p><span class="lv">STAKEHOLDER DESK</span></div>
-    <div class="win"><span class="sk">PROJECT-BASED</span><b>Business analysis</b><p>Requirement prioritisation, acceptance criteria, data analysis and reporting.</p><span class="lv">PROCESS BOARD</span></div>
+    <div class="win"><span class="sk">KRONOVITA · NOV 2025 – PRESENT</span><b>Business analyst</b><p>RPA performance dashboard, process analysis and automation, end-to-end portal and web solutions.</p><span class="lv">WHERE ALL THREE JOBS COME FROM</span></div>
+    <div class="win"><span class="sk">FREELANCE · JAN 2024 – NOV 2025</span><b>Business analyst</b><p>Requirements analysis, reporting automation and Power BI dashboards for healthcare, e-commerce and call-centre projects.</p></div>
+    <div class="win"><span class="sk">TELEPERFORMANCE · MAR 2022 – SEP 2023</span><b>Business analyst</b><p>SDD-based process design with Google’s Strategy &amp; Operations team and stakeholders in the US, India and Greece.</p></div>
   </div>
   <h2>Inventory</h2>
   <div class="slots">
-    <span><img src="../../img/icons/figma.svg" alt=""><small>Figma</small></span><span><img src="../../img/icons/jira.svg" alt=""><small>Jira</small></span><span><img src="../../img/icons/confluence.svg" alt=""><small>Confluence</small></span><span><img src="../../img/icons/monday-icon.svg" alt=""><small>Monday</small></span><span><img src="../../img/icons/python.svg" alt=""><small>Python</small></span><span class="px" style="font-size:18px;color:#0b1430">SQL<small>SQL</small></span><span><img src="../../img/icons/microsoft-power-bi.svg" alt=""><small>Power BI</small></span><span><img src="../../img/icons/postman.svg" alt=""><small>Postman</small></span><span><img src="../../img/icons/supabase.svg" alt=""><small>Supabase</small></span>
+    <span><img src="../../img/icons/figma.svg" alt=""><small>Figma</small></span><span><img src="../../img/icons/jira.svg" alt=""><small>Jira</small></span><span><img src="../../img/icons/confluence.svg" alt=""><small>Confluence</small></span><span><img src="../../img/icons/monday-icon.svg" alt=""><small>Monday</small></span><span><img src="../../img/icons/python.svg" alt=""><small>Python</small></span><span>SQL<small>SQL</small></span><span>dbt<small>dbt</small></span><span><img src="../../img/icons/microsoft-power-bi.svg" alt=""><small>Power BI</small></span><span><img src="../../img/icons/postman.svg" alt=""><small>Postman</small></span><span><img src="../../img/icons/supabase.svg" alt=""><small>Supabase</small></span>
   </div>
-  <div class="next win"><div><span class="sk">NEXT LEVEL</span><h3>Human-centred technology and human-robot interaction</h3></div><a class="btn" href="../psikoloji/index.html" data-leave="#062a31">On to psychology →</a></div>
+  <div class="next win"><div><span class="sk">NEXT LEVEL</span><h3>When people and AI work together</h3></div><a class="btn" href="../psikoloji/index.html" data-leave="#062a31">Go to psychology →</a></div>
 </section>
 
+<script>
+window.T = {
+  root: '../../', psyHref: 'en/psikoloji/index.html', homeHref: 'en/index.html',
+  intro: { start: '▶ CLICK OR PRESS ANY KEY TO START', startTouch: '▶ TAP TO START' },
+  pick: { cont: 'Continue', locked: 'Locked', lockHint: 'Finish the island with all three characters.' },
+  chars: {
+    gozcu: { n: 'Scout', tag: 'What gets measured gets managed.', ab: 'Sees hidden data packets; wrong options fade in the KPI job.' },
+    kasif: { n: 'Explorer', tag: 'One more question.', ab: 'Asks an extra question in conversations; sees the secret shortcut.' },
+    mimar: { n: 'Architect', tag: 'If it isn’t built, it didn’t happen.', ab: 'Repairs the broken bridge; adds an extra link to the portal.' },
+    samet: { n: 'Samet', tag: 'All three in one.', ab: 'Every ability.' }
+  },
+  hint: { desk: 'Walk with WASD, get close and press E', touch: 'Tap somewhere to walk there; tap someone to talk' },
+  quest: ['JOB 1/3 · Go to the control room', 'JOB 2/3 · Go to the process office', 'JOB 3/3 · Go to the portal tower', 'THE ISLAND IS LIVE · Keep exploring'],
+  stat: (p, b) => `${p}/5 data packets · ${b}/12 badges`,
+  places: { kontrol: 'Control room', ofis: 'Process office', kule: 'Portal tower', atolye: 'Robot workshop', sandik: 'Tool chest', kapi: 'Psychology gate', lab: 'Secret lab', kopru: 'Broken bridge' },
+  hud: { next: 'Continue →', time: 'TIME' },
+  noWay: 'There’s no way there from here.',
+  real: 'FOR REAL', archive: 'ARCHIVE ENTRY',
+  who: { deniz: ['Deniz', 'TEAM LEAD · CONTROL ROOM'], ece: ['Ece', 'BUSINESS UNIT'], robot: ['Robot', 'RPA · RUNNING'], paket: ['Data packet', 'ARCHIVE'], atolye: ['Robot workshop', 'PLACE'], sandik: ['Tool chest', 'INVENTORY'], kapi: ['Psychology gate', 'NEXT LEVEL'], lab: ['Secret lab', 'LOCKED'], kopru: ['Broken bridge', 'PLACE'] },
+  z1: {
+    intro: 'The robots run day and night, but the client keeps asking: “What do they actually give us?” We have no single screen to show them. Will you build the dashboard? First, let’s decide what to measure.',
+    task: 'PICK 4 METRICS FOR THE DASHBOARD',
+    opts: [['Transaction count', true], ['Number of robots', false, 'How many robots there are says nothing about what they bring.'], ['Success rate', true], ['Lines of code written', false, 'More code doesn’t mean more value.'], ['Robot vs. manual time', true], ['Number of meetings', false, 'Meetings show the cost, not the value.'], ['Net time saved', true], ['Server room temperature', false, 'Important, but not this dashboard’s job.']],
+    right: 'Yes, that should be measured.',
+    done: 'That’s it. Now the robots’ impact speaks in numbers.',
+    real: 'At Kronovita I built the RPA performance dashboard from scratch: from the KPIs and the visual design to the data structure in Supabase. ~50 people use it today.',
+    after: 'The dashboard is live. We walk into meetings with numbers now, not guesses.'
+  },
+  z2: {
+    locked: 'Let’s finish the dashboard in the control room first. Deniz is waiting for you.',
+    intro: 'Every morning we type the incoming invoices into the system one by one. Couldn’t a robot do it?',
+    task: n => `ASK ECE ${n} QUESTIONS`,
+    qs: [['How many people do this, and how long does it take?', 'Three people, about two hours every day.', 'value'], ['Are the rules always the same, or are there exceptions?', 'Mostly the same… but invoices in a foreign currency need the manager’s extra approval.', 'edge'], ['What colour should the robot be?', '…How does that affect the process?', null], ['Where does this data go afterwards?', 'Accounting types the same data into an Excel sheet again.', 'short'], ['When will it be done?', 'You tell me!', null]],
+    extra: ['What makes this job hardest? (Explorer)', 'Invoices come in sometimes by email, sometimes on paper. It’s all scattered.', 'hint'],
+    found: { edge: '🔍 EDGE CASE FOUND', short: '🔍 SHORTCUT FOUND' },
+    retry: 'Hmm, I think we’re missing something. Shall we ask again?', retryBtn: 'Ask again',
+    toSteps: 'Map the process →', stepsTask: 'Now put the process steps in the right order.',
+    steps: ['Receive the invoice', 'Read the details', 'Check the rules', 'Enter it into the system', 'Update the accounting sheet'],
+    edgeStep: 'Check the rules · foreign currency → manager',
+    shortNote: 'The accounting sheet step is gone: the same data won’t be entered twice.',
+    wrongOrder: 'This step comes a little later.',
+    done: 'We’ve done it this way for years and nobody ever asked.',
+    robots: 'The robot workshop is up and running.',
+    real: 'In client sessions I analysed 20+ processes, identified the ones fit for automation and wrote their PDDs. 20+ robots are in production; ~70% time saved against manual times.',
+    after: 'The robot is running. I deal with exceptions now, not invoices.'
+  },
+  z3: {
+    locked: 'Let’s get the process clear and the robot ready first. I’ll be in the process office.',
+    intro: 'The robot is great. But how do we hand it the invoices? And where do we see the result?',
+    task: 'WIRE IT UP IN ORDER: FOLLOW THE DATA',
+    nodes: { is: 'Business unit', portal: 'Portal', robot: 'Robot', sonuc: 'Result screen', bildirim: 'Notification' },
+    noDoor: 'The robot has no door to take the input through. You need a portal first.',
+    noScreen: 'The result has to show up somewhere, or nobody will know.',
+    wrong: 'Follow the data: who hands it over, who processes it, where does the result show, and who gets it back?',
+    notify: '+ Add a notification (Architect)', deploy: '▶ Go live',
+    deploySteps: ['Preparing the server…', 'Connecting the domain…', 'Live!'],
+    done: 'I enter the invoice and see the result on the same screen. That’s it?',
+    real: 'I designed portals where the business unit enters the data, the robot works in the background and the result comes back. I took 5–6 portals and sites end to end, from idea to production.',
+    after: 'The portal is live. That’s why the tower light is on.'
+  },
+  atolye: ['The robots are waiting. The process has to be understood first; stop by the process office.', 'The robots are running. The conveyor never stops.'],
+  sandik: 'The tools I use: the kit I carry to understand the need and build the solution.',
+  kapi: { locked: 'The gate is closed. Finish the three jobs on the island first.', open: 'The gate is open. On the other side is psychology: understanding people.', go: 'Walk through: Psychology →', home: 'Home' },
+  lab: { locked: n => `The door is locked. It opens with 5 data packets (${n}/5).` },
+  kopru: { broken: 'The bridge is broken. Something is glowing on the islet across.', fix: 'Repair the bridge', mimarNo: 'An Architect would fix this in no time. The team will also repair it once the island goes live.', fixed: 'The bridge is solid.' },
+  npc: {
+    muhasebe: ['Accountant', ['I used to enter the same data twice.', 'Now I drink my coffee while it’s still hot.']],
+    stajyer: ['Intern', ['Do you know what PDD stands for?', 'I just learned it too: Process Design Document.']],
+    yazilim: ['Developer', ['An analyst who names the edge cases up front?', 'Legendary.']],
+    robot: ['Robot', ['Beep.', 'Beep beep.', 'Fine, I’ll tell you: there’s a data packet at the far tip of the east shore.']],
+    robotNight: 'Night shift. Robots don’t sleep.'
+  },
+  packets: [
+    ['2018', 'I started software engineering and psychology at the same time. A double major at Bahçeşehir University.'],
+    ['Teleperformance', 'I worked with Google’s Strategy & Operations team and stakeholders in the US, India and Greece.'],
+    ['Brain and Cognition Lab', 'I was an undergraduate research assistant in addiction and behaviour research.'],
+    ['2025', 'Business Analysis Specialist certificate from İTÜ & Mindset Institute.'],
+    ['KAÇUV', 'I volunteer at KAÇUV, a foundation for children with cancer.']
+  ],
+  packetToast: t => `Data packet found: ${t}`,
+  badges: {
+    pano: ['Dashboard Master', 'Finish the control room job.'], soru: ['Question Master', 'Find both the edge case and the shortcut.'], canli: ['Gone Live', 'Take the portal live.'],
+    keskin: ['Sharp Eye', 'As the Scout, finish without a single wrong KPI.'], kisayol: ['Shortcut', 'As the Explorer, take the secret shortcut.'], kopru: ['Bridge Builder', 'As the Architect, repair the bridge.'],
+    arsiv: ['Archivist', 'Collect all 5 data packets.'], sohbet: ['Chatterbox', 'Talk to everyone on the island.'],
+    robot: ['Robot’s Secret', 'Talk to the robot 3 times.'], gece: ['Night Shift', 'Talk to the robot at night.'], uc: ['Far Corner', 'Reach the island’s far corner.'], hizli: ['Speedrun', 'Finish the main path in under 3 minutes.']
+  },
+  badgeTypes: { main: 'MAIN', char: 'CHARACTER', exp: 'EXPLORE', secret: 'SECRET' },
+  secret: '???', secretHint: 'A secret badge. Poke around the island.',
+  badgeToast: n => `🏅 Badge earned: ${n}`,
+  unlock: { helper: 'You have a new friend. Beep!', lab: 'Archive complete. The secret lab’s door is open.', speed: 'Speedrun mode unlocked.', samet: 'New character unlocked: Samet', bridge: 'The team repaired the bridge. You can cross to the islet.', p5: 'Something new appeared behind the tower.' },
+  labUI: { items: [
+    ['🎬', 'Film shelf', 'I love watching films and series.'],
+    ['📚', 'Bookshelf', 'Reading is one of my favourite ways to escape.'],
+    ['👞', 'Tango shoes', 'I dance tango. It’s not about memorising steps; it’s about listening to your partner.'],
+    ['🎤', 'Microphone', 'I love going to stand-up shows. Humour matters to me.'],
+    ['🏋️', 'Dumbbell', 'Time at the gym clears my head.'],
+    ['🔍', 'Magnifying glass', 'My curiosity rarely runs out. I want to understand not only how something works but why it is the way it is. That’s where my interest in the human mind and technology comes from.'],
+    ['💡', 'Light bulb', 'I love analytical thinking, but I don’t try to explain life with logic alone. Humour, creativity and spontaneous experiences matter to me too.']
+  ] }
+};
+</script>
 <script src="../../lib/gsap.min.js"></script>
 <script src="../../lib/sub.js"></script>
-<script>
-sub.arrive();
-// reduced motion: the island stays a still picture until the visitor starts playing
-const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (new URLSearchParams(location.search).has("embed")) document.body.classList.add("embed");
-/* ---------------- pixel helpers ---------------- */
-const PAL = { sky: '#0b1430', sky2: '#142454', star: '#c9d6ff', g: '#5aa65a', gD: '#3f8a47', gL: '#7cc46f', dirt: '#7a4e2d', dirtD: '#5b3720', path: '#d8c49a', pathD: '#b9a476', wood: '#a8703f', woodD: '#7d5230', woodL: '#c48a52', metal: '#9aa7b8', metalD: '#6b7787', metalL: '#c3cdd9', white: '#eef1f5', whiteD: '#c9d0da', screen: '#0f1a33', cyan: '#5eead4', blue: '#3d7bff', amber: '#ffc65c', pink: '#ff8fa3', sky3: '#8fd3ff', leaf: '#a8dc6c', ink: '#0b1430', skin: '#e8b48a', hair: '#2a1d16', shirt: '#3d7bff', shirtD: '#2b5bd0', pants: '#1d2433', shoe: '#0b0f1a' };
-// a crisp scanline polygon fill: no anti-aliasing, so every edge stays a pixel edge
-function poly(c, pts, col) {
-  c.fillStyle = col; let a = Infinity, b = -Infinity; for (const p of pts) { a = Math.min(a, p[1]); b = Math.max(b, p[1]); }
-  for (let y = Math.floor(a); y < Math.ceil(b); y++) { const yc = y + .5, xs = [];
-    for (let i = 0; i < pts.length; i++) { const p = pts[i], q = pts[(i + 1) % pts.length]; if ((p[1] <= yc && q[1] > yc) || (q[1] <= yc && p[1] > yc)) xs.push(p[0] + (yc - p[1]) / (q[1] - p[1]) * (q[0] - p[0])); }
-    xs.sort((m, n) => m - n); for (let k = 0; k + 1 < xs.length; k += 2) { const x0 = Math.round(xs[k]), x1 = Math.round(xs[k + 1]); if (x1 > x0) c.fillRect(x0, y, x1 - x0, 1); } }
-}
-const P = (x, y, z = 0) => [(x - y) * 16, (x + y) * 8 - z];          // world (tiles) to screen (pixels)
-function box(c, x0, y0, x1, y1, h, top, left, right, z0 = 0) {     // an isometric prism; returns its face helpers
-  const T = (x, y) => P(x, y, z0 + h), G = (x, y) => P(x, y, z0);
-  poly(c, [T(x0, y1), T(x1, y1), G(x1, y1), G(x0, y1)], left);
-  poly(c, [T(x1, y1), T(x1, y0), G(x1, y0), G(x1, y1)], right);
-  poly(c, [T(x0, y0), T(x1, y0), T(x1, y1), T(x0, y1)], top);
-  return { L: (u, v) => P(x0 + (x1 - x0) * u, y1, z0 + h * v), R: (u, v) => P(x1, y1 - (y1 - y0) * u, z0 + h * v), Tp: (u, v) => P(x0 + (x1 - x0) * u, y0 + (y1 - y0) * v, z0 + h) };
-}
-const quad = (c, f, u0, v0, u1, v1, col) => poly(c, [f(u0, v1), f(u1, v1), f(u1, v0), f(u0, v0)], col);
-let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-function sprite(w, h, fn) { const cv = document.createElement('canvas'); cv.width = w; cv.height = h; fn(cv.getContext('2d')); return cv; }
-const GRASS = [0, 1, 2].map(k => sprite(32, 16, c => { poly(c, [[16, 0], [32, 8], [16, 16], [0, 8]], PAL.g);
-  for (let i = 0; i < 18; i++) { const y = 2 + Math.floor(rnd() * 12), half = (y < 8 ? y : 16 - y) * 2, x = 16 - half + Math.floor(rnd() * half * 2); c.fillStyle = rnd() < .5 ? PAL.gD : PAL.gL; c.fillRect(x, y, 1, 1); }
-}));
-const PATH = sprite(32, 16, c => { poly(c, [[16, 0], [32, 8], [16, 16], [0, 8]], PAL.path); c.fillStyle = PAL.pathD;
-  [[10, 6], [11, 6], [20, 9], [21, 9], [15, 11], [16, 3], [24, 7], [6, 8]].forEach(([x, y]) => c.fillRect(x, y, 1, 1)); });
-
-/* ---------------- the island ---------------- */
-const N = 18;
-const LAND = (x, y) => x >= 0 && y >= 0 && x < N && y < N && !(x + y < 3) && !(x + y > 31) && !(x - y > 14) && !(y - x > 14) && !((x === 0 || y === 0) && (x + y) % 5 === 2);
-const PATHS = new Set();
-const lineP = (x0, y0, x1, y1) => { for (let x = Math.min(x0, x1); x <= Math.max(x0, x1); x++) PATHS.add(x + ',' + y0); for (let y = Math.min(y0, y1); y <= Math.max(y0, y1); y++) PATHS.add(x1 + ',' + y); };
-lineP(4, 6, 13, 6); lineP(9, 6, 9, 13); lineP(4, 6, 4, 10); lineP(13, 6, 13, 9); lineP(2, 9, 4, 9); lineP(9, 9, 14, 9);
-const ST = [
-  { id: 'masa', n: 'Stakeholder desk', k: 'BUSINESS ANALYSIS · TELEPERFORMANCE', at: [4.5, 5.3], r: [3.2, 3.4, 5.8, 4.4], t: 'I always start by clarifying the need with people. At Teleperformance I assessed needs and proposed solutions with operations leads, and tracked scope changes, test feedback and the go-live process.' },
-  { id: 'pano', n: 'Process board', k: 'PROCESS DISCOVERY', at: [9.5, 4.4], r: [8, 2.6, 11, 3.1], t: 'I talk with different business units to find repetitive, rule-based processes, then weigh automation potential against expected business value to set priorities.' },
-  { id: 'arsiv', n: 'PDD archive', k: 'PROCESS DESIGN DOCUMENT', at: [13.2, 5.3], r: [14, 3.6, 14.6, 5.6], t: 'I analyse systems, data flows and decision points and turn them into process design documents (PDDs). This is where what the robot will do gets settled.' },
-  { id: 'atolye', n: 'Robot workshop', k: 'RPA DEVELOPMENT AND TESTING · KRONOVITA', at: [13.3, 9.9], r: [14, 9.3, 15.8, 10.4], t: 'After the analysis I build and test the automation and fix the bugs. I also worked on getting the robots to run at scheduled times in the client environment.' },
-  { id: 'kontrol', n: 'Control room', k: 'RPA PERFORMANCE DASHBOARD', at: [9.6, 12.6], r: [8, 13.3, 11.2, 14.7], t: 'I built the dashboard that makes the value of RPA visible: I proposed the KPIs, then, after team and client approval, designed the structure and set it up. Drafts in Figma, data in Supabase.', x: 'kpi' },
-  { id: 'sandik', n: 'Tool chest', k: 'INVENTORY', at: [4.5, 10.6], r: [3.2, 11.1, 4.1, 12], t: 'The tools I use: the kit I carry to understand a need and reach a workable solution.', x: 'inv' },
-  { id: 'kapi', n: 'Future gate', k: 'NEXT LEVEL', at: [2.6, 9.5], r: [1, 8.6, 1.6, 10.4], t: 'Human-robot interaction and human-centred technology: the field I want to go deeper into, thinking about psychology and engineering together. On the other side of the gate: psychology.', x: 'kapi' }
-];
-const BLOCK = new Set();
-ST.forEach(s => { for (let x = Math.floor(s.r[0]); x < Math.ceil(s.r[2]); x++) for (let y = Math.floor(s.r[1]); y < Math.ceil(s.r[3]); y++) BLOCK.add(x + ',' + y); });
-[[16, 12], [16, 13], [6, 15], [11, 11], [10, 11], [12, 11], [13, 11]].forEach(([x, y]) => BLOCK.add(x + ',' + y));   // server rack, lamp, conveyor
-const walk = (x, y) => LAND(Math.floor(x), Math.floor(y)) && !BLOCK.has(Math.floor(x) + ',' + Math.floor(y));
-const DISKS = [{ x: 7.5, y: 3.5, got: false }, { x: 15.5, y: 7.5, got: false }, { x: 6.5, y: 12.5, got: false }];
-const STARS = Array.from({ length: 90 }, () => [rnd(), rnd(), rnd()]);
-const me = { x: 9.5, y: 8.5, dir: 1, back: false, moving: false, path: null };
-const bots = [0, .5].map(o => ({ o }));
-const LOOP = [[5, 6], [12.5, 6], [12.5, 9], [9.5, 9], [9.5, 12.5], [5, 12.5]];
-function loopAt(u) { const seg = LOOP.map((p, i) => [p, LOOP[(i + 1) % LOOP.length]]); const lens = seg.map(([a, b]) => Math.hypot(b[0] - a[0], b[1] - a[1])), tot = lens.reduce((a, b) => a + b);
-  let d = (u % 1) * tot; for (let i = 0; i < seg.length; i++) { if (d <= lens[i]) { const [a, b] = seg[i], k = d / lens[i]; return [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k]; } d -= lens[i]; } return LOOP[0]; }
-
-/* ---------------- drawing the world ---------------- */
-function drawChar(c, x, y, back, flip, frame, col = PAL.shirt) {
-  const F = back ? ['...hhhh...', '..hhhhhh..', '..hhhhhh..', '..hhhhhh..', '..shhhhs..', '...ssss...', '..bbbbbb..', '.bbbbbbbb.', '.sbbbbbbs.', '.sbbbbbbs.', '..bbbbbb..', '..pppppp..']
-    : ['...hhhh...', '..hhhhhh..', '..hssssh..', '..sksksk..'.replace(/k/g, 'w'), '..ssssss..', '...ssss...', '..bbbbbb..', '.bbbbbbbb.', '.sbbbbbbs.', '.sbbbbbbs.', '..bbbbbb..', '..pppppp..'];
-  const legs = frame ? ['..pp..pp..', '.pp....pp.', '.kk....kk.'] : ['..pp..pp..', '..pp..pp..', '..kk..kk..'];
-  const rows = F.concat(legs), C = { h: PAL.hair, s: PAL.skin, w: PAL.ink, b: col, p: PAL.pants, k: PAL.shoe };
-  c.fillStyle = 'rgba(0,0,0,.28)'; c.fillRect(x - 5, y - 1, 10, 2); c.fillRect(x - 4, y, 8, 1);
-  rows.forEach((r, j) => [...r].forEach((ch, i) => { if (ch === '.') return; c.fillStyle = C[ch]; c.fillRect(x - 5 + (flip ? 9 - i : i), y - rows.length + j, 1, 1); }));
-}
-function drawBot(c, x, y, t) {
-  const b = Math.round(Math.sin(t * 6) * 1);
-  c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(x - 4, y - 1, 8, 2);
-  c.fillStyle = PAL.cyan; c.fillRect(x - 4, y - 10 + b, 8, 7); c.fillStyle = '#2bb39e'; c.fillRect(x - 4, y - 4 + b, 8, 1);
-  c.fillStyle = PAL.screen; c.fillRect(x - 3, y - 8 + b, 6, 3); c.fillStyle = PAL.cyan; c.fillRect(x - 2 + (Math.floor(t * 2) % 2) * 2, y - 7 + b, 2, 1);
-  c.fillStyle = PAL.metalL; c.fillRect(x, y - 12 + b, 1, 2); c.fillStyle = PAL.amber; c.fillRect(x, y - 13 + b, 1, 1);
-}
-function drawStation(c, s, t) {
-  if (s.id === 'masa') {
-    drawChar(c, ...P(4.4, 3.2), false, false, 0, '#c8664a');
-    const d = box(c, 3.3, 3.5, 5.7, 4.3, 9, PAL.woodL, PAL.woodD, PAL.wood);
-    poly(c, [d.Tp(.1, .2), d.Tp(.35, .2), d.Tp(.35, .7), d.Tp(.1, .7)], PAL.white);
-    poly(c, [d.Tp(.55, .3), d.Tp(.8, .3), d.Tp(.8, .8), d.Tp(.55, .8)], PAL.sky3);
-    box(c, 3.5, 4.5, 4.0, 4.9, 6, PAL.blue, PAL.shirtD, PAL.shirtD); box(c, 5.0, 4.5, 5.5, 4.9, 6, PAL.blue, PAL.shirtD, PAL.shirtD);
-  } else if (s.id === 'pano') {
-    box(c, 8.1, 2.9, 8.3, 3.1, 14, PAL.metal, PAL.metalD, PAL.metalD); box(c, 10.7, 2.9, 10.9, 3.1, 14, PAL.metal, PAL.metalD, PAL.metalD);
-    const b = box(c, 8, 2.7, 11, 2.95, 22, PAL.whiteD, PAL.white, PAL.whiteD, 8);
-    const notes = [[.08, .2, PAL.amber], [.24, .55, PAL.pink], [.42, .25, PAL.sky3], [.6, .6, PAL.amber], [.76, .3, PAL.leaf], [.3, .2, PAL.sky3]];
-    notes.forEach(([u, v, col], i) => quad(c, b.L, u, v, u + .11, v + .26 + (i % 2) * .04, col));
-    quad(c, b.L, .2, .44, .45, .47, PAL.ink);
-  } else if (s.id === 'arsiv') {
-    const sh = box(c, 14, 3.6, 14.6, 5.6, 26, PAL.woodL, PAL.wood, PAL.woodD);
-    const cols = [PAL.blue, PAL.amber, PAL.white, PAL.pink, PAL.cyan, PAL.leaf, PAL.blue, PAL.white];
-    for (let r = 0; r < 3; r++) for (let i = 0; i < 8; i++) quad(c, sh.L, .02 + i * .12, .08 + r * .31, .11 + i * .12, .3 + r * .31 - (i % 3) * .03, cols[(i + r * 3) % 8]);
-  } else if (s.id === 'atolye') {
-    const bn = box(c, 14, 9.3, 15.8, 10.4, 10, PAL.metalL, PAL.metal, PAL.metalD);
-    const base = bn.Tp(.3, .4), arm = Math.sin(t * 1.6) * 4;
-    c.fillStyle = PAL.amber; c.fillRect(base[0] - 2, base[1] - 3, 5, 3); c.fillRect(base[0], base[1] - 12, 2, 10);
-    c.fillRect(base[0], base[1] - 13, 9 + Math.round(arm), 2); c.fillStyle = PAL.ink; c.fillRect(base[0] + 8 + Math.round(arm), base[1] - 13, 2, 5);
-    const sp = bn.Tp(.75, .5); if (Math.floor(t * 6) % 3 === 0) { c.fillStyle = PAL.amber; c.fillRect(sp[0] - 1, sp[1] - 2, 1, 1); c.fillRect(sp[0] + 2, sp[1] - 3, 1, 1); }
-    drawBot(c, ...bn.Tp(.65, .5), t * .3);
-  } else if (s.id === 'kontrol') {
-    const dk = box(c, 8.4, 13.3, 10.8, 13.9, 8, PAL.metalL, PAL.metal, PAL.metalD);
-    const w = box(c, 8, 14.2, 11.2, 14.7, 24, PAL.metalD, PAL.screen, PAL.ink, 4);
-    for (let i = 0; i < 7; i++) { const hgt = .25 + .55 * (.5 + .5 * Math.sin(t * 2 + i * .9)); quad(c, w.L, .08 + i * .12, .15, .15 + i * .12, .15 + hgt * .7, i === 6 ? PAL.amber : (i % 2 ? PAL.cyan : PAL.blue)); }
-    quad(c, w.L, .05, .86, .95, .89, PAL.cyan);
-  } else if (s.id === 'sandik') {
-    const ch = box(c, 3.2, 11.1, 4.1, 12, 9, PAL.woodL, PAL.wood, PAL.woodD);
-    quad(c, ch.L, .4, .35, .6, .7, PAL.amber); quad(c, ch.L, 0, .55, 1, .65, PAL.woodD);
-  } else if (s.id === 'kapi') {
-    box(c, 1, 8.6, 1.5, 9.0, 30, PAL.metalL, PAL.metal, PAL.metalD); box(c, 1, 10.0, 1.5, 10.4, 30, PAL.metalL, PAL.metal, PAL.metalD);
-    box(c, 1, 8.6, 1.5, 10.4, 5, PAL.metalL, PAL.metal, PAL.metalD, 30);
-    const g = .55 + .45 * Math.sin(t * 3);
-    for (let k = 0; k < 3; k++) { const v = .15 + k * .25; c.globalAlpha = .4 + g * .5 - k * .1; poly(c, [P(1.25, 9.05, 4 + k * 8), P(1.25, 9.95, 4 + k * 8), P(1.25, 9.95, 10 + k * 8), P(1.25, 9.05, 10 + k * 8)], k % 2 ? PAL.leaf : '#7cc46f'); }
-    c.globalAlpha = 1;
-  }
-}
-function drawWorld(c, W, H, camX, camY, t, opts = {}) {
-  c.fillStyle = PAL.sky; c.fillRect(0, 0, W, H);
-  c.fillStyle = PAL.sky2; for (let y = Math.floor(H * .55); y < H; y += 2) c.fillRect(0, y, W, 1);
-  STARS.forEach(([a, b, k]) => { const tw = (Math.sin(t * 2 + k * 20) > .6); c.fillStyle = tw ? '#ffffff' : PAL.star; c.globalAlpha = .35 + k * .5; c.fillRect(Math.floor(a * W), Math.floor(b * H * .7), 1, 1); });
-  c.globalAlpha = 1;
-  c.save(); c.translate(Math.round(W / 2 - camX), Math.round(H / 2 - camY));
-  for (let s = 0; s < N * 2; s++) for (let x = 0; x <= s; x++) { const y = s - x; if (!LAND(x, y)) continue;
-    const [sx, sy] = P(x, y);
-    if (!LAND(x, y + 1)) { poly(c, [[sx - 16, sy + 8], [sx, sy + 16], [sx, sy + 30], [sx - 16, sy + 22]], PAL.dirt); c.fillStyle = PAL.dirtD; c.fillRect(sx - 9, sy + 20, 2, 1); c.fillRect(sx - 4, sy + 24, 2, 1); }
-    if (!LAND(x + 1, y)) { poly(c, [[sx, sy + 16], [sx + 16, sy + 8], [sx + 16, sy + 22], [sx, sy + 30]], PAL.dirtD); }
-    c.drawImage(PATHS.has(x + ',' + y) ? PATH : GRASS[(x * 7 + y * 13) % 3], sx - 16, sy);
-  }
-  // things, back to front
-  const items = [];
-  ST.forEach(s => items.push({ k: s.r[2] + s.r[3], f: () => drawStation(c, s, t) }));
-  items.push({ k: 16 + 12.5, f: () => { const r = box(c, 16, 12, 16.8, 13.8, 26, PAL.metalD, PAL.ink, '#1b2440'); for (let i = 0; i < 5; i++) { const blink = Math.floor(t * 4 + i * 1.7) % 3 === 0; quad(c, r.L, .2, .1 + i * .18, .3, .16 + i * .18, blink ? PAL.cyan : '#1f6b5f'); quad(c, r.L, .5, .1 + i * .18, .8, .14 + i * .18, '#2b3658'); } } });
-  items.push({ k: 6.5 + 15.5, f: () => { box(c, 6.4, 15.4, 6.6, 15.6, 22, PAL.metalD, PAL.ink, PAL.ink); const lp = P(6.5, 15.5, 24); c.fillStyle = PAL.amber; c.fillRect(lp[0] - 2, lp[1] - 2, 4, 3); c.globalAlpha = .18 + .06 * Math.sin(t * 3); c.beginPath(); c.arc(lp[0], lp[1], 10, 0, 7); c.fill(); c.globalAlpha = 1; } });
-  items.push({ k: 13.5 + 11.6, f: () => { const cv = box(c, 10, 11.2, 14, 11.8, 5, '#2b3658', PAL.ink, '#1b2440');
-    for (let i = 0; i < 8; i++) { const u = ((t * .12 + i / 8) % 1); quad(c, cv.Tp, u, .1, Math.min(1, u + .015), .9, '#3d4a73'); }
-    for (let k = 0; k < 3; k++) { const u = (t * .12 + k / 3) % 1; box(c, 10 + u * 3.7, 11.3, 10.3 + u * 3.7, 11.7, 3, PAL.white, PAL.whiteD, PAL.whiteD, 5); } } });
-  DISKS.forEach(d => { if (!d.got) items.push({ k: d.x + d.y, f: () => { const [x, y] = P(d.x, d.y, 6 + Math.round(Math.sin(t * 3 + d.x) * 2)); c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(x - 3, y + 5, 6, 2); c.fillStyle = PAL.blue; c.fillRect(x - 4, y - 4, 8, 8); c.fillStyle = PAL.white; c.fillRect(x - 2, y - 4, 4, 3); c.fillStyle = PAL.ink; c.fillRect(x - 2, y + 1, 4, 3); c.fillStyle = PAL.amber; if (Math.floor(t * 3) % 2) c.fillRect(x + 4, y - 6, 1, 1); } }); });
-  bots.forEach(b => { const [x, y] = loopAt(t * .025 + b.o); items.push({ k: x + y, f: () => drawBot(c, ...P(x, y), t + b.o * 10) }); });
-  if (opts.player !== false) items.push({ k: me.x + me.y, f: () => drawChar(c, ...P(me.x, me.y), me.back, me.dir < 0, me.moving ? Math.floor(t * 8) % 2 : 0) });
-  items.sort((a, b) => a.k - b.k).forEach(i => i.f());
-  c.restore();
-}
-
-/* ---------------- the game loop ---------------- */
-const cv = document.getElementById('world'), cx = cv.getContext('2d');
-let S = 3, IW = 480, IH = 300;
-function size() { S = Math.max(2, Math.round(Math.min(innerWidth / 500, innerHeight / 310))); IW = Math.ceil(cv.clientWidth / S); IH = Math.ceil(cv.clientHeight / S); cv.width = IW; cv.height = IH; cx.imageSmoothingEnabled = false; }
-size(); addEventListener('resize', size);
-const cam = { x: P(me.x, me.y)[0], y: P(me.x, me.y)[1] - 10 };
-const keys = new Set(); let started = false, dialog = null, near = null;
-const visited = new Set();
-addEventListener('keydown', e => {
-  if (!started) { start(); return; }
-  const k = e.key.toLowerCase();
-  if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(k)) { keys.add(k); me.path = null; if (inView()) e.preventDefault(); }
-  if ((k === 'e' || k === 'enter' || k === ' ') && inView()) { e.preventDefault(); dialog ? close() : near && open(near); }
-  if (k === 'escape') close();
-});
-addEventListener('keyup', e => keys.delete(e.key.toLowerCase()));
-const inView = () => scrollY < innerHeight * .6;
-function tick(now) {
-  const t = now / 1000, dt = Math.min(.05, (now - (tick.l || now)) / 1000); tick.l = now;
-  if (started && !dialog) {
-    let vx = 0, vy = 0;
-    if (keys.has('w') || keys.has('arrowup')) { vx -= 1; vy -= 1; } if (keys.has('s') || keys.has('arrowdown')) { vx += 1; vy += 1; }
-    if (keys.has('a') || keys.has('arrowleft')) { vx -= 1; vy += 1; } if (keys.has('d') || keys.has('arrowright')) { vx += 1; vy -= 1; }
-    if (!vx && !vy && me.path && me.path.length) { const [tx, ty] = me.path[0], dx = tx - me.x, dy = ty - me.y, d = Math.hypot(dx, dy); if (d < .12) { me.path.shift(); if (!me.path.length && me.goal) { const g = me.goal; me.goal = null; open(g); } } else { vx = dx / d; vy = dy / d; } }
-    const L = Math.hypot(vx, vy); me.moving = L > 0;
-    if (L) { vx /= L; vy /= L; const sp = 3.4 * dt, nx = me.x + vx * sp, ny = me.y + vy * sp;
-      if (walk(nx, me.y) && walk(nx + Math.sign(vx) * .2, me.y)) me.x = nx; if (walk(me.x, ny) && walk(me.x, ny + Math.sign(vy) * .2)) me.y = ny;
-      const sxv = vx - vy, syv = vx + vy; if (Math.abs(sxv) > .1) me.dir = sxv > 0 ? 1 : -1; me.back = syv < -.1; }
-    DISKS.forEach(d => { if (!d.got && Math.hypot(d.x - me.x, d.y - me.y) < .7) { d.got = true; progress(); toast(['Disk found: RPA performance dashboard', 'Disk found: process discovery and PDD', 'Disk found: RPA development and testing'][DISKS.indexOf(d)]); } });
-  }
-  near = null; let best = 1.7; ST.forEach(s => { const d = Math.hypot(s.at[0] - me.x, s.at[1] - me.y); if (d < best) { best = d; near = s; } });
-  const [px, py] = P(me.x, me.y); cam.x += (px - cam.x) * .08; cam.y += (py - 14 - cam.y) * .08;
-  if (!RM || started || !tick.drawn) { drawWorld(cx, IW, IH, cam.x, cam.y, t); tick.drawn = true; }
-  const tag = document.getElementById('tag');
-  if (near && started && !dialog) { const [sx, sy] = P(near.at[0], near.at[1], 34); tag.innerHTML = `${near.n}<b>[E]</b>`; tag.style.left = (sx + IW / 2 - cam.x) * S + 'px'; tag.style.top = (sy + IH / 2 - cam.y) * S + 'px'; tag.classList.add('on'); }
-  else tag.classList.remove('on');
-  requestAnimationFrame(tick);
-}
-requestAnimationFrame(tick);
-
-/* click or tap a tile: walk there along the paths (breadth-first over the grid); a station walks to its spot */
-function toWorld(e) { const r = cv.getBoundingClientRect(), ix = (e.clientX - r.left) / S - IW / 2 + cam.x, iy = (e.clientY - r.top) / S - IH / 2 + cam.y; return [(ix / 16 + iy / 8) / 2, (iy / 8 - ix / 16) / 2]; }
-function route(tx, ty) {
-  const sx = Math.floor(me.x), sy = Math.floor(me.y), gx = Math.floor(tx), gy = Math.floor(ty), Q = [[sx, sy]], prev = { [sx + ',' + sy]: null };
-  while (Q.length) { const [x, y] = Q.shift(); if (x === gx && y === gy) break; for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const nx = x + dx, ny = y + dy, k = nx + ',' + ny; if (k in prev || !walk(nx + .5, ny + .5)) continue; prev[k] = [x, y]; Q.push([nx, ny]); } }
-  if (!((gx + ',' + gy) in prev)) return null; const out = []; let c = [gx, gy]; while (c) { out.unshift([c[0] + .5, c[1] + .5]); c = prev[c[0] + ',' + c[1]]; } out.shift(); if (out.length) out[out.length - 1] = [tx, ty]; return out;
-}
-function goTo(s) { const p = route(s.at[0], s.at[1]); if (p) { me.path = p; me.goal = s; if (!p.length) open(s); } }
-cv.addEventListener('click', e => { if (!started) return; if (dialog) { close(); return; } const [wx, wy] = toWorld(e);
-  const hit = ST.find(s => wx >= s.r[0] - .5 && wx <= s.r[2] + .5 && wy >= s.r[1] - .5 && wy <= s.r[3] + .5); if (hit) { goTo(hit); return; }
-  if (walk(wx, wy)) { me.path = route(wx, wy); me.goal = null; } });
-
-/* dialogs: the speaker's portrait, a typed line, and what the station holds */
-const face = document.getElementById('face').getContext('2d');
-let typer = null;
-function open(s) {
-  dialog = s; visited.add(s.id); progress(); keys.clear();
-  const D = document.getElementById('dlg'); D.classList.add('on');
-  document.getElementById('dn').textContent = s.n; document.getElementById('dk').textContent = s.k;
-  face.clearRect(0, 0, 16, 16); face.fillStyle = '#dfe6f5'; face.fillRect(0, 0, 16, 16); drawChar(face, 8, 17, false, false, 0);
-  const T = document.getElementById('dt'); T.textContent = ''; clearInterval(typer); let i = 0;
-  typer = setInterval(() => { T.textContent = s.t.slice(0, ++i); if (i >= s.t.length) clearInterval(typer); }, 14);
-  const X = document.getElementById('dx'); X.innerHTML = '';
-  if (s.x === 'kpi') { X.innerHTML = '<div class="kpi"><div>TRANSACTIONS<i><b data-w="82"></b></i></div><div>SUCCESS RATE<i><b data-w="94"></b></i></div><div>ROBOT / MANUAL TIME<i><b data-w="40"></b></i></div><div>NET TIME SAVED<i><b data-w="62"></b></i></div></div>'; setTimeout(() => X.querySelectorAll('b[data-w]').forEach(b => b.style.width = b.dataset.w + '%'), 60); }
-  if (s.x === 'inv') X.innerHTML = '<div class="inv">' + [['figma', 'Figma'], ['jira', 'Jira'], ['confluence', 'Confluence'], ['monday-icon', 'Monday'], ['python', 'Python'], ['microsoft-power-bi', 'Power BI'], ['postman', 'Postman'], ['supabase', 'Supabase']].map(([f, n]) => `<span><img src="../../img/icons/${f}.svg" alt=""><small>${n}</small></span>`).join('') + '<span class="px" style="font-size:14px">SQL<small>SQL</small></span></div>';
-  if (s.x === 'kapi') X.innerHTML = '<div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="../psikoloji/index.html" data-leave="#062a31">Through the gate: Psychology →</a><a class="btn ghost" href="../index.html" data-leave="#07080b">Home</a></div>';
-  document.getElementById('dpage').textContent = `${visited.size} / 7`;
-}
-function close() { if (!dialog) return; dialog = null; clearInterval(typer); document.getElementById('dlg').classList.remove('on'); }
-function progress() {
-  const got = DISKS.filter(d => d.got).length; document.getElementById('qv').textContent = `${visited.size} / 7 stations · ${got} / 3 disks`;
-  document.getElementById('qb').style.width = ((visited.size + got) / 10 * 100) + '%';
-  document.querySelectorAll('#list button').forEach(b => b.classList.toggle('done', visited.has(b.dataset.id)));
-  if (visited.size === 7 && got === 3 && !progress.done) { progress.done = true; setTimeout(() => toast('Island complete! Next level: Psychology'), 600); }
-}
-const list = document.getElementById('list');
-ST.forEach(s => { const b = document.createElement('button'); b.dataset.id = s.id; b.innerHTML = `${s.n}<i>✓</i>`; b.addEventListener('click', () => { if (!started) start(); close(); goTo(s); }); list.appendChild(b); });
-function toast(msg) { const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('on'), 2600); }
-function start() { if (started) return; started = true; gsap.to('#intro', { opacity: 0, duration: .35, ease: 'steps(4)', onComplete: () => document.getElementById('intro').remove() }); setTimeout(() => toast(matchMedia('(hover: none)').matches ? 'Tap anywhere to walk there; tap a station to talk' : 'Walk with WASD, go up to a station and press E'), 500); }
-document.getElementById('intro').addEventListener('click', e => { if (e.target.closest('#skipgame')) return; start(); });
-document.getElementById('skipgame').addEventListener('click', e => { e.preventDefault(); document.getElementById('oku').scrollIntoView({ behavior: 'smooth' }); });
-
-/* the isometric stills in the reading part: the same world, held still, framed on one station */
-const FOCUS = { kontrol: [9.8, 13.4], pano: [9.6, 3.4], atolye: [14.6, 10] };
-document.querySelectorAll('canvas[data-still]').forEach(c => { const g = c.getContext('2d'); g.imageSmoothingEnabled = false; const [fx, fy] = FOCUS[c.dataset.still], [sx, sy] = P(fx, fy);
-  const draw = t => drawWorld(g, c.width, c.height, sx, sy - 12, t, { player: false });
-  draw(1.3);
-  // each still breathes a little when the pointer is on it
-  let on = false; c.addEventListener('pointerenter', () => { if (RM) return; on = true; (function loop(n) { if (!on) return; draw(n / 1000); requestAnimationFrame(loop); })(performance.now()); });
-  c.addEventListener('pointerleave', () => on = false); });
-// review hook: ?play=x,y starts the game with the player at a tile; ?open=id opens that station
-const q = new URLSearchParams(location.search);
-if (q.has('play')) { const [a, b] = q.get('play').split(',').map(Number); me.x = a; me.y = b; const [px, py] = P(a, b); cam.x = px; cam.y = py - 14; start(); document.getElementById('toast').classList.remove('on'); }
-if (q.has('open')) setTimeout(() => open(ST.find(s => s.id === q.get('open'))), 300);
-</script>
+<script src="../../lib/island.js"></script>
 </body>
 </html>
