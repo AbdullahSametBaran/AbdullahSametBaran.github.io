@@ -306,7 +306,7 @@ else (async function () {
     for (const p of placed) drawStone(c, p);
     gl.activeTexture(gl.TEXTURE2); gl.bindTexture(gl.TEXTURE_2D, tS); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, sc); gl.activeTexture(gl.TEXTURE1);
   }
-  function size() { const d = Math.min(devicePixelRatio || 1, 1.5); W = lake.clientWidth; H = lake.clientHeight; cv.width = W * d; cv.height = H * d; gl.viewport(0, 0, cv.width, cv.height);
+  function size() { const d = Math.min(devicePixelRatio || 1, 1.5); W = lake.clientWidth || innerWidth || 1; H = lake.clientHeight || innerHeight || 1; cv.width = W * d; cv.height = H * d; gl.viewport(0, 0, cv.width, cv.height);
     GH = Math.round(GW * H / W); cur = new Float32Array(GW * GH); prev = new Float32Array(GW * GH); buf = new Uint8Array(GW * GH * 4);
     gl.uniform2f(U('tx'), 1 / GW, 1 / GH); gl.uniform1f(U('asp'), W / H); drawText(); }
   size(); addEventListener('resize', size);
