@@ -130,11 +130,11 @@ td small{display:block;color:var(--mute);font-size:13px;margin-top:3px}
 @media (max-width:960px){.hero,.log,.way{grid-template-columns:1fr}.radar{width:86vw}.wp{position:relative;left:auto!important;top:auto!important;transform:none;margin-bottom:20px}.plot{height:auto;border:0}.plot svg{display:none}.end{flex-direction:column;align-items:start}}
 /* only the switch itself shows: the toggle draws a scene around its pill, the crop keeps just the pill */
 .side-switch{display:grid;justify-items:center;gap:12px;flex:none}
-.sw-hint{color:var(--mute);font-size:11px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.sw-hint{color:var(--mute);font-size:13px;letter-spacing:.1em;line-height:1.5;text-align:center;text-transform:uppercase}
 .tg-crop{--k:.85;position:relative;display:block;width:calc(206px*var(--k));height:calc(100px*var(--k));border-radius:999px;overflow:hidden;box-shadow:0 11px 28px rgba(0,0,0,.35)}
 .tg-crop:focus-within{outline:2px solid currentColor;outline-offset:4px}
 .tg-crop > *{outline:none;cursor:pointer;position:absolute;left:calc(-22px*var(--k));top:calc(-27px*var(--k));width:calc(250px*var(--k));height:calc(153px*var(--k))}
-@media (max-width:600px){.tg-crop{--k:.75}.sw-hint{font-size:10px;letter-spacing:.03em}}
+@media (max-width:600px){.tg-crop{--k:.75}.sw-hint{font-size:12px;letter-spacing:.08em}}
 </style>
 </head>
 <body>
@@ -186,7 +186,7 @@ td small{display:block;color:var(--mute);font-size:13px;margin-top:3px}
         <tr><td class="id">LOG-01</td><td>Teleperformance<small>Mar 2022 – Sep 2023</small></td><td>Business Analyst<small>SDD-based process design with Google’s Strategy &amp; Operations team and stakeholders in the US, India and Greece.</small></td></tr></table></div>
     <div class="arcade"><div class="mono">Hidden island found</div><div class="scr" data-arcade role="button" tabindex="0" aria-label="Open the System Island game"><img src="../../img/oyun-onizleme-en.jpg" alt=""><iframe src="../oyun/index.html?preview=1" title="" aria-hidden="true" tabindex="-1" loading="lazy"></iframe><span class="b px">▶ Enter the game</span></div><p>System Island: explore my work by playing.</p></div>
   </section>
-  <section class="end"><h2>Next scan: when people and AI work <em>together</em>.</h2><div class="side-switch" data-switch data-href="../psikoloji/index.html" data-fade="#062a31"><span class="tg-crop"><tg-arcreactor role="switch" aria-label="Switch to psychology" fill="0.9"></tg-arcreactor></span><span class="sw-hint mono" aria-hidden="true">↑ Switch to psychology</span></div></section>
+  <section class="end"><h2>Next scan: when people and AI work <em>together</em>.</h2><div class="side-switch" data-switch data-href="../psikoloji/index.html" data-fade="#062a31"><span class="tg-crop"><tg-arcreactor role="switch" aria-label="Switch to psychology" fill="0.9"></tg-arcreactor></span><span class="sw-hint mono" aria-hidden="true">↑ Switch to<br>psychology</span></div></section>
 </main>
 <script src="../../lib/gsap.min.js"></script>
 <script src="../../lib/ScrollTrigger.min.js"></script>
