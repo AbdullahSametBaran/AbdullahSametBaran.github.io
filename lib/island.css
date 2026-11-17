@@ -181,6 +181,10 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--cyan);outline-offse
 .next .sk{font-size:11px;opacity:.6}
 body.embed .read,body.embed .hud.tr .nav,body.embed .intro .skip{display:none}
 body.embed{overflow:hidden}
+body.preview{overflow:hidden}
+body.preview .hud,body.preview .intro,body.preview .pick,body.preview .tag,body.preview .toast,body.preview .dlg,body.preview .read,body.preview .modal{display:none!important}
+body.preview .game{min-height:0}
+body.preview #world{cursor:inherit}
 /* in the window opened from the technology page, the exit button sits at the bottom centre: keep the hints and dialogs above it */
 body.embed .keys{bottom:74px}
 body.embed .dlg{bottom:78px;max-height:calc(100svh - 170px)}
