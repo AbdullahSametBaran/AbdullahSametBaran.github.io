@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Technology · Samet Baran</title>
-<meta name="description" content="Business analysis, process discovery and RPA: process discovery and business analysis, RPA development and testing, and an RPA performance dashboard. Better questions, meaningful solutions.">
+<meta name="description" content="Business analysis, automation and end-to-end solutions: an RPA performance dashboard, 20+ processes analysed and automated, portals where the business unit works with the robots. Better questions, meaningful solutions.">
 <link rel="canonical" href="https://abdullahsametbaran.com/en/teknoloji/">
 <link rel="alternate" hreflang="tr" href="https://abdullahsametbaran.com/teknoloji/">
 <link rel="alternate" hreflang="en" href="https://abdullahsametbaran.com/en/teknoloji/">
@@ -18,7 +18,7 @@
 <meta property="og:locale:alternate" content="tr_TR">
 <meta property="og:url" content="https://abdullahsametbaran.com/en/teknoloji/">
 <meta property="og:title" content="Technology · Samet Baran">
-<meta property="og:description" content="Business analysis, process discovery and RPA: process discovery and business analysis, RPA development and testing, and an RPA performance dashboard. Better questions, meaningful solutions.">
+<meta property="og:description" content="Business analysis, automation and end-to-end solutions: an RPA performance dashboard, 20+ processes analysed and automated, portals where the business unit works with the robots. Better questions, meaningful solutions.">
 <meta property="og:image" content="https://abdullahsametbaran.com/img/og-en.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://abdullahsametbaran.com/img/og-en.jpg">
 <meta name="twitter:title" content="Technology · Samet Baran">
-<meta name="twitter:description" content="Business analysis, process discovery and RPA: process discovery and business analysis, RPA development and testing, and an RPA performance dashboard. Better questions, meaningful solutions.">
+<meta name="twitter:description" content="Business analysis, automation and end-to-end solutions: an RPA performance dashboard, 20+ processes analysed and automated, portals where the business unit works with the robots. Better questions, meaningful solutions.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../lib/lenis.css">
@@ -58,9 +58,14 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
 @media (max-width:600px){header .c{display:none}header .r{grid-column:3}}
 
 .hero{min-height:100svh;display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:center;padding:90px var(--gut) 40px calc(var(--gut) + 30px)}
-.hero h1{margin:16px 0 0;font-weight:300;font-size:clamp(48px,5.6vw,98px);line-height:.95;letter-spacing:-.05em}
+.hero h1{margin:16px 0 0;font-weight:300;font-size:clamp(38px,3.9vw,68px);line-height:1;letter-spacing:-.045em;max-width:640px}
 .hero h1 em{color:var(--cy)}
-.hero p{max-width:440px;color:var(--mute);font-size:16.5px;line-height:1.6;margin:22px 0 0}
+.hero .lede{margin:20px 0 0;font-size:clamp(18px,1.5vw,22px);letter-spacing:-.02em;color:var(--ice)}
+.hero p{max-width:440px;color:var(--mute);font-size:16.5px;line-height:1.6;margin:14px 0 0}
+.stats{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:12px 30px;margin:28px 0 0;padding:18px 0 0;border-top:1px solid var(--line)}
+.stats div{margin:0}.stats dt{font-weight:300;font-size:clamp(26px,2.3vw,36px);letter-spacing:-.04em;line-height:1;color:var(--cy)}
+.stats dd{margin:6px 0 0;font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);max-width:130px;line-height:1.45}
+@media (max-width:600px){.stats{grid-template-columns:repeat(2,auto)}}
 .ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
 .b{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid rgba(223,233,255,.25);border-radius:4px;background:none;cursor:pointer;font-size:14px;text-decoration:none;transition:border-color .3s,background .3s}
 .b:hover{border-color:var(--cy);background:rgba(79,227,255,.06)}
@@ -79,7 +84,7 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
 .route{padding:16vh var(--gut) 8vh calc(var(--gut) + 30px)}
 .route h2,.log h2{margin:0 0 10px;font-weight:300;font-size:clamp(38px,4.2vw,70px);letter-spacing:-.045em;line-height:1}
 .route .sub{color:var(--mute);margin:0 0 40px;max-width:520px;line-height:1.6}
-.plot{position:relative;height:min(70vh,640px);border-left:1px solid rgba(223,233,255,.3);border-bottom:1px solid rgba(223,233,255,.3)}
+.plot{position:relative;height:clamp(680px,92vh,820px);border-left:1px solid rgba(223,233,255,.3);border-bottom:1px solid rgba(223,233,255,.3)}
 .plot svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .plot .ln{fill:none;stroke:var(--cy);stroke-width:1.6}
 .plot .gh{fill:none;stroke:rgba(79,227,255,.2);stroke-width:1;stroke-dasharray:3 6}
@@ -92,7 +97,17 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
 .wp .box{margin:12px 0 0 14px;padding:14px 16px;border-left:1px solid var(--cy);background:rgba(5,11,29,.75)}
 .wp .mono{color:var(--cy);font-size:10px}
 .wp h3{margin:6px 0 6px;font-weight:400;font-size:21px;letter-spacing:-.02em}
-.wp p{margin:0;color:var(--mute);font-size:14px;line-height:1.55}
+.wp p{margin:0 0 8px;color:var(--mute);font-size:14px;line-height:1.55}
+.wp p.res{margin:0;padding-top:8px;border-top:1px solid var(--line);color:var(--ice)}
+.wp p.res::before{content:"→ ";color:var(--cy)}
+.wp.fx p.res::before{content:""}.wp.fx p.res::after{content:" ←";color:var(--cy)}
+.way{padding:12vh var(--gut) 6vh calc(var(--gut) + 30px);display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start}
+.way .mono{color:var(--cy)}
+.way h2{margin:12px 0 0;font-weight:300;font-size:clamp(38px,4.2vw,70px);letter-spacing:-.045em;line-height:1}
+.way h2 em{color:var(--cy)}
+.way p{margin:0;color:var(--mute);font-size:clamp(16.5px,1.3vw,19px);line-height:1.65;max-width:600px}
+.way p + p{margin-top:16px}
+.way p b{font-weight:400;color:var(--ice)}
 .axis{position:absolute;font-family:"Geist Mono";font-size:10px;color:var(--mute)}
 .log{padding:10vh var(--gut) 8vh calc(var(--gut) + 30px);display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
 table{width:100%;border-collapse:collapse;font-size:15px;margin-top:24px}
@@ -111,7 +126,7 @@ td small{display:block;color:var(--mute);font-size:13px;margin-top:3px}
 .arcade .mono{color:var(--am)}
 .end{padding:8vh var(--gut) 14vh calc(var(--gut) + 30px);display:flex;justify-content:space-between;align-items:end;gap:30px}
 .end h2{margin:0;font-weight:300;font-size:clamp(30px,3.4vw,56px);letter-spacing:-.045em;line-height:1.04;max-width:760px}
-@media (max-width:960px){.hero,.log{grid-template-columns:1fr}.radar{width:86vw}.wp{position:relative;left:auto!important;top:auto!important;transform:none;margin-bottom:20px}.plot{height:auto;border:0}.plot svg{display:none}.end{flex-direction:column;align-items:start}}
+@media (max-width:960px){.hero,.log,.way{grid-template-columns:1fr}.radar{width:86vw}.wp{position:relative;left:auto!important;top:auto!important;transform:none;margin-bottom:20px}.plot{height:auto;border:0}.plot svg{display:none}.end{flex-direction:column;align-items:start}}
 </style>
 </head>
 <body>
@@ -122,36 +137,48 @@ td small{display:block;color:var(--mute);font-size:13px;margin-top:3px}
 <main>
   <section class="hero">
     <div>
-      <div class="mono" style="color:var(--mute)" data-in>Business analysis · process discovery · RPA</div>
-      <h1 id="h1">Better questions. <em>Meaningful</em> solutions.</h1>
-      <p data-in data-touch="The radar shows everything I work on as a point: projects at the centre, roles in the middle, tools on the edge. They light up as the sweep passes; tap one.">The radar shows everything I work on as a point: projects at the centre, roles in the middle, tools on the edge. They light up as the sweep passes; hover over one.</p>
+      <div class="mono" style="color:var(--mute)" data-in>Business analysis · automation · end-to-end solutions</div>
+      <h1 id="h1">I understand the need, <em>build</em> the solution, and measure the result.</h1>
+      <div class="lede" data-in>Better questions. Meaningful solutions.</div>
+      <dl class="stats" data-in>
+        <div><dt>20+</dt><dd>processes analysed</dd></div>
+        <div><dt>20+</dt><dd>robots in production</dd></div>
+        <div><dt>~70%</dt><dd>time saved</dd></div>
+        <div><dt>5+</dt><dd>portals and websites</dd></div>
+      </dl>
+      <p data-in data-touch="The radar shows the skills and tools I work with: skills inside, tools on the edge. Tap a point.">The radar shows the skills and tools I work with: skills inside, tools on the edge. Hover over a point.</p>
       <div class="ctas" data-in><a class="b" href="#rota">See the route ↓</a><button class="b px" data-arcade type="button">▶ Enter the game</button></div>
     </div>
     <div class="radar" id="radar" data-in><canvas id="rc"></canvas><div class="card" id="card"></div>
-      <div class="legend mono"><span><i style="background:#4fe3ff"></i>Project</span><span><i style="background:#8fb4ff"></i>Role</span><span><i style="background:#ffc65c"></i>Tool</span></div></div>
+      <div class="legend mono"><span><i style="background:#4fe3ff"></i>Skill</span><span><i style="background:#ffc65c"></i>Tool</span></div></div>
   </section>
 
   <section class="route" id="rota">
-    <h2>Route: <em>three</em> projects</h2>
-    <p class="sub">The path from a need to a visible result. It draws itself as you scroll; every stop sits at a coordinate.</p>
+    <h2>Route: make it visible, <em>understand</em>, build</h2>
+    <p class="sub">Three stops in one year at Kronovita. Drawn as you scroll.</p>
     <div class="plot" id="plot">
       <svg id="ps" preserveAspectRatio="none"><path class="gh" id="pg"/><path class="ln" id="pl"/></svg>
       <span class="axis" style="left:-2px;bottom:-22px">0.00</span><span class="axis" style="right:0;bottom:-22px">1.00 · time</span><span class="axis" style="left:-40px;top:0">1.00</span>
-      <div class="wp" data-x=".08" data-y=".78"><div class="dot"></div><div class="box"><span class="mono">WP-01 · (0.08, 0.22)</span><h3>Process discovery and business analysis</h3><p>Found repetitive, rule-based processes with business units, prioritised them by business value and wrote process design documents.</p></div></div>
-      <div class="wp" data-x=".4" data-y=".42"><div class="dot"></div><div class="box"><span class="mono">WP-02 · (0.40, 0.58)</span><h3>RPA development and testing</h3><p>Development, testing and bug fixing; getting the robots to run at scheduled times in the client environment.</p></div></div>
-      <div class="wp" data-x=".72" data-y=".08"><div class="dot"></div><div class="box"><span class="mono">WP-03 · (0.72, 0.92)</span><h3>RPA performance dashboard</h3><p>Transaction count, success rate, robot versus manual time and net time saved; from Figma to Supabase.</p></div></div>
+      <div class="wp" data-x=".04" data-y=".48"><div class="dot"></div><div class="box"><span class="mono">WP-01 · Make it visible</span><h3>RPA performance dashboard</h3><p>There was no dashboard showing the value of the RPA service; the robots were running, but their impact was invisible.</p><p>I proposed the KPIs to track and got them approved: transaction count, success rate, robot vs. manual time, net time saved. I designed the visuals in Figma and set up the storage of robot data in Supabase.</p><p class="res">A dashboard built from scratch, used by ~50 people.</p></div></div>
+      <div class="wp" data-x=".36" data-y=".34"><div class="dot"></div><div class="box"><span class="mono">WP-02 · Understand</span><h3>Process discovery and automation</h3><p>For every client, we had to find which processes were worth automating.</p><p>In client sessions I analysed 20+ processes, identified the ones fit for automation, wrote the PDDs and organised the team’s work in Jira.</p><p class="res">20+ robots in production; ~70% time saved, comparing robot runtimes with the business unit’s manual times.</p></div></div>
+      <div class="wp" data-x=".68" data-y=".04"><div class="dot"></div><div class="box"><span class="mono">WP-03 · Build</span><h3>Portals and websites</h3><p>The data the robots needed was in the hands of the business unit.</p><p>I designed portals where the business unit enters the data, the robot runs on it in the background, and the results come back. I owned 5–6 portals and sites from concept to production, including API integrations, servers and domains.</p><p class="res">The business unit works with the robot from a single screen: they hand over the data and see the result in the same place.</p></div></div>
     </div>
+  </section>
+
+  <section class="way">
+    <div><span class="mono">How I work</span><h2>I <em>keep</em> asking.</h2></div>
+    <div><p>In a complex flow, I keep asking until I find the edge cases and the points that block the process. That is how I have surfaced shortcuts the business unit hadn’t noticed.</p><p>I work with the business unit through the relationship I build, not only through the process. <b>Psychology taught me to listen to people; it is what I use most in business analysis.</b></p></div>
   </section>
 
   <section class="log">
     <div><h2>The <em>logbook</em></h2>
       <table><tr><th>ENTRY</th><th>ORGANISATION</th><th>ROLE</th></tr>
-        <tr><td class="id">LOG-03</td><td>Kronovita</td><td>RPA and business analysis<small>Client meetings, process discovery, PDDs, development, reporting</small></td></tr>
-        <tr><td class="id">LOG-02</td><td>Teleperformance</td><td>Business analyst<small>Scope changes, test feedback, go-live</small></td></tr>
-        <tr><td class="id">LOG-01</td><td>Project-based</td><td>Business analysis<small>Requirements, acceptance criteria, data analysis, reporting</small></td></tr></table></div>
+        <tr><td class="id">LOG-03</td><td>Kronovita<small>Nov 2025 – Present</small></td><td>Dashboard → business analysis → portal and web solutions<small>RPA dashboard, 20+ processes, 5+ portals</small></td></tr>
+        <tr><td class="id">LOG-02</td><td>Freelance<small>Jan 2024 – Nov 2025</small></td><td>Business analyst<small>Requirements and business-rule standardisation in B2B workflows, automating manual reporting with SQL; SQL + dbt data pipeline and Power BI dashboards. Healthcare, e-commerce and call-centre projects.</small></td></tr>
+        <tr><td class="id">LOG-01</td><td>Teleperformance<small>Mar 2022 – Sep 2023</small></td><td>Business analyst<small>SDD-based process design with Google’s Strategy &amp; Operations team and stakeholders from three countries</small></td></tr></table></div>
     <div class="arcade"><div class="mono">Hidden sector found</div><div class="scr" data-arcade role="button" tabindex="0" aria-label="Open the Automation island game"><img src="../../img/oyun-onizleme-en.jpg" alt=""><span class="b px">▶ Enter the game</span></div><p>Automation island: explore my work on foot.</p></div>
   </section>
-  <section class="end"><h2>Next scan: human-centred technology and <em>human-robot</em> interaction.</h2><a class="b" href="../psikoloji/index.html" data-leave="#062a31">Switch to the psychology sector →</a></section>
+  <section class="end"><h2>Next scan: when people and AI work <em>together</em>.</h2><a class="b" href="../psikoloji/index.html" data-leave="#062a31">Switch to the psychology sector →</a></section>
 </main>
 <script src="../../lib/gsap.min.js"></script>
 <script src="../../lib/ScrollTrigger.min.js"></script>
@@ -163,15 +190,16 @@ td small{display:block;color:var(--mute);font-size:13px;margin-top:3px}
 const arrived = sub.arrive();
 /* radar: rings, bearings and a sweep with a fading wake; each blip flares when the sweep passes and fades after */
 const BL = [
-  { r: .26, a: 30, k: 'w', n: 'RPA performance dashboard', d: 'KPIs, Figma drafts, Supabase' },
-  { r: .3, a: 150, k: 'w', n: 'Process discovery and analysis', d: 'Rule-based processes, prioritisation, PDDs' },
-  { r: .22, a: 255, k: 'w', n: 'RPA development and testing', d: 'Development, testing, scheduled runs' },
-  { r: .52, a: 75, k: 'r', n: 'Kronovita', d: 'RPA and business analysis' },
-  { r: .56, a: 205, k: 'r', n: 'Teleperformance', d: 'Business analyst' },
-  { r: .5, a: 320, k: 'r', n: 'Project-based', d: 'Requirements, acceptance criteria' },
-  ...[['Figma', 10], ['Jira', 50], ['Confluence', 100], ['Monday.com', 140], ['Python', 180], ['SQL', 225], ['Power BI', 265], ['Postman', 300], ['Supabase', 340]].map(([n, a], i) => ({ r: .78 + (i % 2) * .08, a, k: 't', n, d: 'Tool' }))
+  { r: .3, a: 20, k: 's', n: 'Process discovery', d: 'Finding the processes worth automating' },
+  { r: .5, a: 70, k: 's', n: 'Requirements analysis', d: 'Client sessions, business rules' },
+  { r: .32, a: 120, k: 's', n: 'Process documentation', d: 'PDDs and SDDs' },
+  { r: .52, a: 170, k: 's', n: 'KPI design', d: 'Deciding what to measure' },
+  { r: .3, a: 220, k: 's', n: 'Data visualisation', d: 'Dashboards, gauges, dials' },
+  { r: .5, a: 270, k: 's', n: 'API integration', d: 'Linking portals, robots and data' },
+  { r: .32, a: 320, k: 's', n: 'Deployment', d: 'Going live on servers and domains' },
+  ...[['Figma', 0], ['Jira', 36], ['Confluence', 72], ['Monday.com', 108], ['Python', 144], ['SQL', 180], ['dbt', 216], ['Power BI', 252], ['Postman', 288], ['Supabase', 324]].map(([n, a], i) => ({ r: .78 + (i % 2) * .08, a, k: 't', n, d: 'Tool' }))
 ];
-const COL = { w: [79, 227, 255], r: [143, 180, 255], t: [255, 198, 92] };
+const COL = { s: [79, 227, 255], t: [255, 198, 92] };
 const radar = document.getElementById('radar'), rc = document.getElementById('rc'), g = rc.getContext('2d'), card = document.getElementById('card');
 let R, D;
 function size() { D = Math.min(devicePixelRatio || 1, 2); R = radar.clientWidth; rc.width = R * D; rc.height = R * D; g.setTransform(D, 0, 0, D, 0, 0);
@@ -180,7 +208,7 @@ function size() { D = Math.min(devicePixelRatio || 1, 2); R = radar.clientWidth;
     const el = document.createElement('button'); el.className = 'blip'; el.style.left = x + 'px'; el.style.top = y + 'px'; el.setAttribute('aria-label', b.n + ': ' + b.d);
     el.addEventListener('pointerenter', () => show(b, x, y)); el.addEventListener('focus', () => show(b, x, y)); el.addEventListener('pointerleave', hide); el.addEventListener('blur', hide);
     radar.appendChild(el); b.x = x; b.y = y; b.glow = b.glow || 0; }); }
-function show(b, x, y) { hov = b; kick(); card.innerHTML = `<span class="mono">${{ w: 'Project', r: 'Role', t: 'Tool' }[b.k]} · ${String(Math.round(b.a)).padStart(3, '0')}°</span><b>${b.n}</b><span>${b.d}</span>`;
+function show(b, x, y) { hov = b; kick(); card.innerHTML = `<span class="mono">${{ s: 'Skill', t: 'Tool' }[b.k]} · ${String(Math.round(b.a)).padStart(3, '0')}°</span><b>${b.n}</b><span>${b.d}</span>`;
   card.style.left = Math.min(R - 250, Math.max(-20, x + 16)) + 'px'; card.style.top = (y + 16) + 'px'; card.style.opacity = 1; }
 function hide() { hov = null; card.style.opacity = 0; kick(); }
 const RM = window.reduceMotion;              // reduced motion: a still radar, every blip lit, drawn only when something changes
@@ -240,6 +268,7 @@ if (!RM) {
   gsap.to(pl, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: '#plot', start: 'top 75%', end: 'bottom 60%', scrub: true } });
   wps.forEach((p, i) => gsap.from(p, { opacity: 0, y: 20, duration: .9, ease: 'expo.out', scrollTrigger: { trigger: '#plot', start: `top+=${i * 25}% 70%` } }));
   gsap.from('tr', { opacity: 0, x: -12, duration: .7, stagger: .06, ease: 'expo.out', scrollTrigger: { trigger: '.log', start: 'top 80%' } });
+  gsap.from('.way > div', { opacity: 0, y: 20, duration: .9, stagger: .12, ease: 'expo.out', scrollTrigger: { trigger: '.way', start: 'top 75%' } });
   gsap.timeline({ defaults: { ease: 'expo.out' }, delay: arrived ? .3 : 0 })
     .to(on, { k: 1, duration: 1.6, ease: 'power2.out' }, 0)
     .from(splitWords(document.getElementById('h1')), { yPercent: 115, duration: 1.3, stagger: .08 }, .2)
