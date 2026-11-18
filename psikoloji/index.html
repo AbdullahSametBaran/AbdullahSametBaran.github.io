@@ -147,12 +147,12 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
 
   <dialog class="bookd" id="bookd" aria-labelledby="bookt" data-lenis-prevent>
     <button class="x" type="button" data-close-book aria-label="Kapat">✕</button>
-    <h2 id="bookt">Randevu <em>talebi</em></h2><p class="lede">En kısa sürede e-postayla dönüp uygun bir zamanı ve ücret bilgisini paylaşacağım.</p>
+    <h2 id="bookt">Randevu <em>talebi</em></h2><p class="lede">En kısa sürede telefonla dönüp uygun bir zamanı ve ücret bilgisini paylaşacağım.</p>
     <div class="sos"><b>Acil bir durumdaysan:</b> kendine ya da başkasına zarar verme düşüncen varsa lütfen hemen <b>112</b>’yi ara. Online terapi acil durumlar için uygun değildir.</div>
     <form id="bookf" novalidate>
       <div class="f2"><label class="fld"><span>Ad</span><input type="text" name="ad" autocomplete="given-name" required><small>Takma ad da olur.</small></label>
-        <label class="fld"><span>E-posta</span><input type="email" name="email" autocomplete="email" required></label></div>
-      <div class="f2"><label class="fld"><span>Telefon <i>(isteğe bağlı)</i></span><input type="tel" name="tel" autocomplete="tel"></label>
+        <label class="fld"><span>Telefon</span><input type="tel" name="tel" autocomplete="tel" inputmode="tel" required></label></div>
+      <div class="f2"><label class="fld"><span>E-posta <i>(isteğe bağlı)</i></span><input type="email" name="email" autocomplete="email"></label>
         <fieldset class="fld"><legend>Görüşme dili</legend><div class="chips"><label><input type="radio" name="dil" value="Türkçe" required checked><span>Türkçe</span></label><label><input type="radio" name="dil" value="English"><span>English</span></label></div></fieldset></div>
       <fieldset class="fld"><legend>Uygun zamanlar</legend><div class="chips"><label><input type="checkbox" name="zaman" value="Hafta içi akşam"><span>Hafta içi akşam</span></label><label><input type="checkbox" name="zaman" value="Hafta sonu"><span>Hafta sonu</span></label></div></fieldset>
       <label class="fld"><span>Kısa not <i>(isteğe bağlı)</i></span><textarea name="not" maxlength="800"></textarea><small>Ayrıntılı sağlık bilgisi yazmana gerek yok; ilk görüşmede konuşuruz.</small></label>
@@ -162,7 +162,7 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
       <div><button class="btn-d" type="submit">Talebi gönder</button></div>
       <p class="fmsg" role="status"></p>
       <details class="kvkk"><summary>Aydınlatma metni</summary>
-        <p>Bu formla paylaştığın ad, e-posta, telefon, dil ve zaman tercihi ile not, yalnızca randevu talebine dönüş yapmak ve görüşmeyi planlamak için Abdullah Samet Baran tarafından işlenir.</p>
+        <p>Bu formla paylaştığın ad, telefon, e-posta, dil ve zaman tercihi ile not, yalnızca randevu talebine dönüş yapmak ve görüşmeyi planlamak için Abdullah Samet Baran tarafından işlenir.</p>
         <p>Form, bilgileri yurt dışında sunucuları bulunan Google Forms aracılığıyla kendi Google hesabıma iletir. Bilgiler üçüncü kişilerle paylaşılmaz ve talep sonuçlandıktan sonra gereğinden uzun saklanmaz.</p>
         <p>6698 sayılı Kişisel Verilerin Korunması Kanunu’nun 11. maddesindeki hakların için (bilgilerine erişmek, düzeltilmesini ya da silinmesini istemek gibi) <a href="mailto:abdullahsametbaran@gmail.com">abdullahsametbaran@gmail.com</a> adresine yazabilirsin.</p>
       </details>
@@ -402,7 +402,7 @@ window.PT = {
   f: { name: 'Ad', phone: 'Telefon', lang: 'Dil', times: 'Uygun zamanlar', note: 'Not', page: 'Sayfa' },
   consent: '18 yaş üstü ve aydınlatma metni onaylandı',
   send: 'Talebi gönder', sending: 'Gönderiliyor…',
-  thanks: 'Teşekkürler, talebin bana ulaştı. En kısa sürede e-postayla döneceğim.',
+  thanks: 'Teşekkürler, talebin bana ulaştı. En kısa sürede telefonla döneceğim.',
   failed: 'Bir sorun oldu, talep gönderilemedi. Biraz sonra tekrar dener misin?',
   notReady: 'Form henüz bağlanmadı. Çok yakında açılacak.'
 };

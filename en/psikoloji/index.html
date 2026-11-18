@@ -118,7 +118,7 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
         <div><dt>How</dt><dd>Online video sessions</dd></div>
         <div><dt>Language</dt><dd>English and Turkish</dd></div>
         <div><dt>Session</dt><dd>45–50 minutes; we set the frequency together, as needed</dd></div>
-        <div><dt>Fee</dt><dd>Shared by email after your request</dd></div>
+        <div><dt>Fee</dt><dd>Shared after your request</dd></div>
       </dl>
     </div>
     <div class="ways">
@@ -147,12 +147,12 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
 
   <dialog class="bookd" id="bookd" aria-labelledby="bookt" data-lenis-prevent>
     <button class="x" type="button" data-close-book aria-label="Close">✕</button>
-    <h2 id="bookt">Request a <em>session</em></h2><p class="lede">I’ll get back to you by email as soon as I can with a suitable time and the fee.</p>
+    <h2 id="bookt">Request a <em>session</em></h2><p class="lede">I’ll call you back as soon as I can with a suitable time and the fee.</p>
     <div class="sos"><b>If you’re in crisis:</b> if you have thoughts of harming yourself or someone else, please call your local emergency number right away (<b>112</b> in Turkey and the EU). Online therapy is not suitable for emergencies.</div>
     <form id="bookf" novalidate>
       <div class="f2"><label class="fld"><span>Name</span><input type="text" name="ad" autocomplete="given-name" required><small>A nickname is fine.</small></label>
-        <label class="fld"><span>Email</span><input type="email" name="email" autocomplete="email" required></label></div>
-      <div class="f2"><label class="fld"><span>Phone <i>(optional)</i></span><input type="tel" name="tel" autocomplete="tel"></label>
+        <label class="fld"><span>Phone</span><input type="tel" name="tel" autocomplete="tel" inputmode="tel" required></label></div>
+      <div class="f2"><label class="fld"><span>Email <i>(optional)</i></span><input type="email" name="email" autocomplete="email"></label>
         <fieldset class="fld"><legend>Session language</legend><div class="chips"><label><input type="radio" name="dil" value="English" required checked><span>English</span></label><label><input type="radio" name="dil" value="Türkçe"><span>Türkçe</span></label></div></fieldset></div>
       <fieldset class="fld"><legend>Preferred times</legend><div class="chips"><label><input type="checkbox" name="zaman" value="Weekday evenings"><span>Weekday evenings</span></label><label><input type="checkbox" name="zaman" value="Weekends"><span>Weekends</span></label></div><small>Times are in Turkey time (GMT+3).</small></fieldset>
       <label class="fld"><span>Short note <i>(optional)</i></span><textarea name="not" maxlength="800"></textarea><small>No need to share detailed health information; we can talk about it in the first session.</small></label>
@@ -162,7 +162,7 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
       <div><button class="btn-d" type="submit">Send request</button></div>
       <p class="fmsg" role="status"></p>
       <details class="kvkk"><summary>Privacy notice</summary>
-        <p>The name, email, phone, language and time preferences and note you share in this form are processed by Abdullah Samet Baran only to respond to your request and plan the session.</p>
+        <p>The name, phone, email, language and time preferences and note you share in this form are processed by Abdullah Samet Baran only to respond to your request and plan the session.</p>
         <p>The form forwards your details to my own Google account through Google Forms, whose servers are outside Turkey. Your details are not shared with third parties and are not kept longer than needed once your request is settled.</p>
         <p>To use your rights under Turkey’s Personal Data Protection Law (KVKK, Article 11), such as accessing, correcting or deleting your details, write to <a href="mailto:abdullahsametbaran@gmail.com">abdullahsametbaran@gmail.com</a>.</p>
       </details>
@@ -402,7 +402,7 @@ window.PT = {
   f: { name: 'Name', phone: 'Phone', lang: 'Language', times: 'Times', note: 'Note', page: 'Page' },
   consent: 'Over 18 and privacy notice accepted',
   send: 'Send request', sending: 'Sending…',
-  thanks: 'Thank you, I’ve received your request. I’ll get back to you by email as soon as I can.',
+  thanks: 'Thank you, I’ve received your request. I’ll call you back as soon as I can.',
   failed: 'Something went wrong and the request wasn’t sent. Could you try again in a moment?',
   notReady: 'The form isn’t connected yet. It will open very soon.'
 };
