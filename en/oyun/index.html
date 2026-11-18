@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>System Island · Samet Baran</title>
-<meta name="description" content="System Island: find the need, make it visible, build the solution. Three jobs, three characters, badges and a secret lab; every job ends with my real work.">
+<meta name="description" content="System Island: make it visible, understand it, build it. Three jobs, three characters, badges and a secret lab; every job ends with my real work.">
 <link rel="canonical" href="https://abdullahsametbaran.com/en/oyun/">
 <link rel="alternate" hreflang="tr" href="https://abdullahsametbaran.com/oyun/">
 <link rel="alternate" hreflang="en" href="https://abdullahsametbaran.com/en/oyun/">
@@ -18,7 +18,7 @@
 <meta property="og:locale:alternate" content="tr_TR">
 <meta property="og:url" content="https://abdullahsametbaran.com/en/oyun/">
 <meta property="og:title" content="System Island · Samet Baran">
-<meta property="og:description" content="System Island: find the need, make it visible, build the solution. Three jobs, three characters, badges and a secret lab; every job ends with my real work.">
+<meta property="og:description" content="System Island: make it visible, understand it, build it. Three jobs, three characters, badges and a secret lab; every job ends with my real work.">
 <meta property="og:image" content="https://abdullahsametbaran.com/img/og-en.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://abdullahsametbaran.com/img/og-en.jpg">
 <meta name="twitter:title" content="System Island · Samet Baran">
-<meta name="twitter:description" content="System Island: find the need, make it visible, build the solution. Three jobs, three characters, badges and a secret lab; every job ends with my real work.">
+<meta name="twitter:description" content="System Island: make it visible, understand it, build it. Three jobs, three characters, badges and a secret lab; every job ends with my real work.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Silkscreen&family=Geist:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../lib/island.css">
@@ -45,7 +45,7 @@
   <div class="hud keys"><span><kbd>WASD</kbd>walk</span><span><kbd>E</kbd>talk</span><span><kbd>CLICK</kbd>go there</span><span><kbd>ESC</kbd>close</span></div>
   <div class="dlg win" id="dlg" role="dialog" aria-live="polite"><div class="who"><canvas id="face" width="16" height="16"></canvas><div><b id="dn"></b><small id="dk"></small></div></div><p class="say" id="dt"></p><div class="extra" id="dx"></div><div class="row"><span>E / ESC · CLOSE</span><span id="dpage"></span></div></div>
   <div class="toast win" id="toast" role="status"></div>
-  <div class="intro" id="intro"><div class="card win"><div class="sk" style="font-size:11px;opacity:.6">SAMET.EXE · 02 · SYSTEM</div><h1>SYSTEM<br>ISLAND</h1><p>Find the need, make it visible, build the solution.</p><span class="blink">▶ CLICK OR PRESS ANY KEY TO START</span><a class="skip" href="#oku" id="skipgame">Read without playing ↓</a></div></div>
+  <div class="intro" id="intro"><div class="card win"><div class="sk" style="font-size:11px;opacity:.6">SAMET.EXE · 02 · SYSTEM</div><h1>SYSTEM<br>ISLAND</h1><p>Make it visible, understand it, build it.</p><span class="blink">▶ CLICK OR PRESS ANY KEY TO START</span><a class="skip" href="#oku" id="skipgame">Read without playing ↓</a></div></div>
   <div class="pick" id="pick"><div class="card win"><h2>Who are you landing with?</h2><div class="chars" id="chars"></div>
     <div class="row"><button class="btn" id="pcont" type="button" hidden></button><label id="pspeed" hidden><input type="checkbox" id="pspeedc"> ⏱ Speedrun (timer)</label><button class="linkish" id="pquick" type="button">Just start (Explorer)</button></div></div></div>
   <div class="modal" id="bm"><div class="card win"><button class="btn ghost x" type="button" data-close>✕</button><h2>Badge book</h2><p class="sub" id="bsub"></p><div class="bgrid" id="bgrid"></div></div></div>
@@ -66,13 +66,13 @@
   <h2>Better questions.<br>Meaningful solutions.</h2>
   <p class="lead">If you’d rather read than play: the three jobs on the island stand for my real work. Make it visible, understand, build.</p>
   <div class="lvls">
-    <div class="lvl"><div class="still"><canvas data-still="kontrol" width="320" height="180"></canvas><span class="sk">JOB 1</span></div><div><span class="sk">CONTROL ROOM · MAKE IT VISIBLE</span><h3>RPA performance dashboard</h3><p>There was no dashboard showing the value of the RPA service; the robots were running, but their impact was invisible.</p><p>I proposed the KPIs to track and got them approved: transaction count, success rate, robot vs. manual time, net time saved. I designed the visuals in Figma and built the Supabase store for the robot data.</p><p class="res">→ A dashboard built from scratch, used by ~50 people.</p></div></div>
-    <div class="lvl"><div class="still"><canvas data-still="ofis" width="320" height="180"></canvas><span class="sk">JOB 2</span></div><div><span class="sk">PROCESS OFFICE · UNDERSTAND</span><h3>Process discovery and automation</h3><p>For every client, we had to find which processes were worth automating.</p><p>In client sessions I analysed 20+ processes, identified the ones fit for automation, wrote the PDDs and organised the team’s work in Jira.</p><p class="res">→ 20+ robots in production; ~70% time saved against manual times.</p></div></div>
-    <div class="lvl"><div class="still"><canvas data-still="kule" width="320" height="180"></canvas><span class="sk">JOB 3</span></div><div><span class="sk">PORTAL TOWER · BUILD</span><h3>Portals and websites</h3><p>The data the robots needed was in the hands of the business unit.</p><p>I designed portals where the business unit enters the data, the robot runs on it in the background, and the results come back. I took 5–6 portals and sites from idea to production, including API integrations, servers and domains.</p><p class="res">→ The business unit works with the robot from a single screen: they enter the data and see the result in the same place.</p></div></div>
+    <div class="lvl"><div class="still"><canvas data-still="kontrol" width="320" height="180"></canvas><span class="sk">JOB 1</span></div><div><span class="sk">CONTROL ROOM · MAKE IT VISIBLE</span><h3>Data pipelines and dashboards</h3><p>The work was getting done, but no one could see how well; decisions were made on gut feeling.</p><p>I decided with the business unit what to measure. In projects across different sectors I built data pipelines with SQL and dbt and Power BI dashboards. For an RPA service I set up the structure that collects robot data in Supabase and designed the visuals in Figma.</p><p class="res">→ In every project, performance became trackable from a single dashboard; the RPA dashboard is used by ~50 people.</p></div></div>
+    <div class="lvl"><div class="still"><canvas data-still="ofis" width="320" height="180"></canvas><span class="sk">JOB 2</span></div><div><span class="sk">PROCESS OFFICE · UNDERSTAND</span><h3>Process analysis and automation</h3><p>In complex flows it wasn’t clear what slowed the work down or what was worth automating.</p><p>With stakeholders from three countries I documented processes in SDDs and redesigned the flows in Figma. I gathered and prioritised requirements through stakeholder interviews and validated them with UAT. In total I analysed 40+ processes; for the ones fit for automation I wrote the PDDs.</p><p class="res">→ The flows are standardised; 20+ robots in production, ~70% time saved against manual times.</p></div></div>
+    <div class="lvl"><div class="still"><canvas data-still="kule" width="320" height="180"></canvas><span class="sk">JOB 3</span></div><div><span class="sk">PORTAL TOWER · BUILD</span><h3>Portals and websites</h3><p>A solution was useless until it reached the people who would use it; and the data the robots needed was in the hands of the business unit.</p><p>I designed portals where the business unit enters the data, the robot runs on it in the background, and the results come back. I took 5+ portals and sites from idea to production end to end, including API and AI integrations, servers and domains.</p><p class="res">→ The business unit works with the robot from a single screen: they enter the data and see the result in the same place.</p></div></div>
   </div>
   <h2>Character history</h2>
   <div class="xp">
-    <div class="win"><span class="sk">KRONOVITA · NOV 2025 – PRESENT</span><b>Software engineer</b><p>RPA performance dashboard, process analysis and automation, end-to-end portal and web solutions.</p><span class="lv">WHERE ALL THREE JOBS COME FROM</span></div>
+    <div class="win"><span class="sk">KRONOVITA · NOV 2025 – PRESENT</span><b>Software engineer</b><p>RPA performance dashboard, process analysis and automation, end-to-end portal and web solutions.</p><span class="lv">CURRENT JOB</span></div>
     <div class="win"><span class="sk">FREELANCE · JAN 2024 – NOV 2025</span><b>Business analyst &amp; automation consultant</b><p>Requirements analysis, reporting automation and Power BI dashboards for healthcare, e-commerce and call-centre projects.</p></div>
     <div class="win"><span class="sk">TELEPERFORMANCE · MAR 2022 – SEP 2023</span><b>Business analyst</b><p>SDD-based process design with Google’s Strategy &amp; Operations team and stakeholders in the US, India and Greece.</p></div>
   </div>
@@ -144,7 +144,7 @@ window.T = {
     notify: '+ Add a notification (Architect)', deploy: '▶ Go live',
     deploySteps: ['Preparing the server…', 'Connecting the domain…', 'Live!'],
     done: 'I enter the invoice and see the result on the same screen. That’s it?',
-    real: 'I designed portals where the business unit enters the data, the robot works in the background and the result comes back. I took 5–6 portals and sites end to end, from idea to production.',
+    real: 'I designed portals where the business unit enters the data, the robot works in the background and the result comes back. I took 5+ portals and sites end to end, from idea to production; some of them include AI integration.',
     after: 'The portal is live. That’s why the tower light is on.'
   },
   atolye: ['The robots are waiting. The process has to be understood first; stop by the process office.', 'The robots are running. The conveyor never stops.'],

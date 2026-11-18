@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sistem adası · Samet Baran</title>
-<meta name="description" content="Sistem adası: bir ihtiyacı bul, görünür kıl, çözümü kur. Üç görev, üç karakter, rozetler ve gizli bir laboratuvar; her görevin sonunda gerçek işim.">
+<meta name="description" content="Sistem adası: görünür kıl, anla, kur. Üç görev, üç karakter, rozetler ve gizli bir laboratuvar; her görevin sonunda gerçek işim.">
 <link rel="canonical" href="https://abdullahsametbaran.com/oyun/">
 <link rel="alternate" hreflang="tr" href="https://abdullahsametbaran.com/oyun/">
 <link rel="alternate" hreflang="en" href="https://abdullahsametbaran.com/en/oyun/">
@@ -18,7 +18,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:url" content="https://abdullahsametbaran.com/oyun/">
 <meta property="og:title" content="Sistem adası · Samet Baran">
-<meta property="og:description" content="Sistem adası: bir ihtiyacı bul, görünür kıl, çözümü kur. Üç görev, üç karakter, rozetler ve gizli bir laboratuvar; her görevin sonunda gerçek işim.">
+<meta property="og:description" content="Sistem adası: görünür kıl, anla, kur. Üç görev, üç karakter, rozetler ve gizli bir laboratuvar; her görevin sonunda gerçek işim.">
 <meta property="og:image" content="https://abdullahsametbaran.com/img/og-tr.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://abdullahsametbaran.com/img/og-tr.jpg">
 <meta name="twitter:title" content="Sistem adası · Samet Baran">
-<meta name="twitter:description" content="Sistem adası: bir ihtiyacı bul, görünür kıl, çözümü kur. Üç görev, üç karakter, rozetler ve gizli bir laboratuvar; her görevin sonunda gerçek işim.">
+<meta name="twitter:description" content="Sistem adası: görünür kıl, anla, kur. Üç görev, üç karakter, rozetler ve gizli bir laboratuvar; her görevin sonunda gerçek işim.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Silkscreen&family=Geist:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../lib/island.css">
@@ -45,7 +45,7 @@
   <div class="hud keys"><span><kbd>WASD</kbd>yürü</span><span><kbd>E</kbd>konuş</span><span><kbd>TIK</kbd>oraya git</span><span><kbd>ESC</kbd>kapat</span></div>
   <div class="dlg win" id="dlg" role="dialog" aria-live="polite"><div class="who"><canvas id="face" width="16" height="16"></canvas><div><b id="dn"></b><small id="dk"></small></div></div><p class="say" id="dt"></p><div class="extra" id="dx"></div><div class="row"><span>E / ESC · KAPAT</span><span id="dpage"></span></div></div>
   <div class="toast win" id="toast" role="status"></div>
-  <div class="intro" id="intro"><div class="card win"><div class="sk" style="font-size:11px;opacity:.6">SAMET.EXE · 02 · SİSTEM</div><h1>SİSTEM<br>ADASI</h1><p>Bir ihtiyacı bul, görünür kıl, çözümü kur.</p><span class="blink">▶ BAŞLAMAK İÇİN TIKLA YA DA BİR TUŞA BAS</span><a class="skip" href="#oku" id="skipgame">Oyunsuz oku ↓</a></div></div>
+  <div class="intro" id="intro"><div class="card win"><div class="sk" style="font-size:11px;opacity:.6">SAMET.EXE · 02 · SİSTEM</div><h1>SİSTEM<br>ADASI</h1><p>Görünür kıl, anla, kur.</p><span class="blink">▶ BAŞLAMAK İÇİN TIKLA YA DA BİR TUŞA BAS</span><a class="skip" href="#oku" id="skipgame">Oyunsuz oku ↓</a></div></div>
   <div class="pick" id="pick"><div class="card win"><h2>Adaya kiminle çıkıyorsun?</h2><div class="chars" id="chars"></div>
     <div class="row"><button class="btn" id="pcont" type="button" hidden></button><label id="pspeed" hidden><input type="checkbox" id="pspeedc"> ⏱ Hızlı koşu (süre tutucu)</label><button class="linkish" id="pquick" type="button">Hemen başla (Kâşif)</button></div></div></div>
   <div class="modal" id="bm"><div class="card win"><button class="btn ghost x" type="button" data-close>✕</button><h2>Rozet defteri</h2><p class="sub" id="bsub"></p><div class="bgrid" id="bgrid"></div></div></div>
@@ -66,14 +66,14 @@
   <h2>Daha iyi sorular.<br>Anlamlı çözümler.</h2>
   <p class="lead">Oyunu oynamadan okumak istersen: adadaki üç görev, gerçek işlerimin karşılığı. Görünür kıl, anla, kur.</p>
   <div class="lvls">
-    <div class="lvl"><div class="still"><canvas data-still="kontrol" width="320" height="180"></canvas><span class="sk">GÖREV 1</span></div><div><span class="sk">KONTROL ODASI · GÖRÜNÜR KIL</span><h3>RPA performans panosu</h3><p>RPA hizmetinin değerini gösteren bir pano yoktu; robotlar çalışıyordu ama katkıları görünmüyordu.</p><p>İzlenecek KPI’ları önerip onaylattım: işlem sayısı, başarı oranı, robot ve manuel süreler, net zaman kazancı. Göstergeleri Figma’da tasarladım; robotlardan gelen veriyi Supabase’de toplayan yapıyı kurdum.</p><p class="res">→ Sıfırdan kurulmuş, ~50 kişinin kullandığı bir pano.</p></div></div>
-    <div class="lvl"><div class="still"><canvas data-still="ofis" width="320" height="180"></canvas><span class="sk">GÖREV 2</span></div><div><span class="sk">SÜREÇ OFİSİ · ANLA</span><h3>Süreç keşfi ve otomasyon</h3><p>Her müşteride hangi sürecin otomasyona değeceğini bulmak gerekiyordu.</p><p>Müşteri görüşmelerinde 20’den fazla süreci analiz edip uygun olanları belirledim, PDD’leri yazdım ve ekibin işlerini Jira’da düzene oturttum.</p><p class="res">→ 20’den fazla robot canlıda; manuel sürelere göre ~%70 zaman kazancı.</p></div></div>
-    <div class="lvl"><div class="still"><canvas data-still="kule" width="320" height="180"></canvas><span class="sk">GÖREV 3</span></div><div><span class="sk">PORTAL KULESİ · KUR</span><h3>Portal ve web siteleri</h3><p>Robotun işleyeceği veri iş biriminin elindeydi.</p><p>İş biriminin veriyi girdiği, robotun bu girdiyle arkada çalıştığı ve sonucun geri döndüğü portallar tasarladım. 5–6 portal ve siteyi fikir aşamasından canlıya kadar uçtan uca yürüttüm: API entegrasyonları, sunucu ve domain dahil.</p><p class="res">→ İş birimi robotla tek ekrandan çalışıyor: veriyi giriyor, sonucu aynı yerde görüyor.</p></div></div>
+    <div class="lvl"><div class="still"><canvas data-still="kontrol" width="320" height="180"></canvas><span class="sk">GÖREV 1</span></div><div><span class="sk">KONTROL ODASI · GÖRÜNÜR KIL</span><h3>Veri hatları ve panolar</h3><p>İşler yürüyordu ama ne kadar iyi yürüdüğü görünmüyordu; kararlar sezgiyle veriliyordu.</p><p>Neyin ölçüleceğini iş birimiyle birlikte belirledim. Farklı sektörlerden projelerde SQL ve dbt ile veri hatları kurup Power BI panoları hazırladım. Bir RPA hizmeti için robot verisini Supabase’de toplayan yapıyı kurdum, göstergeleri Figma’da tasarladım.</p><p class="res">→ Her projede performans tek bir panodan izlenir hale geldi; RPA panosunu ~50 kişi kullanıyor.</p></div></div>
+    <div class="lvl"><div class="still"><canvas data-still="ofis" width="320" height="180"></canvas><span class="sk">GÖREV 2</span></div><div><span class="sk">SÜREÇ OFİSİ · ANLA</span><h3>Süreç analizi ve otomasyon</h3><p>Karmaşık akışlarda işi neyin yavaşlattığı ve neyin otomasyona değeceği belli değildi.</p><p>Üç ülkeden paydaşla süreçleri SDD’lerle belgeleyip akışları Figma’da yeniden tasarladım. Paydaş görüşmeleriyle gereksinimleri çıkarıp önceliklendirdim, UAT ile doğruladım. Toplamda 40’tan fazla süreci analiz ettim; otomasyona uygun olanların PDD’lerini yazdım.</p><p class="res">→ Akışlar standart hale geldi; 20’den fazla robot canlıda, manuel sürelere göre ~%70 zaman kazancı.</p></div></div>
+    <div class="lvl"><div class="still"><canvas data-still="kule" width="320" height="180"></canvas><span class="sk">GÖREV 3</span></div><div><span class="sk">PORTAL KULESİ · KUR</span><h3>Portal ve web siteleri</h3><p>Çözüm, kullanacak kişinin önüne gelmedikçe işe yaramıyordu; robotun işleyeceği veri de iş biriminin elindeydi.</p><p>İş biriminin veriyi girdiği, robotun bu girdiyle arkada çalıştığı ve sonucun geri döndüğü portallar tasarladım. 5’ten fazla portal ve siteyi fikir aşamasından canlıya kadar uçtan uca yürüttüm: API ve yapay zekâ entegrasyonları, sunucu ve domain dahil.</p><p class="res">→ İş birimi robotla tek ekrandan çalışıyor: veriyi giriyor, sonucu aynı yerde görüyor.</p></div></div>
   </div>
   <h2>Karakter geçmişi</h2>
   <div class="xp">
-    <div class="win"><span class="sk">KRONOVİTA · KAS 2025 – GÜNCEL</span><b>Yazılım mühendisi</b><p>RPA performans panosu, süreç analizi ve otomasyon, uçtan uca portal ve web çözümleri.</p><span class="lv">ÜÇ GÖREVİN DE KAYNAĞI</span></div>
-    <div class="win"><span class="sk">FREELANCE · OCA 2024 – KAS 2025</span><b>İş analisti &amp; otomasyon danışmanı</b><p>Sağlık, e-ticaret ve çağrı merkezi projelerinde gereksinim analizi, raporlama otomasyonu ve Power BI panelleri.</p></div>
+    <div class="win"><span class="sk">KRONOVİTA · KAS 2025 – GÜNCEL</span><b>Yazılım mühendisi</b><p>RPA performans panosu, süreç analizi ve otomasyon, uçtan uca portal ve web çözümleri.</p><span class="lv">GÜNCEL GÖREV</span></div>
+    <div class="win"><span class="sk">FREELANCE · OCA 2024 – KAS 2025</span><b>İş analisti &amp; otomasyon danışmanı</b><p>Sağlık, e-ticaret ve çağrı merkezi projelerinde gereksinim analizi, raporlama otomasyonu ve Power BI panoları.</p></div>
     <div class="win"><span class="sk">TELEPERFORMANCE · MAR 2022 – EYL 2023</span><b>İş analisti</b><p>Google’ın Strateji &amp; Operasyon ekibiyle SDD tabanlı süreç tasarımı; ABD, Hindistan ve Yunanistan’daki paydaşlarla.</p></div>
   </div>
   <h2>Envanter</h2>
@@ -144,7 +144,7 @@ window.T = {
     notify: '+ Bildirim ekle (Mimar)', deploy: '▶ Canlıya al',
     deploySteps: ['Sunucu hazırlanıyor…', 'Domain bağlanıyor…', 'Yayında!'],
     done: 'Faturayı giriyorum, sonucu aynı ekranda görüyorum. Bu kadar mı?',
-    real: 'İş biriminin veriyi girdiği, robotun arkada çalıştığı ve sonucun geri döndüğü portallar tasarladım. 5–6 portal ve siteyi fikirden canlıya kadar uçtan uca yürüttüm.',
+    real: 'İş biriminin veriyi girdiği, robotun arkada çalıştığı ve sonucun geri döndüğü portallar tasarladım. 5’ten fazla portal ve siteyi fikirden canlıya kadar uçtan uca yürüttüm; bazılarında yapay zekâ entegrasyonu da var.',
     after: 'Portal canlıda. Kulenin ışığı bu yüzden yanıyor.'
   },
   atolye: ['Robotlar bekliyor. Önce sürecin anlaşılması lazım; süreç ofisine uğra.', 'Robotlar çalışıyor. Konveyör hiç durmuyor.'],
@@ -184,7 +184,7 @@ window.T = {
         opts: [['Ortalama onay süresi', true], ['Ekipteki kişi sayısı', false, 'Kaç kişi olduğu, işin nasıl aktığını söylemez.'], ['Bekleyen talep sayısı', true], ['Gönderilen e-posta sayısı', false, 'Çok e-posta, çok iş demek değil; çoğu “Talebim nerede?” sorusu.'], ['Hatasız işlenen talep oranı', true], ['Robotun açık kaldığı saat', false, 'Açık olmak çalışmak demek değil; önemli olan ne işlediği.'], ['Kazanılan saat', true], ['En pahalı ürünün adı', false, 'İlginç ama kimseye karar verdirmez.']],
         done: 'Artık “Talebim nerede?” sorusunun cevabı panoda.',
         after: 'Yöneticiler panoya bakıyor, telefon etmiyor. Telefonlar sustu.',
-        real: 'Freelance çalıştığım sağlık, e-ticaret ve çağrı merkezi projelerinde SQL ve dbt ile veri hattı kurdum, Power BI’da segment bazlı gelir panelleri hazırladım.'
+        real: 'Freelance çalıştığım sağlık, e-ticaret ve çağrı merkezi projelerinde SQL ve dbt ile veri hattı kurdum, Power BI’da segment bazlı gelir panoları hazırladım.'
       },
       z2: {
         intro: 'Talepler e-postayla geliyor, biz de tek tek ERP’ye giriyoruz. Robot bunu yapabilir mi?',
@@ -200,7 +200,7 @@ window.T = {
         done: 'Demek bütün mesele “kim onaylar” sorusuymuş.',
         robots: 'Satın alma robotu çalışmaya başladı.',
         after: 'Robot siparişleri açıyor. Ben artık yalnızca istisnalara bakıyorum.',
-        real: 'Karmaşık akışlarda edge case’leri ve süreci tıkayan noktaları bulana kadar soru sorarım. Kronovita’da bu sayede iş biriminin fark etmediği kısa yolları görünür kıldığım oldu.'
+        real: 'Karmaşık akışlarda edge case’leri ve süreci tıkayan noktaları bulana kadar soru sorarım. Kronovita’da bu sayede iş biriminin fark etmediği kısa yolları ortaya çıkardığım oldu.'
       },
       z3: {
         intro: 'Peki talep sahipleri talebi nereden girecek? Durumunu nereden görecek?',
