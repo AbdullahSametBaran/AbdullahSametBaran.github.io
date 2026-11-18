@@ -398,12 +398,6 @@ const q = new URLSearchParams(location.search); if (q.has('storm')) setInterval(
 </script>
 <script>
 window.PT = {
-  colors: [['KIRMIZI', '#ff6b6b'], ['MAVİ', '#6aa8ff'], ['YEŞİL', '#5ed39a'], ['SARI', '#ffd35c']],
-  round1: '1. tur', round2: '2. tur', between: '2. tur: şimdi kelime ve renk birbirini tutmayacak.', doneWord: 'Bitti.', finished: 'Sonuç', again: 'Tekrar dene',
-  result: (a, b, e) => `1. tur ortalaman <b>${a} ms</b>, 2. tur ortalaman <b>${b} ms</b>${e ? ` · ${e} yanlış` : ''}.`,
-  slower: d => `<div>Kelime ve renk çeliştiğinde <b>${d} ms daha yavaştın.</b></div>`,
-  faster: '<div>Bu sefer çelişkili turda yavaşlamadın; çoğu insanda fark hemen görünür. Bir daha dene.</div>',
-  explain: 'Beynin okumayı o kadar otomatik yapıyor ki, rengi söylemek için önce kelimeyi bastırması gerekiyor. Buna Stroop etkisi deniyor; dikkat ve yürütücü işlevler üzerine en çok kullanılan deneylerden biri.',
   subject: 'Yeni randevu talebi · abdullahsametbaran.com',
   f: { name: 'Ad', phone: 'Telefon', lang: 'Dil', times: 'Uygun zamanlar', note: 'Not', page: 'Sayfa' },
   consent: '18 yaş üstü ve aydınlatma metni onaylandı',

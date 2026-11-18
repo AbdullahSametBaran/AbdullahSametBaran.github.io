@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Psychology · Samet Baran</title>
-<meta name="description" content="Psychologist Samet Baran: online therapy for adults (CBT, psychodynamic, ACT) in English and Turkish. A small Stroop experiment and a request form.">
+<meta name="description" content="Psychologist Samet Baran: online therapy for adults (CBT, psychodynamic, ACT) in English and Turkish. An interactive look at one moment through three therapy approaches, and a request form.">
 <link rel="canonical" href="https://abdullahsametbaran.com/en/psikoloji/">
 <link rel="alternate" hreflang="tr" href="https://abdullahsametbaran.com/psikoloji/">
 <link rel="alternate" hreflang="en" href="https://abdullahsametbaran.com/en/psikoloji/">
@@ -18,7 +18,7 @@
 <meta property="og:locale:alternate" content="tr_TR">
 <meta property="og:url" content="https://abdullahsametbaran.com/en/psikoloji/">
 <meta property="og:title" content="Psychology · Samet Baran">
-<meta property="og:description" content="Psychologist Samet Baran: online therapy for adults (CBT, psychodynamic, ACT) in English and Turkish. A small Stroop experiment and a request form.">
+<meta property="og:description" content="Psychologist Samet Baran: online therapy for adults (CBT, psychodynamic, ACT) in English and Turkish. An interactive look at one moment through three therapy approaches, and a request form.">
 <meta property="og:image" content="https://abdullahsametbaran.com/img/og-en.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -26,11 +26,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://abdullahsametbaran.com/img/og-en.jpg">
 <meta name="twitter:title" content="Psychology · Samet Baran">
-<meta name="twitter:description" content="Psychologist Samet Baran: online therapy for adults (CBT, psychodynamic, ACT) in English and Turkish. A small Stroop experiment and a request form.">
+<meta name="twitter:description" content="Psychologist Samet Baran: online therapy for adults (CBT, psychodynamic, ACT) in English and Turkish. An interactive look at one moment through three therapy approaches, and a request form.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../lib/lenis.css">
 <link rel="stylesheet" href="../../lib/psikoloji.css">
+<link rel="stylesheet" href="../../lib/mercek.css">
 <style>
 /* deep petrol 60 · pale foam 30 · dawn peach 10 */
 :root{--deep:#062a31;--petrol:#0c3a44;--foam:#e6f1ef;--mute:rgba(230,241,239,.6);--dawn:#f3c3a3;--gut:clamp(18px,3vw,44px)}
@@ -127,9 +128,9 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
     </div>
   </section>
 
-  <section class="sec">
-    <span class="mono" style="color:var(--mute)">30 seconds</span><h2>A small <em>experiment</em></h2><p class="lede">Don’t read the word; pick the <em style="color:var(--foam)">colour</em> of the ink. There are two rounds. You can also use keys 1–4.</p>
-    <div class="stroop" id="stroop"><div class="top"><span class="cnt">The Stroop effect</span><span>Pick the colour</span></div><div class="word idle">Start when you’re ready.</div><div class="picks"></div><div class="res"></div><button class="btn-d go" type="button">Start</button></div>
+  <section class="sec" id="mercek">
+    <span class="mono" style="color:var(--mute)">5 moments · 3 lenses · a few minutes</span><h2>One moment, <em>three lenses</em></h2><p class="lede">Pick an everyday moment, then choose which therapy approach to look at it through. Each choice changes the story and the structure being built beside it. The moments are invented; this is not a test or an assessment, just a small exploration of how different approaches read the same moment.</p>
+    <div class="mrc" id="mrc"></div>
   </section>
 
   <section class="sec">
@@ -397,12 +398,6 @@ const q = new URLSearchParams(location.search); if (q.has('storm')) setInterval(
 </script>
 <script>
 window.PT = {
-  colors: [['RED', '#ff6b6b'], ['BLUE', '#6aa8ff'], ['GREEN', '#5ed39a'], ['YELLOW', '#ffd35c']],
-  round1: 'Round 1', round2: 'Round 2', between: 'Round 2: now the word and the colour won’t match.', doneWord: 'Done.', finished: 'Result', again: 'Try again',
-  result: (a, b, e) => `Your round 1 average was <b>${a} ms</b>, round 2 <b>${b} ms</b>${e ? ` · ${e} wrong` : ''}.`,
-  slower: d => `<div>When the word and the colour clashed, you were <b>${d} ms slower.</b></div>`,
-  faster: '<div>You didn’t slow down in the clashing round this time; most people show the gap right away. Try again.</div>',
-  explain: 'Your brain reads so automatically that it has to hold the word back before it can name the colour. This is the Stroop effect, one of the most widely used experiments on attention and executive function.',
   subject: 'New session request · abdullahsametbaran.com',
   f: { name: 'Name', phone: 'Phone', lang: 'Language', times: 'Times', note: 'Note', page: 'Page' },
   consent: 'Over 18 and privacy notice accepted',
@@ -413,6 +408,8 @@ window.PT = {
 };
 </script>
 <script src="../../lib/psikoloji.js"></script>
+<script src="../../lib/mercek-en.js"></script>
+<script src="../../lib/mercek.js"></script>
 <script type="module" src="../../lib/toggles/tide.js"></script>
 <script src="../../lib/toggles/switch.js"></script>
 </body>

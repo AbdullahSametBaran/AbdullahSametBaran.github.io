@@ -1,4 +1,4 @@
-/* psychology page, the parts below the lake: therapy, the lens, a small experiment, the request form */
+/* psychology page, the parts below the lake: therapy, the lens, the request form (Üç mercek has its own mercek.css) */
 .below .st p.more{grid-column:2;font-family:Geist,system-ui,sans-serif;letter-spacing:0;margin:22px 0 0;max-width:640px;color:var(--mute);font-size:17px;line-height:1.65}
 @media (max-width:960px){.below .st p.more{grid-column:1}}
 
@@ -26,24 +26,6 @@
 .lens b{font-family:"Instrument Serif";font-weight:400;font-size:clamp(28px,2.4vw,36px);line-height:1.05}
 .lens p{margin:0;color:var(--mute);font-size:14.5px;line-height:1.55}
 .lens span{font-family:"Geist Mono";font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dawn)}
-
-/* the Stroop experiment */
-.stroop{max-width:760px;padding:28px;border-radius:26px;background:rgba(230,241,239,.05);border:1px solid rgba(230,241,239,.12)}
-.stroop .top{display:flex;justify-content:space-between;align-items:center;font-family:"Geist Mono";font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
-.stroop .word{display:grid;place-items:center;height:150px;font-weight:600;font-size:clamp(46px,7vw,84px);letter-spacing:.02em;user-select:none}
-.stroop .word.idle{font-weight:300;font-size:clamp(20px,2vw,26px);color:var(--mute);text-align:center;letter-spacing:0;line-height:1.5}
-.stroop .picks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.stroop .picks button{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 8px;border-radius:14px;border:1px solid rgba(230,241,239,.18);background:rgba(230,241,239,.04);color:var(--foam);font:inherit;font-size:15px;cursor:pointer}
-.stroop .picks button i{width:12px;height:12px;border-radius:50%;flex:none}
-.stroop .picks button:hover:not([disabled]){border-color:var(--foam)}
-.stroop .picks button kbd{font-family:"Geist Mono";font-size:10px;color:var(--mute)}
-.stroop .picks button[disabled]{opacity:.35;cursor:default}
-.stroop .picks.flash-bad button{animation:bad .3s}
-@keyframes bad{50%{transform:translateX(-3px)}}
-.stroop .res{margin-top:18px;font-size:16.5px;line-height:1.6;color:var(--foam)}
-.stroop .res b{color:var(--dawn);font-weight:500}
-.stroop .res p{margin:0 0 8px;color:var(--mute)}
-.stroop .go{margin-top:18px}
 
 .wonder{margin:0;padding:0;list-style:none;display:grid;gap:4px;counter-reset:w}
 .wonder li{counter-increment:w;display:grid;grid-template-columns:70px 1fr;padding:22px 0;border-bottom:1px solid rgba(230,241,239,.12);font-family:"Instrument Serif";font-size:clamp(26px,2.8vw,42px);line-height:1.15}
@@ -82,7 +64,7 @@ details.kvkk summary{cursor:pointer;color:var(--foam)}
 details.kvkk p{margin:10px 0 0}
 
 @media (max-width:960px){.therapy,.book{grid-template-columns:1fr}.ways{grid-template-columns:1fr}.lens{grid-template-columns:1fr 1fr}}
-@media (max-width:600px){.lens{grid-template-columns:1fr}.lens div{min-height:0}.facts div{grid-template-columns:1fr;gap:4px}.f2{grid-template-columns:1fr}.stroop{padding:20px}.stroop .picks{grid-template-columns:1fr 1fr}.wonder li{grid-template-columns:44px 1fr}.book form{padding:20px}}
+@media (max-width:600px){.lens{grid-template-columns:1fr}.lens div{min-height:0}.facts div{grid-template-columns:1fr;gap:4px}.f2{grid-template-columns:1fr}.wonder li{grid-template-columns:44px 1fr}.book form{padding:20px}}
 
 /* the request form opens as a pop-up dialog */
 .book-cta{display:grid;place-items:center;padding:40px 28px;border-radius:26px;background:rgba(230,241,239,.05);border:1px solid rgba(230,241,239,.12)}
