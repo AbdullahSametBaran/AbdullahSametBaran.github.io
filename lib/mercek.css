@@ -1,0 +1,86 @@
+/* "Üç mercek" on the psychology page: the story on one side, the school's structure in 3D on the other */
+.mrc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);border-radius:26px;background:rgba(230,241,239,.04);border:1px solid rgba(230,241,239,.12);overflow:hidden}
+.mrc-panel{padding:28px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.mrc-stage{position:relative;min-height:600px;background:radial-gradient(ellipse at 50% 42%,rgba(12,58,68,.95),#05222a 72%);border-left:1px solid rgba(230,241,239,.08);touch-action:pan-y;cursor:grab;overflow:hidden;user-select:none;-webkit-user-select:none}
+.mrc-stage.drag{cursor:grabbing}
+.mrc-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.mrc-labels{position:absolute;inset:0;pointer-events:none}
+.mrc-l{position:absolute;left:0;top:0;width:max-content;max-width:190px;margin-top:-.7em;font-size:12.5px;line-height:1.35;color:var(--foam);will-change:transform,opacity}
+.mrc-l.left{text-align:right}
+.mrc-l b{display:block;font-family:"Geist Mono",monospace;font-weight:400;font-size:9.5px;letter-spacing:.12em;color:var(--mute);margin-bottom:2px}
+.mrc-l span{display:block}
+.mrc-l i{display:block;font-style:normal;font-size:11px;color:var(--dawn);margin-top:2px}
+.mrc-l.ghost b{color:rgba(230,241,239,.42)}
+.mrc-l.lit b,.mrc-l.lit span{color:var(--dawn)}
+.mrc-l.disc{max-width:none}
+.mrc-l.disc b{margin:0;color:rgba(230,241,239,.5)}
+.mrc-l.disc.lit b{color:var(--dawn)}
+.mrc-tag{position:absolute;left:18px;top:16px;color:var(--dawn);font-size:10.5px}
+.mrc-hint{position:absolute;right:18px;bottom:14px;color:rgba(230,241,239,.45);font-size:10px}
+
+.mrc-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;color:var(--mute);min-height:26px}
+.mrc-lens{padding:4px 11px;border-radius:99px;border:1px solid rgba(243,195,163,.5);color:var(--dawn);font-size:12.5px}
+.mrc-dots{margin-left:auto;display:flex;gap:6px}
+.mrc-dots i{width:8px;height:8px;border-radius:50%;background:rgba(230,241,239,.18);transition:background .3s}
+.mrc-dots i.on{background:var(--dawn)}
+.mrc-dots i.now{box-shadow:0 0 0 2px rgba(243,195,163,.5)}
+.mrc-body{display:flex;flex-direction:column;gap:16px}
+.mrc-k{margin:0 0 -6px;color:var(--mute)}
+
+.mrc-moments{display:grid;gap:8px}
+.mrc-moments button{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:14px;border:1px solid rgba(230,241,239,.14);background:none;color:var(--foam);font:inherit;font-size:15.5px;text-align:left;cursor:pointer;transition:border-color .2s,background .2s}
+.mrc-moments button b{font-weight:400}
+.mrc-moments button i{font-style:normal;font-family:"Geist Mono",monospace;font-size:10.5px;letter-spacing:.12em;color:var(--mute)}
+.mrc-moments button:hover{border-color:rgba(230,241,239,.4)}
+.mrc-moments button.on{border-color:var(--dawn);background:rgba(243,195,163,.08)}
+.mrc-moments button.on i{color:var(--dawn)}
+.mrc-d{margin:-4px 2px 4px;color:var(--mute);font-size:14.5px;line-height:1.55;min-height:3.1em}
+
+.mrc-lenses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.mrc-lenses button{display:flex;flex-direction:column;gap:5px;padding:14px;border-radius:16px;border:1px solid rgba(230,241,239,.14);background:none;color:var(--foam);text-align:left;font:inherit;cursor:pointer;transition:border-color .2s,background .2s}
+.mrc-lenses button:hover{border-color:rgba(230,241,239,.4)}
+.mrc-lenses b{font-family:"Instrument Serif",serif;font-weight:400;font-size:26px;line-height:1}
+.mrc-lenses small{font-family:"Geist Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);line-height:1.4}
+.mrc-lenses span{font-size:13px;line-height:1.45;color:var(--mute)}
+.mrc-lenses button.on{border-color:var(--dawn);background:rgba(243,195,163,.08)}
+.mrc-lenses button.on b{color:var(--dawn)}
+.mrc-go{align-self:flex-start}
+
+.mrc-scene{margin:0;padding:0 0 0 16px;border-left:2px solid var(--dawn);font-family:"Instrument Serif",serif;font-size:clamp(22px,1.8vw,28px);line-height:1.2}
+.mrc-story{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.mrc-story:empty{display:none}
+.mrc-story li{display:grid;gap:3px;padding-left:16px;border-left:1px solid rgba(230,241,239,.14)}
+.mrc-story b{font-weight:500;font-size:14.5px;line-height:1.45;color:var(--dawn)}
+.mrc-story span{color:var(--mute);font-size:14.5px;line-height:1.5}
+.mrc-q{margin:2px 0 -4px;font-size:17px;line-height:1.45;font-weight:500}
+.mrc-opts{display:grid;gap:8px}
+.mrc-opts button{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;padding:13px 16px;border-radius:14px;border:1px solid rgba(230,241,239,.16);background:rgba(230,241,239,.03);color:var(--foam);font:inherit;font-size:15px;line-height:1.45;text-align:left;cursor:pointer;transition:border-color .2s,transform .2s,background .2s}
+.mrc-opts button:hover{border-color:var(--foam);background:rgba(230,241,239,.06);transform:translateX(3px)}
+.mrc-opts i{font-style:normal;font-family:"Geist Mono",monospace;font-size:11px;color:var(--mute);padding-top:3px}
+
+.mrc-end{display:grid;gap:14px}
+.mrc-endt{margin:0;font-size:17px;line-height:1.55}
+.mrc-path{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.mrc-path span{padding:5px 11px;border-radius:99px;background:rgba(243,195,163,.12);color:var(--dawn);font-size:13px}
+.mrc-path em{color:var(--mute);font-size:13px}
+.mrc-note{padding:16px 18px;border-radius:16px;background:rgba(230,241,239,.05);border:1px solid rgba(230,241,239,.1)}
+.mrc-note b{display:block;font-weight:400;color:var(--dawn);margin-bottom:6px}
+.mrc-note p{margin:0;color:var(--mute);font-size:14.5px;line-height:1.6}
+.mrc-acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.mrc-acts .btn-o{padding:10px 16px;font-size:14px}
+.mrc-acts small{width:100%;color:var(--mute);font-size:13px;margin-top:4px}
+.mrc-book{justify-self:start;margin-top:4px}
+.mrc button:focus-visible{outline:2px solid var(--dawn);outline-offset:2px}
+
+@media (max-width:960px){
+  .mrc{grid-template-columns:1fr}
+  .mrc-stage{order:-1;min-height:380px;border-left:0;border-bottom:1px solid rgba(230,241,239,.08)}
+  .mrc-l{max-width:140px;font-size:11.5px}
+}
+@media (max-width:600px){
+  .mrc-panel{padding:20px}
+  .mrc-stage{min-height:410px}
+  .mrc-lenses{grid-template-columns:1fr}
+  .mrc-l{max-width:112px;font-size:11px}
+  .mrc-l i{display:none}   /* the small second line is in the story below; the stage keeps only the names */
+}

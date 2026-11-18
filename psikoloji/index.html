@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Psikoloji · Samet Baran</title>
-<meta name="description" content="Psikolog Samet Baran: yetişkinlerle online terapi (BDT, psikodinamik, ACT), Türkçe ve İngilizce. Küçük bir Stroop deneyi ve randevu formu.">
+<meta name="description" content="Psikolog Samet Baran: yetişkinlerle online terapi (BDT, psikodinamik, ACT), Türkçe ve İngilizce. Aynı anı üç terapi yaklaşımıyla gösteren etkileşimli bir keşif ve randevu formu.">
 <link rel="canonical" href="https://abdullahsametbaran.com/psikoloji/">
 <link rel="alternate" hreflang="tr" href="https://abdullahsametbaran.com/psikoloji/">
 <link rel="alternate" hreflang="en" href="https://abdullahsametbaran.com/en/psikoloji/">
@@ -18,7 +18,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:url" content="https://abdullahsametbaran.com/psikoloji/">
 <meta property="og:title" content="Psikoloji · Samet Baran">
-<meta property="og:description" content="Psikolog Samet Baran: yetişkinlerle online terapi (BDT, psikodinamik, ACT), Türkçe ve İngilizce. Küçük bir Stroop deneyi ve randevu formu.">
+<meta property="og:description" content="Psikolog Samet Baran: yetişkinlerle online terapi (BDT, psikodinamik, ACT), Türkçe ve İngilizce. Aynı anı üç terapi yaklaşımıyla gösteren etkileşimli bir keşif ve randevu formu.">
 <meta property="og:image" content="https://abdullahsametbaran.com/img/og-tr.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -26,11 +26,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://abdullahsametbaran.com/img/og-tr.jpg">
 <meta name="twitter:title" content="Psikoloji · Samet Baran">
-<meta name="twitter:description" content="Psikolog Samet Baran: yetişkinlerle online terapi (BDT, psikodinamik, ACT), Türkçe ve İngilizce. Küçük bir Stroop deneyi ve randevu formu.">
+<meta name="twitter:description" content="Psikolog Samet Baran: yetişkinlerle online terapi (BDT, psikodinamik, ACT), Türkçe ve İngilizce. Aynı anı üç terapi yaklaşımıyla gösteren etkileşimli bir keşif ve randevu formu.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400&family=Instrument+Serif&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../lib/lenis.css">
 <link rel="stylesheet" href="../lib/psikoloji.css">
+<link rel="stylesheet" href="../lib/mercek.css">
 <style>
 /* deep petrol 60 · pale foam 30 · dawn peach 10 */
 :root{--deep:#062a31;--petrol:#0c3a44;--foam:#e6f1ef;--mute:rgba(230,241,239,.6);--dawn:#f3c3a3;--gut:clamp(18px,3vw,44px)}
@@ -127,9 +128,9 @@ header .lang{margin-left:22px;color:var(--mute);transition:color .3s}header .lan
     </div>
   </section>
 
-  <section class="sec">
-    <span class="mono" style="color:var(--mute)">30 saniye</span><h2>Küçük bir <em>deney</em></h2><p class="lede">Kelimeyi okuma; yazının <em style="color:var(--foam)">rengini</em> seç. İki tur var. Klavyede 1–4 tuşlarını da kullanabilirsin.</p>
-    <div class="stroop" id="stroop"><div class="top"><span class="cnt">Stroop etkisi</span><span>Rengi seç</span></div><div class="word idle">Hazır olduğunda başla.</div><div class="picks"></div><div class="res"></div><button class="btn-d go" type="button">Başla</button></div>
+  <section class="sec" id="mercek">
+    <span class="mono" style="color:var(--mute)">5 an · 3 mercek · birkaç dakika</span><h2>Aynı an, <em>üç mercek</em></h2><p class="lede">Gündelik bir an seç, sonra ona hangi terapi yaklaşımıyla bakacağını. Her seçim hikâyeyi ve yanda kurulan yapıyı değiştirir. Anlar kurgusaldır; bu bir test ya da değerlendirme değil, yaklaşımların bir anı nasıl farklı okuduğunu gösteren küçük bir keşif.</p>
+    <div class="mrc" id="mrc"></div>
   </section>
 
   <section class="sec">
@@ -413,6 +414,8 @@ window.PT = {
 };
 </script>
 <script src="../lib/psikoloji.js"></script>
+<script src="../lib/mercek-tr.js"></script>
+<script src="../lib/mercek.js"></script>
 <script type="module" src="../lib/toggles/tide.js"></script>
 <script src="../lib/toggles/switch.js"></script>
 </body>
