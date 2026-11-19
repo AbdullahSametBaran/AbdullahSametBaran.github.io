@@ -1,0 +1,25 @@
+Copyright (c) 2026 Abdullah Samet Baran. All rights reserved.
+
+This repository holds the source of https://abdullahsametbaran.com: its text,
+design, images, game and code. It is public only so that GitHub Pages can
+serve the site. No licence is granted: you may not copy, modify, republish,
+host or distribute any part of it, in whole or in part, without written
+permission from the author.
+
+Third-party libraries in lib/ (GSAP, ScrollTrigger, Lenis) keep their own
+licences and are not covered by this notice.
+
+Contact: abdullahsametbaran@gmail.com
+
+---
+
+Telif hakkı (c) 2026 Abdullah Samet Baran. Tüm hakları saklıdır.
+
+Bu depo https://abdullahsametbaran.com sitesinin kaynağıdır (metinler, tasarım,
+görseller, oyun ve kod). Yalnızca GitHub Pages siteyi yayınlayabilsin diye
+herkese açıktır. Hiçbir kullanım izni verilmemiştir: yazarın yazılı izni
+olmadan tamamı ya da bir parçası kopyalanamaz, değiştirilemez, yeniden
+yayınlanamaz, barındırılamaz veya dağıtılamaz.
+
+lib/ klasöründeki üçüncü taraf kütüphaneler (GSAP, ScrollTrigger, Lenis) kendi
+lisanslarına tabidir; bu bildirim onları kapsamaz.
